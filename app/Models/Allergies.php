@@ -16,4 +16,5 @@ class Allergies extends Model
        'allrgy_severity',
        'allrgy_notes'
     ];
+    protected $primaryKey = 'allrgy_id';
 }
