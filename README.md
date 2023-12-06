@@ -61,5 +61,5 @@ php artisan serve
 ```bash
   /pat_allergies
 ```
-![pat_allergies](screenshots/post-pat_allergies.png)
+![pat_allergies](screenshots/post-pa_pat_allergies.png)
 
