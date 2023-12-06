@@ -51,7 +51,7 @@ php artisan serve
 ```http
   /allergies
 ```
-![allergies](https://github.com/laefy/VitalSynch-server/raw/main/screenshots/post-allergies.png)
+![allergies](screenshots/post-allergies.png)
 
 ```http
   /logs
