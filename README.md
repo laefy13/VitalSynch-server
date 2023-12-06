@@ -15,7 +15,7 @@ php artisan serve
 ## API Reference
 #### GET
 
-```http
+```bash
   /app_forms
   /usr_acc
   /ptnt_prof
@@ -28,38 +28,38 @@ php artisan serve
 #### POST
 * only tested with multipart form yet
 
-```http
+```bash
   /app_forms
 ```
-![app_forms](https://github.com/laefy/VitalSynch-server/raw/main/screenshots/post-app_forms.png)
+![app_forms](screenshots/post-app_forms.png)
 
-```http
+```bash
   /usr_acc
 ```
-![useer_acc](https://github.com/laefy/VitalSynch-server/raw/main/screenshots/post-user_acc.png)
+![useer_acc](screenshots/post-user_acc.png)
 
-```http
+```bash
   /ptnt_prof
 ```
-![ptnt_prof](https://github.com/laefy/VitalSynch-server/raw/main/screenshots/post-ptnt_prof.png)
+![ptnt_prof](screenshots/post-ptnt_prof.png)
 
-```http
+```bash
   /procd_form
 ```
-![procd_form](https://github.com/laefy/VitalSynch-server/raw/main/screenshots/post-procd_form.png)
+![procd_form](screenshots/post-procd_form.png)
 
-```http
+```bash
   /allergies
 ```
 ![allergies](screenshots/post-allergies.png)
 
-```http
+```bash
   /logs
 ```
-![logs](https://github.com/laefy/VitalSynch-server/raw/main/screenshots/post-logs.png)
+![logs](screenshots/post-logs.png)
 
-```http
+```bash
   /pat_allergies
 ```
-![pat_allergies](https://github.com/laefy/VitalSynch-server/raw/main/screenshots/post-pat_allergies.png)
+![pat_allergies](screenshots/post-pat_allergies.png)
 
