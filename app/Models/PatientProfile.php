@@ -11,7 +11,6 @@ class PatientProfile extends Model
     public $timestamps = false;
     protected $table = 'tbl_patient_profile';
     protected $fillable = [
-        'ptnt_id',
         'ptnt_grdn_id',
         'ptnt_surname',
         'ptnt_first_name',

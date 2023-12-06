@@ -3,8 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppFormController;
-use App\Http\Controllers\UserAccountsController;
+use App\Http\Controllers\UserAccounsController;
 use App\Http\Controllers\PatientProfileController;
+
+use App\Http\Controllers\ProcessedFormsController;
+use App\Http\Controllers\AllergiesController;
+use App\Http\Controllers\LogsController;
+use App\Http\Controllers\PatientAllergiesController;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +26,27 @@ use App\Http\Controllers\PatientProfileController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-# API Route for application forms
+// API Routes for application forms
 Route::get('/app_forms',[AppFormController::class, 'index']);
 Route::post('/app_forms',[AppFormController::class, 'store']);
-# API Route for user accounts
-Route::get('/user_acc',[UserAccountsController::class, 'index']);
-Route::post('/user_acc',[UserAccountsController::class, 'store']);
-# API Route for patient profile
+// API RouteS for user accounts
+// NAHH
+Route::get('/user_acc',[UserAccounsController::class, 'index']);
+Route::post('/user_acc',[UserAccounsController::class, 'store']);
+// API RouteS for patient profile
 Route::get('/ptnt_prof',[PatientProfileController::class, 'index']);
 Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
+// API RouteS for processed forms profile
+Route::get('/procd_form',[ProcessedFormsController::class, 'index']);
+Route::post('/procd_form',[ProcessedFormsController::class, 'store']);
+// API RouteS for Allergies
+Route::get('/allergies',[AllergiesController::class, 'index']);
+Route::post('/allergies',[AllergiesController::class, 'store']);
+// API RouteS for Logs
+Route::get('/logs',[LogsController::class, 'index']);
+Route::post('/logs',[LogsController::class, 'store']);
+// API RouteS for Patient Allergies
+Route::get('/pat_allergies',[PatientAllergiesController::class, 'index']);
+Route::post('/pat_allergies',[PatientAllergiesController::class, 'store']);
+
 

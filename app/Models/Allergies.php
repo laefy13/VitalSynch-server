@@ -5,16 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ApplicationForm extends Model
+class Allergies extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = 'tbl_app_form';
+    protected $table = 'tbl_allergies';
     protected $fillable = [
-        'app_full_name',
-        'app_department',
-        'app_service',
-        'app_email'
+        'allrgy_name',
+       'allrgy_type',
+       'allrgy_severity',
+       'allrgy_notes'
     ];
-    protected $primaryKey = 'app_queue_num';
 }

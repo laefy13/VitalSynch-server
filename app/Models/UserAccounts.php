@@ -16,4 +16,5 @@ class UserAccounts extends Model
         'usr_password',
         'usr_acc_type'
     ];
+    protected $primaryKey = 'usr_email';
 }

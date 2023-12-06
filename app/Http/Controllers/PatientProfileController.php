@@ -15,7 +15,6 @@ class PatientProfileController extends Controller
     }
     public function store(Request $request){
         $pat_prof = new PatientProfile ; 
-        $pat_prof->ptnt_id = $request->ptnt_id;
         $pat_prof->ptnt_grdn_id = $request->ptnt_grdn_id;
         $pat_prof->ptnt_surname = $request->ptnt_surname;
         $pat_prof->ptnt_first_name = $request->ptnt_first_name;
@@ -26,7 +25,7 @@ class PatientProfileController extends Controller
         $pat_prof->ptnt_blood_group = $request->ptnt_blood_group;
         $pat_prof->ptnt_marital_status = $request->ptnt_marital_status;
         $pat_prof->ptnt_contact_number = $request->ptnt_contact_number;
-        $pat_prof->ptnt_addres = $request->ptnt_addres;
+        $pat_prof->ptnt_address = $request->ptnt_address;
 
 
         $pat_prof->save();

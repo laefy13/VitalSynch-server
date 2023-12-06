@@ -12,14 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_patient_profile', function (Blueprint $table) {
-            $table->increments('patient_id');
+            $table->increments('ptnt_id');
             $table->string('ptnt_grdn_id');
             $table->string('ptnt_surname');
             $table->string('ptnt_first_name');
             $table->string('ptnt_mid_name');
-            $table->string('ptnt_extn_name');
+            $table->string('ptnt_extn_name')->nullable();
             $table->string('ptnt_sex');
-            $table->string('ptnt_birth_date');
+            $table->date('ptnt_birth_date');
             $table->string('ptnt_blood_group');
             $table->string('ptnt_marital_status');
             $table->string('ptnt_contact_number');
