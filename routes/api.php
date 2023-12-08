@@ -10,6 +10,10 @@ use App\Http\Controllers\ProcessedFormsController;
 use App\Http\Controllers\AllergiesController;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\PatientAllergiesController;
+
+use App\Http\Controllers\LabReportController;
+use App\Http\Controllers\MedicalHistoryController;
+use App\Http\Controllers\GuardianProfileController;
 use App\Http\Controllers\Controller;
 
 /*
@@ -48,5 +52,13 @@ Route::post('/logs',[LogsController::class, 'store']);
 // API RouteS for Patient Allergies
 Route::get('/pat_allergies',[PatientAllergiesController::class, 'index']);
 Route::post('/pat_allergies',[PatientAllergiesController::class, 'store']);
-
+// API Routest for Lab Report
+Route::get('/lab_rep',[LabReportController::class, 'index']);
+Route::post('/lab_rep',[LabReportController::class, 'store']);
+// API Routest for Medical History
+Route::get('/med_his',[MedicalHistoryController::class, 'index']);
+Route::post('/med_his',[MedicalHistoryController::class, 'store']);
+// API Routest for Guardian Profile
+Route::get('/grdn_prof',[GuardianProfileController::class, 'index']);
+Route::post('/grdn_prof',[GuardianProfileController::class, 'store']);
 

@@ -14,7 +14,7 @@ php artisan serve
 
 ## API Reference
 #### GET
-
+* check GET.md for the api route with image samples
 ```bash
   /app_forms
   /usr_acc
@@ -23,6 +23,9 @@ php artisan serve
   /allergies
   /logs
   /pat_allergies
+  /lab_rep
+  /med_his
+  /grdn_prof
 ```
 
 #### POST
@@ -63,3 +66,23 @@ php artisan serve
 ```
 ![pat_allergies](screenshots/post-pa_pat_allergies.png)
 
+```bash
+  /lab_rep
+```
+![lab_rep](screenshots/post-pa_lab_rep.png)
+
+```bash
+  /med_his
+```
+![med_his](screenshots/post-pa_med_his.png)
+
+```bash
+  /grdn_prof
+```
+![grdn_prof](screenshots/post-pa_grdn_prof.png)
+
+
+## Changes
+* Dec 9, 2023
+     * lab_rep, med_his, grdn_prof api routes
+     * GET.md
