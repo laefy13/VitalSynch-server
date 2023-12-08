@@ -69,17 +69,17 @@ php artisan serve
 ```bash
   /lab_rep
 ```
-![lab_rep](screenshots/post-pa_lab_rep.png)
+![lab_rep](screenshots/post-lab_rep.png)
 
 ```bash
   /med_his
 ```
-![med_his](screenshots/post-pa_med_his.png)
+![med_his](screenshots/post-med_his.png)
 
 ```bash
   /grdn_prof
 ```
-![grdn_prof](screenshots/post-pa_grdn_prof.png)
+![grdn_prof](screenshots/post-grdn_prof.png)
 
 
 ## Changes
