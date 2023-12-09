@@ -9,6 +9,7 @@ The repository that contains the development server of the VitalSycnh
 
 ```bash
 php artisan migrate
+php artisan storage:link
 php artisan serve
 ```
 
@@ -106,3 +107,5 @@ php artisan serve
 * Dec 9, 2023
      * lab_rep, med_his, grdn_prof api routes
      * GET.md
+     * prescr, pd, drugs, doctor_prof api routes
+
