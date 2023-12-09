@@ -38,14 +38,34 @@
 ```bash
   /lab_rep
 ```
-![lab_rep](screenshots/get-pa_lab_rep.png)
+![lab_rep](screenshots/get-lab_rep.png)
 
 ```bash
   /med_his
 ```
-![med_his](screenshots/get-pa_med_his.png)
+![med_his](screenshots/get-med_his.png)
 
 ```bash
   /grdn_prof
 ```
-![grdn_prof](screenshots/get-pa_grdn_prof.png)
+![grdn_prof](screenshots/get-grdn_prof.png)
+
+```bash
+  /prescr
+```
+![prescr](screenshots/get-prescr.png)
+
+```bash
+  /pd
+```
+![pd](screenshots/get-pd.png)
+
+```bash
+  /drugs
+```
+![drugs](screenshots/get-drugs.png)
+
+```bash
+  /doctor_prof
+```
+![doctor_prof](screenshots/get-doctor_prof.png)

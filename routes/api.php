@@ -14,6 +14,12 @@ use App\Http\Controllers\PatientAllergiesController;
 use App\Http\Controllers\LabReportController;
 use App\Http\Controllers\MedicalHistoryController;
 use App\Http\Controllers\GuardianProfileController;
+
+
+use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\PrescriptionDrugsController;
+use App\Http\Controllers\DrugsController;
+use App\Http\Controllers\DoctorProfileController;
 use App\Http\Controllers\Controller;
 
 /*
@@ -61,4 +67,16 @@ Route::post('/med_his',[MedicalHistoryController::class, 'store']);
 // API Routest for Guardian Profile
 Route::get('/grdn_prof',[GuardianProfileController::class, 'index']);
 Route::post('/grdn_prof',[GuardianProfileController::class, 'store']);
+// API Routest for Prescription
+Route::get('/prescr',[PrescriptionController::class, 'index']);
+Route::post('/prescr',[PrescriptionController::class, 'store']);
+// API Routest for Prescription Drugs
+Route::get('/pd',[PrescriptionDrugsController::class, 'index']);
+Route::post('/pd',[PrescriptionDrugsController::class, 'store']);
+// API Routest for Drugs
+Route::get('/drugs',[DrugsController::class, 'index']);
+Route::post('/drugs',[DrugsController::class, 'store']);
+// API RouteS for doctor profile
+Route::get('/doctor_prof',[DoctorProfileController::class, 'index']);
+Route::post('/doctor_prof',[DoctorProfileController::class, 'store']);
 

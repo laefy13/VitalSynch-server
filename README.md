@@ -81,6 +81,26 @@ php artisan serve
 ```
 ![grdn_prof](screenshots/post-grdn_prof.png)
 
+```bash
+  /prescr
+```
+![prescr](screenshots/post-prescr.png)
+
+```bash
+  /pd
+```
+![pd](screenshots/post-pd.png)
+
+```bash
+  /drugs
+```
+![drugs](screenshots/post-drugs.png)
+
+```bash
+  /doctor_prof
+```
+![doctor_prof](screenshots/post-doctor_prof.png)
+
 
 ## Changes
 * Dec 9, 2023
