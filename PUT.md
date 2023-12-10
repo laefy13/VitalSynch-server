@@ -23,7 +23,7 @@
 ```bash
   /updateLab_rep
 ```
-![lab_rep](screenshots/put-updateLab_rep.png)
+![lab_rep](screenshots/put-updateLabrep.png)
 
 ```bash
   /updateGrdn_prof
