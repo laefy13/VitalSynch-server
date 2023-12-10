@@ -29,6 +29,29 @@ php artisan serve
   /grdn_prof
 ```
 
+#### GET only PKs and some names
+* check GET.md for the api route with image samples
+```bash
+  /pkApp_forms
+  /pkAllergies
+  /pkLogs
+  /pkLab_rep
+  /pkGrdn_prof
+  /pkDrugs
+  /pkDoctor_prof
+```
+
+#### PUT
+* check PUT.md for the api route with image samples
+```bash
+  /updateApp_forms
+  /updateAllergies
+  /updateLab_rep
+  /updateGrdn_prof
+  /updateDrugs
+  /updateDoctor_prof
+```
+
 #### POST
 * only tested with multipart form yet
 
@@ -108,4 +131,14 @@ php artisan serve
      * lab_rep, med_his, grdn_prof api routes
      * GET.md
      * prescr, pd, drugs, doctor_prof api routes
+* Dec 11, 2023
+     * pk and update functions on the controllers of:
+          * Allergies
+          * AppForm
+          * DoctorProfile
+          * Drugs
+          * GuardianProfile
+          * LabReport
+          * Logs
+     * PUT.md
 

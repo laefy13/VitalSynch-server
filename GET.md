@@ -1,4 +1,4 @@
-#### GET
+## GET
 
 ```bash
   /app_forms
@@ -69,3 +69,42 @@
   /doctor_prof
 ```
 ![doctor_prof](screenshots/get-doctor_prof.png)
+
+#### GET only PKs and some names
+
+
+
+```bash
+  /pkApp_forms
+```
+![app_forms](screenshots/get-pkApp_forms.png)
+
+```bash
+  /pkAllergies
+```
+![allergies](screenshots/get-pkAllergies.png)
+
+```bash
+  /pkLogs
+```
+![logs](screenshots/get-pkLogs.png)
+
+```bash
+  /pkLab_rep
+```
+![lab_rep](screenshots/get-pkLab_rep.png)
+
+```bash
+  /pkGrdn_prof
+```
+![grdn_prof](screenshots/get-pkGrdn_prof.png)
+
+```bash
+  /pkDrugs
+```
+![drugs](screenshots/get-pkDrugs.png)
+
+```bash
+  /pkDoctor_prof
+```
+![doctor_prof](screenshots/get-pkDoctor_prof.png)
