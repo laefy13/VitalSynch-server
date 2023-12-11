@@ -45,12 +45,18 @@ Route::put('/updateApp_forms',[AppFormController::class, 'update']);
 // NAHH
 Route::get('/user_acc',[UserAccounsController::class, 'index']);
 Route::post('/user_acc',[UserAccounsController::class, 'store']);
+Route::get('/pkUser_acc',[AppFormController::class, 'pk']);
+Route::put('/updateUser_acc',[AppFormController::class, 'update']);
 // API RouteS for patient profile
 Route::get('/ptnt_prof',[PatientProfileController::class, 'index']);
 Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
+Route::get('/pkPtnt_prof',[AppFormController::class, 'pk']);
+Route::put('/updatePtnt_prof',[AppFormController::class, 'update']);
 // API RouteS for processed forms profile
 Route::get('/procd_form',[ProcessedFormsController::class, 'index']);
 Route::post('/procd_form',[ProcessedFormsController::class, 'store']);
+Route::get('/pkProcd_form',[AppFormController::class, 'pk']);
+Route::put('/updateProcd_form',[AppFormController::class, 'update']);
 // API RouteS for Allergies
 Route::get('/allergies',[AllergiesController::class, 'index']);
 Route::get('/pkAllergies',[AllergiesController::class, 'pk']);
@@ -64,6 +70,7 @@ Route::put('/updateLogs',[LogsController::class, 'update']);
 // API RouteS for Patient Allergies
 Route::get('/pat_allergies',[PatientAllergiesController::class, 'index']);
 Route::post('/pat_allergies',[PatientAllergiesController::class, 'store']);
+Route::put('/updatePat_allergies',[AppFormController::class, 'update']);
 // API Routest for Lab Report
 Route::get('/lab_rep',[LabReportController::class, 'index']);
 Route::post('/lab_rep',[LabReportController::class, 'store']);
@@ -72,6 +79,8 @@ Route::put('/updateLab_rep',[LabReportController::class, 'update']);
 // API Routest for Medical History
 Route::get('/med_his',[MedicalHistoryController::class, 'index']);
 Route::post('/med_his',[MedicalHistoryController::class, 'store']);
+Route::get('/pkMed_his',[AppFormController::class, 'pk']);
+Route::put('/updateMed_his',[AppFormController::class, 'update']);
 // API Routest for Guardian Profile
 Route::get('/grdn_prof',[GuardianProfileController::class, 'index']);
 Route::post('/grdn_prof',[GuardianProfileController::class, 'store']);
@@ -80,9 +89,13 @@ Route::put('/updateGrdn_prof',[GuardianProfileController::class, 'update']);
 // API Routest for Prescription
 Route::get('/prescr',[PrescriptionController::class, 'index']);
 Route::post('/prescr',[PrescriptionController::class, 'store']);
+Route::get('/pkPrescr',[AppFormController::class, 'pk']);
+Route::put('/updatePrescr',[AppFormController::class, 'update']);
 // API Routest for Prescription Drugs
 Route::get('/pd',[PrescriptionDrugsController::class, 'index']);
 Route::post('/pd',[PrescriptionDrugsController::class, 'store']);
+Route::get('/pkPd',[AppFormController::class, 'pk']);
+Route::put('/updatePd',[AppFormController::class, 'update']);
 // API Routest for Drugs
 Route::get('/drugs',[DrugsController::class, 'index']);
 Route::post('/drugs',[DrugsController::class, 'store']);

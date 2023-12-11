@@ -33,23 +33,29 @@ php artisan serve
 * check GET.md for the api route with image samples
 ```bash
   /pkApp_forms
+  /pkUsr_acc
+  /pkPtnt_prof
+  /pkProcd_form
   /pkAllergies
   /pkLogs
   /pkLab_rep
+  /pkMed_his
   /pkGrdn_prof
-  /pkDrugs
-  /pkDoctor_prof
 ```
 
 #### PUT
 * check PUT.md for the api route with image samples
 ```bash
   /updateApp_forms
+  /updateUsr_acc
+  /updatePtnt_prof
+  /updateProcd_form
   /updateAllergies
+  /updateLogs
+  /updatePat_allergies
   /updateLab_rep
+  /updateMed_his
   /updateGrdn_prof
-  /updateDrugs
-  /updateDoctor_prof
 ```
 
 #### POST
@@ -140,5 +146,12 @@ php artisan serve
           * GuardianProfile
           * LabReport
           * Logs
+          * MedicalHistory
+          * PatientAllergies
+          * PatientProfile
+          * Prescription
+          * PrescriptionDrugs
+          * ProcessedForms
+          * UserAccounts
      * PUT.md
 
