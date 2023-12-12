@@ -41,10 +41,10 @@ class DoctorProfileController extends Controller
         
         $doc_prof->doctor_signature = $this->urlGenerate($request);
 
-
+        // dd($doc_prof->doctor_signature);
         $doc_prof->save();
         return response()->json([
-            "message" => "Doctor Profile added"
+            "message" => "Doctor Profile added{$doc_prof->doctor_signature}"
         ],201);
 
     }
@@ -102,7 +102,7 @@ class DoctorProfileController extends Controller
 
     private function urlGenerate($filee){
         // dd($filee);
-        $path = $filee->file('doctor_signature')->store('Signatures');
+        $path = $filee->file('doctor_signature')->store('public/Signatures');
         return Storage::url($path);
     }
 }

@@ -12,6 +12,9 @@ php artisan migrate
 php artisan storage:link
 php artisan serve
 ```
+## Reminder
+* Login API currently just returns a token, but you can just move all of the routes, and configure to have the token as a header to test how the API with login security works.
+* The PDF generator for Prescription is just a sample, and is there just to show and get a feel on how PDF generator will work.
 
 ## API Reference
 #### GET
@@ -60,6 +63,16 @@ php artisan serve
 
 #### POST
 * only tested with multipart form yet
+
+```bash
+  /login
+```
+![app_forms](screenshots/post-login.png)
+
+```bash
+  /prescrViewPDF
+```
+![app_forms](screenshots/post-prescrViewPDF.png)
 
 ```bash
   /app_forms
@@ -154,4 +167,7 @@ php artisan serve
           * ProcessedForms
           * UserAccounts
      * PUT.md
+* Dec 12, 2023
+     * login controller and configured somethings for login to work
+     * prescrViewPDF as a PDF generator sample
 

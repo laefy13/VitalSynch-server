@@ -22,6 +22,7 @@ use App\Http\Controllers\DrugsController;
 use App\Http\Controllers\DoctorProfileController;
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\Controller;
 
 /*
@@ -37,6 +38,8 @@ use App\Http\Controllers\Controller;
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::middleware(['auth:sanctum'])->group(function () {
+});
+
 
     // API Routes for application forms
     Route::get('/app_forms',[AppFormController::class, 'index']);
@@ -94,6 +97,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/prescr',[PrescriptionController::class, 'store']);
     Route::get('/pkPrescr',[AppFormController::class, 'pk']);
     Route::put('/updatePrescr',[AppFormController::class, 'update']);
+    Route::post('/prescrViewPDF', [PrescriptionController::class, 'viewPDF']);
     // API Routest for Prescription Drugs
     Route::get('/pd',[PrescriptionDrugsController::class, 'index']);
     Route::post('/pd',[PrescriptionDrugsController::class, 'store']);
@@ -110,5 +114,3 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/pkDoctor_prof',[DoctorProfileController::class, 'pk']);
     Route::put('/updateDoctor_prof',[DoctorProfileController::class, 'update']);
 
-
-});

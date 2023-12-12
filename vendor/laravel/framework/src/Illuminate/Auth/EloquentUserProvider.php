@@ -151,7 +151,7 @@ class EloquentUserProvider implements UserProvider
         if (is_null($plain = $credentials['usr_password'])) {
             return false;
         }
-        // dd($user->getAuthPassword());
+
         return $this->hasher->check($plain, $user->getAuthPassword());
     }
 
