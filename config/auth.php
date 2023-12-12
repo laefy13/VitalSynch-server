@@ -62,7 +62,10 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\UserAccounts::class,
+            // 'table'=>'tbl_user_accounts',
+            // 'identifier' => 'usr_email',
+            // 'field' => 'usr_password',
         ],
 
         // 'users' => [
