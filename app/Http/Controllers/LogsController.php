@@ -5,14 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Logs;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class LogsController extends Controller
 {
    
 
     public function index(){
+        $user = Auth::user();
+
+        // Check if a user is authenticated
+        if (Auth::check()) {
+            return response()->json($user);
+        } else {
+            // User is not authenticated
+            return response()->json('ky');
         $logs = Logs::all();
         return response()->json($logs);
+        }
     }
 
     public function pk(){
