@@ -2,12 +2,17 @@
 
 The repository that contains the development server of the VitalSycnh
 
+## Dependencies
+- Composer 2.2.6 2022-02-04 17:00:38 or higher
+- PHP 8.2.13 (cli) (built: Nov 24 2023 08:47:18) or higher
+
 ## How to run the server to local environment
 
 - Clone the repo
 - Run in terminal
 
 ```bash
+composer install 
 php artisan migrate
 php artisan storage:link
 php artisan serve
@@ -170,4 +175,6 @@ php artisan serve
 * Dec 12, 2023
      * login controller and configured somethings for login to work
      * prescrViewPDF as a PDF generator sample
+* Dec 16, 2023
+     * lil bit of readme and sql file 
 
