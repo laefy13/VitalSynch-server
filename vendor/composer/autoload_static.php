@@ -572,6 +572,7 @@ class ComposerStaticInitfc42e17eeeca165e1cfcb4fbd87d4939
         'App\\Http\\Controllers\\MedicalHistoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicalHistoryController.php',
         'App\\Http\\Controllers\\PatientAllergiesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PatientAllergiesController.php',
         'App\\Http\\Controllers\\PatientProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/PatientProfileController.php',
+        'App\\Http\\Controllers\\PdfController' => __DIR__ . '/../..' . '/app/Http/Controllers/PdfController.php',
         'App\\Http\\Controllers\\PrescriptionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrescriptionController.php',
         'App\\Http\\Controllers\\PrescriptionDrugsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PrescriptionDrugsController.php',
         'App\\Http\\Controllers\\ProcessedFormsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProcessedFormsController.php',
