@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\MedicalHistory;
 use Illuminate\Support\Facades\DB;
 
+use Carbon\Carbon;
+
 class MedicalHistoryController extends Controller
 {
 
