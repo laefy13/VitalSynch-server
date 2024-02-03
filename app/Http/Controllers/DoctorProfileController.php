@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\DoctorProfile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class DoctorProfileController extends Controller
 {
@@ -30,7 +31,6 @@ class DoctorProfileController extends Controller
             return response()->json(['error' => 'Signature file not provided.'], 400);
         }
         $doc_prof = new DoctorProfile ; 
-
         $doc_prof->doctor_surname = $request->doctor_surname;
         $doc_prof->doctor_first_name = $request->doctor_first_name;
         $doc_prof->doctor_mid_name = $request->doctor_mid_name;
@@ -39,12 +39,12 @@ class DoctorProfileController extends Controller
         $doc_prof->doctor_contact_number = $request->doctor_contact_number;
         $doc_prof->doctor_address = $request->doctor_address;
         
-        $doc_prof->doctor_signature = $this->urlGenerate($request);
+        $doc_prof->doctor_signature = $this->cloudinaryURLGenerate($request);
 
         // dd($doc_prof->doctor_signature);
         $doc_prof->save();
         return response()->json([
-            "message" => "Doctor Profile added{$doc_prof->doctor_signature}"
+            "message" => "Doctor Profile added"
         ],201);
 
     }
@@ -87,7 +87,7 @@ class DoctorProfileController extends Controller
 
         }
         if ($request->has('doctor_signature')){
-            $doctor_update['doctor_signature'] = $this->urlGenerate($request);
+            $doctor_update['doctor_signature'] = $this->cloudinaryURLGenerate($request);
 
         }
 
@@ -104,5 +104,10 @@ class DoctorProfileController extends Controller
         // dd($filee);
         $path = $filee->file('doctor_signature')->store('public/Signatures');
         return Storage::url($path);
+    }
+    private function cloudinaryURLGenerate($filee){
+
+        Cloudinary::uploadApi();
+        return $filee->file('doctor_signature')->storeOnCloudinary('signatures')->getSecurePath();
     }
 }
