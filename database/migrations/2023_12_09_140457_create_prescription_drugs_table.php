@@ -15,6 +15,7 @@ return new class extends Migration
             $table->integer('pd_prescr_id');
             $table->integer('pd_drug_id');
             $table->string('pd_instruction');
+            $table->primary(['pd_prescr_id', 'pd_drug_id']);
         });
     }
 

@@ -178,4 +178,11 @@ php artisan serve
      * prescrViewPDF as a PDF generator sample
 * Dec 16, 2023
      * lil bit of readme and sql file 
+* February 4, 2024
+     * added single function for almost all controllers
+     * added pdf for labreports
+     * moved the routes to middlewares
+     * made 'pd_prescr_id' & 'pd_drug_id' primary for tbl_prescr_drugs
+     * made index of PatientAllergiesController use left join for more details
+
 
