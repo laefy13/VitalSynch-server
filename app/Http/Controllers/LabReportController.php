@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\LabReport;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class LabReportController extends Controller
 {
@@ -12,6 +13,13 @@ class LabReportController extends Controller
     public function index(){
         $lab_rep = LabReport::all();
         return response()->json($lab_rep);
+    }
+
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_lab_report
+                                WHERE labrep_id = ?',[$id]);
+        return response()->json($row);
     }
 
     public function pk(){
@@ -74,6 +82,15 @@ class LabReportController extends Controller
             "message" => "Lab Report updated"
         ],201);
 
+    }
+
+    public function viewPDF(Request $request){
+        $lab_rep = LabReport::where('labrep_id',$request->labrep_id)->first();
+        $patient = DB::select('SELECT ptnt_surname, ptnt_first_name,ptnt_mid_name,ptnt_extn_name, ptnt_sex, ptnt_blood_group
+                                FROM tbl_patient_profile WHERE ptnt_id = ?', [$lab_rep->labrep_ptnt_id]);
+        // dd($drugs);
+        $pdf = PDF::loadView('pdf.lab_rep',['patient' => $patient[0], 'lab_rep' => $lab_rep]);
+        return $pdf->stream();
     }
 
 }

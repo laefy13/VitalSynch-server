@@ -5,6 +5,7 @@ The repository that contains the development server of the VitalSycnh
 ## Dependencies
 - Composer 2.2.6 2022-02-04 17:00:38 or higher
 - PHP 8.2.13 (cli) (built: Nov 24 2023 08:47:18) or higher
+- cloudinary configs in .env (ask me for the cloudinary configs if needed)
 
 ## How to run the server to local environment
 

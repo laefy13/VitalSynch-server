@@ -13,6 +13,13 @@ class GuardianProfileController extends Controller
         return response()->json($grdn_prof);
     }
 
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_grdn_profile
+                                WHERE grdn_id = ?',[$id]);
+        return response()->json($row);
+    }
+
     public function pk(){
         $grdn_prof = DB::select('SELECT grdn_id, grdn_surname,
                                 grdn_first_name, grdn_mid_name, grdn_extn_name 

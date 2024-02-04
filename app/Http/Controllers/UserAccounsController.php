@@ -17,6 +17,14 @@ class UserAccounsController extends Controller
         return response()->json($user_acc);
     }
 
+    public function single($email){
+        $user_acc = DB::select('SELECT * 
+                                FROM tbl_user_account
+                                WHERE usr_email = ?',[$email]);
+        return response()->json($user_acc);
+    }
+    
+
     public function pk(){
         $user_acc = DB::select('SELECT usr_email 
                                 FROM tbl_user_accounts');

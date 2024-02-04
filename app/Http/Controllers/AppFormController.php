@@ -14,6 +14,13 @@ class AppFormController extends Controller
         return response()->json($app_form);
     }
 
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_app_form
+                                WHERE app_queue_num = ?',[$id]);
+        return response()->json($row);
+    }
+
     public function pk(){
         $app_form = DB::select('SELECT app_queue_num 
                                 FROM tbl_app_form');

@@ -12,10 +12,20 @@ class PatientAllergiesController extends Controller
 {
     
     public function index(){
-        # mhm i think a left join would be better here, with the tbl_allergies and
-        # if other info of ptnt are needed
-        $pat_all = PatientAllergies::all();
+        $pat_all = DB::select('SELECT ptnt_surname,ptnt_first_name,ptnt_mid_name,ptnt_extn_name,ptnt_sex,allrgy_name,allrgy_type,allrgy_severity
+        FROM tbl_patient_allergies
+        LEFT JOIN tbl_allergies ON tbl_patient_allergies.pa_allrgy_id = tbl_allergies.allrgy_id
+        LEFT JOIN tbl_patient_profile ON tbl_patient_allergies.pa_ptnt_id = tbl_patient_profile.ptnt_id');
         return response()->json($pat_all);
+    }
+
+    public function single($id){
+        $row = DB::select('SELECT ptnt_surname,ptnt_first_name,ptnt_mid_name,ptnt_extn_name,ptnt_sex,allrgy_name,allrgy_type,allrgy_severity
+        FROM tbl_patient_allergies
+        LEFT JOIN tbl_allergies ON tbl_patient_allergies.pa_allrgy_id = tbl_allergies.allrgy_id
+        LEFT JOIN tbl_patient_profile ON tbl_patient_allergies.pa_ptnt_id = tbl_patient_profile.ptnt_id
+        WHERE tbl_patient_allergies = ?;', [$id]);
+        return response()->json($row);
     }
 
     // public function pk(){

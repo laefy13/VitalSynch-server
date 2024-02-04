@@ -15,6 +15,13 @@ class PatientProfileController extends Controller
         return response()->json($pat_prof);
     }
 
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_patient_profile
+                                WHERE ptnt_id = ?',[$id]);
+        return response()->json($row);
+    }
+
     public function pk(){
         $pat_prof = DB::select('SELECT ptnt_id, ptnt_surname, ptnt_first_name, ptnt_mid_name, ptnt_extn_name
                                 FROM tbl_patient_profile');

@@ -16,6 +16,14 @@ class DoctorProfileController extends Controller
         return response()->json($doc_prof);
     }
 
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_doctor_profile
+                                WHERE doctor_id = ?',[$id]);
+        return response()->json($row);
+    }
+
+
     public function pk(){
         $doc_prof = DB::select('SELECT doctor_id, doctor_surname, 
                                 doctor_first_name, doctor_mid_name, doctor_extn_name

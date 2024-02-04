@@ -15,6 +15,13 @@ class DrugsController extends Controller
         return response()->json($drug);
     }
 
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_drugs
+                                WHERE drug_id = ?',[$id]);
+        return response()->json($row);
+    }
+
     public function pk(){
         $drug = DB::select('SELECT drug_id, drug_name 
                                 FROM tbl_drugs');

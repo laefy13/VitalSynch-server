@@ -12,8 +12,24 @@ class PrescriptionController extends Controller
 
 
     public function index(){
-        $prescr = Prescription::all();
+        $prescr = DB::select('SELECT prescr_date,prescr_time,drug_name,pd_instruction,drug_description,ptnt_surname,ptnt_first_name,ptnt_mid_name,ptnt_extn_name,ptnt_sex,doctor_surname,doctor_first_name,doctor_mid_name,doctor_extn_name
+        FROM tbl_prescription
+        LEFT JOIN tbl_prescription_drugs ON tbl_prescription.prescr_id = tbl_prescription_drugs.pd_prescr_id
+        LEFT JOIN tbl_drugs ON tbl_prescription_drugs.pd_drug_id = tbl_drugs.drug_id
+        LEFT JOIN tbl_patient_profile ON tbl_prescription.prescr_ptnt_id = tbl_patient_profile.ptnt_id
+        LEFT JOIN tbl_doctor_profile ON tbl_prescription.prescr_doctor_id = tbl_doctor_profile.doctor_id');
         return response()->json($prescr);
+    }
+
+    public function single($id){
+        $row = DB::select('SELECT prescr_date,prescr_time,drug_name,pd_instruction,drug_description,ptnt_surname,ptnt_first_name,ptnt_mid_name,ptnt_extn_name,ptnt_sex,doctor_surname,doctor_first_name,doctor_mid_name,doctor_extn_name
+        FROM tbl_prescription
+        LEFT JOIN tbl_prescription_drugs ON tbl_prescription.prescr_id = tbl_prescription_drugs.pd_prescr_id
+        LEFT JOIN tbl_drugs ON tbl_prescription_drugs.pd_drug_id = tbl_drugs.drug_id
+        LEFT JOIN tbl_patient_profile ON tbl_prescription.prescr_ptnt_id = tbl_patient_profile.ptnt_id
+        LEFT JOIN tbl_doctor_profile ON tbl_prescription.prescr_doctor_id = tbl_doctor_profile.doctor_id
+        WHERE tbl_prescription.prescr_id = ?;', [$id]);
+        return response()->json($row);
     }
 
     public function pk(){

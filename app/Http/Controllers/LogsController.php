@@ -25,6 +25,13 @@ class LogsController extends Controller
         }
     }
 
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_logs
+                                WHERE log_id = ?',[$id]);
+        return response()->json($row);
+    }
+
     public function pk(){
         $logs = DB::select('SELECT log_id
                                 FROM tbl_logs');

@@ -14,6 +14,13 @@ class AllergiesController extends Controller
         return response()->json($allergy);
     }
 
+    public function single($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_allergies
+                                WHERE allrgy_id = ?',[$id]);
+        return response()->json($row);
+    }
+    
     public function pk(){
         $allergy = DB::select('SELECT allrgy_id, allrgy_name 
                                 FROM tbl_allergies');
