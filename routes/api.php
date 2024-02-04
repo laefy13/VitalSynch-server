@@ -104,11 +104,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::put('/updateDoctor_prof',[DoctorProfileController::class, 'update']);
 
         });
-        // Routes for users/guardians
-        Route::middleware(['user-type:1','user-type:0'])->group(function () {
-        });
+        // uncomment for Routes for users/guardians
+        // Route::middleware(['user-type:1','user-type:0'])->group(function () {
+        // });
         // Routes for all
-        Route::group(function () {
+        Route::group([],function () {
             // singles
             Route::get('/allergies/{id}',[AllergiesController::class, 'single']);
             Route::get('/user_acc/{email}',[UserAccounsController::class, 'single']);
