@@ -1,19 +1,33 @@
-
 const routes = [
   {
-    path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    path: "/vitalsynch/login",
+    name: "login",
+    component: () => import("../pages/Login.vue"),
+  },
+  {
+    path: "/vitalsynch",
+    redirect: {
+      name: "login",
+    },
+    component: () => import("layouts/MainLayout.vue"),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
-    ]
+      {
+        path: "admin-dashboard",
+        component: () => import("pages/Admin/Dashboard.vue"),
+      },
+      {
+        path: "patient-management",
+        component: () => import("pages/Admin/PatientManagement.vue"),
+      },
+    ],
   },
 
   // Always leave this as last one,
   // but you can also remove it
   {
-    path: '/:catchAll(.*)*',
-    component: () => import('pages/ErrorNotFound.vue')
-  }
-]
+    path: "/:catchAll(.*)*",
+    component: () => import("pages/ErrorNotFound.vue"),
+  },
+];
 
-export default routes
+export default routes;
