@@ -108,6 +108,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         // Route::middleware(['user-type:1','user-type:0'])->group(function () {
         // });
         // Routes for all
+        Route::group([],function () {
             // singles
             Route::get('/allergy/{id}',[AllergiesController::class, 'single']);
             Route::get('/user_acc/{id}',[UserAccounsController::class, 'single']);
@@ -138,7 +139,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::put('/updatePtnt_prof',[PatientProfileController::class, 'update']);
             Route::get('/ptnt_profs',[PatientProfileController::class, 'index']);
 
-
+        });
 });
 
 

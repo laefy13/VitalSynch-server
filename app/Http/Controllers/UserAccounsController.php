@@ -19,7 +19,7 @@ class UserAccounsController extends Controller
 
     public function single($id){
         $user_acc = DB::select('SELECT * 
-                                FROM tbl_user_account
+                                FROM tbl_user_accounts
                                 WHERE id = ?',[$id]);
         return response()->json($user_acc);
     }
