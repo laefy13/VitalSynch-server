@@ -17,10 +17,10 @@ class UserAccounsController extends Controller
         return response()->json($user_acc);
     }
 
-    public function single($email){
+    public function single($id){
         $user_acc = DB::select('SELECT * 
                                 FROM tbl_user_account
-                                WHERE usr_email = ?',[$email]);
+                                WHERE id = ?',[$id]);
         return response()->json($user_acc);
     }
     
