@@ -23,7 +23,10 @@ class LoginController extends Controller
             'usr_password' => ['required'],
         ]);
 
-        if (Auth::attempt($request->only('usr_email', 'usr_password'))) {
+        $credentials['password'] = $credentials['usr_password'];
+        unset($credentials['usr_password']);
+
+        if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('MyAppToken')->plainTextToken;
 
