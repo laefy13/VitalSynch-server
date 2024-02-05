@@ -46,14 +46,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/pkApp_forms',[AppFormController::class, 'pk']);
             // API RouteS for user accounts
             // NAHH
-            Route::get('/user_acc',[UserAccounsController::class, 'index']);
+            Route::get('/user_accs',[UserAccounsController::class, 'index']);
             Route::get('/pkUser_acc',[UserAccounsController::class, 'pk']);
             Route::put('/updateUser_acc',[UserAccounsController::class, 'update']);
             // API RouteS for patient profile
             Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
             Route::get('/pkPtnt_prof',[PatientProfileController::class, 'pk']);
             // API RouteS for processed forms profile
-            Route::get('/procd_form',[ProcessedFormsController::class, 'index']);
+            Route::get('/procd_forms',[ProcessedFormsController::class, 'index']);
             Route::post('/procd_form',[ProcessedFormsController::class, 'store']);
             Route::get('/pkProcd_form',[ProcessedFormsController::class, 'pk']);
             Route::put('/updateProcd_form',[ProcessedFormsController::class, 'update']);
@@ -89,7 +89,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::put('/updatePrescr',[PrescriptionController::class, 'update']);
             // API Routest for Prescription Drugs
             Route::post('/pd',[PrescriptionDrugsController::class, 'store']);
-            Route::get('/pd',[PrescriptionDrugsController::class, 'index']);
+            Route::get('/pds',[PrescriptionDrugsController::class, 'index']);
             Route::get('/pkPd',[PrescriptionDrugsController::class, 'pk']);
             Route::put('/updatePd',[PrescriptionDrugsController::class, 'update']);
             // API Routest for Drugs
@@ -98,7 +98,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
             Route::get('/pkDrugs',[DrugsController::class, 'pk']);
             Route::put('/updateDrugs',[DrugsController::class, 'update']);
             // API RouteS for doctor profile
-            Route::get('/doctor_prof',[DoctorProfileController::class, 'index']);
+            Route::get('/doctor_profs',[DoctorProfileController::class, 'index']);
             Route::post('/doctor_prof',[DoctorProfileController::class, 'store']);
             Route::get('/pkDoctor_prof',[DoctorProfileController::class, 'pk']);
             Route::put('/updateDoctor_prof',[DoctorProfileController::class, 'update']);
@@ -110,34 +110,34 @@ Route::middleware(['auth:sanctum'])->group(function () {
         // Routes for all
         Route::group([],function () {
             // singles
-            Route::get('/allergies/{id}',[AllergiesController::class, 'single']);
+            Route::get('/allergy/{id}',[AllergiesController::class, 'single']);
             Route::get('/user_acc/{id}',[UserAccounsController::class, 'single']);
-            Route::get('/app_forms/{id}',[AppFormController::class, 'single']);
+            Route::get('/app_form/{id}',[AppFormController::class, 'single']);
             Route::get('/doctor_prof/{id}',[DoctorProfileController::class, 'single']);
-            Route::get('/drugs/{id}',[DrugsController::class, 'single']);
+            Route::get('/drug/{id}',[DrugsController::class, 'single']);
             Route::get('/grdn_prof/{id}',[GuardianProfileController::class, 'single']);
             Route::get('/lab_rep/{id}',[LabReportController::class, 'single']);
             Route::get('/med_his/{id}',[MedicalHistoryController::class, 'single']);
-            Route::get('/pat_allergies/{id}',[PatientAllergiesController::class, 'single']);
+            Route::get('/pat_allergy/{id}',[PatientAllergiesController::class, 'single']);
             Route::get('/ptnt_prof/{id}',[PatientProfileController::class, 'single']);
             Route::get('/prescr/{id}',[PrescriptionController::class, 'single']);
             
             Route::post('/app_forms',[AppFormController::class, 'store']);
             Route::put('/updateApp_forms',[AppFormController::class, 'update']);
 
-            Route::get('/prescr',[PrescriptionController::class, 'index']);
+            Route::get('/prescrs',[PrescriptionController::class, 'index']);
             Route::post('/prescr/prescrViewPDF', [PrescriptionController::class, 'viewPDF']);
 
-            Route::get('/grdn_prof',[GuardianProfileController::class, 'index']);
+            Route::get('/grdn_profs',[GuardianProfileController::class, 'index']);
             Route::put('/updateGrdn_prof',[GuardianProfileController::class, 'update']);
 
-            Route::get('/lab_rep',[LabReportController::class, 'index']);
+            Route::get('/lab_reps',[LabReportController::class, 'index']);
             Route::post('/lab_rep/prescrViewPDF', [LabReportController::class, 'viewPDF']);
 
-            Route::get('/med_his',[MedicalHistoryController::class, 'index']);
+            Route::get('/med_hiss',[MedicalHistoryController::class, 'index']);
 
             Route::put('/updatePtnt_prof',[PatientProfileController::class, 'update']);
-            Route::get('/ptnt_prof',[PatientProfileController::class, 'index']);
+            Route::get('/ptnt_profs',[PatientProfileController::class, 'index']);
 
         });
 });
