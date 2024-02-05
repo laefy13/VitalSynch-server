@@ -1,6 +1,6 @@
 const routes = [
   {
-    path: "/login",
+    path: "/vitalsynch/login",
     name: "login",
     component: () => import("../pages/Login.vue"),
   },
