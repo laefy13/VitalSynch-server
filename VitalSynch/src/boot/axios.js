@@ -3,7 +3,8 @@ import { LocalStorage } from "quasar";
 import axios from "axios";
 
 let axiosConfig = {
-  baseURL: "http://localhost:3000",
+  baseURL: "https://vitalsynch-924e9f1085c2.herokuapp.com/api",
+  // baseURL: "http://127.0.0.1:8000/api",
   withCredentials: false,
   headers: {
     "Content-Type": "application/json",
@@ -50,7 +51,8 @@ export default boot(({ app }) => {
 const httpGet = (resource, callback, payload = {}) => {
   let newConfig = Object.assign({}, axiosConfig);
   newConfig.params = payload;
-  newConfig.headers.Authorization = ""; // Remove Authorization header
+  const storedToken = localStorage.getItem('access_token');
+  newConfig.headers.Authorization =`Bearer ${storedToken}`; // Remove Authorization header
   ChainCallback(axios.get(resource, newConfig), callback);
 };
 

@@ -30,12 +30,12 @@
       </div>
       <!---Form-->
       <div class="q-my-md">
-        <p class="q-mb-none">Username</p>
+        <p class="q-mb-none">Email</p>
         <q-input
           outlined
           v-model="text"
           :dense="dense"
-          placeholder="Enter Username"
+          placeholder="Enter Email"
           class="uname"
         >
           <template v-slot:prepend>
@@ -61,10 +61,10 @@
         </q-input>
       </div>
       <div class="forgot">
-        <q-btn flat unelevated class="forgotbtn">Forgot Password?</q-btn>
+        <q-btn flat unelevated class="forgotbtn" >Forgot Password? "</q-btn>
       </div>
       <div class="q-mb-lg">
-        <q-btn rounded label="Login" class="loginbtn btn" />
+        <q-btn rounded label="Login" class="loginbtn btn"  @click="handleLogin" />
       </div>
       <div class="q-mb-md flex-center">
         <q-separator color="black" class="line" inset />
@@ -72,7 +72,7 @@
         <q-separator color="black" class="line" inset />
       </div>
       <div class="q-mb-lg">
-        <q-btn rounded label="Register" class="Registerbtn btn" />
+        <q-btn rounded label="Register" class="Registerbtn btn" @click="handleTest"/>
       </div>
     </div>
 
@@ -83,15 +83,56 @@
 </template>
 <script>
 import { ref } from "vue";
-
+import { httpPost, httpGet } from 'boot/axios';
 export default {
   setup() {
+    const text = ref("");
+    const password = ref("");
+    const dense = ref(false);
+    const isPwd = ref(true);
+
+    const handleLogin = () => {
+      const payload = {
+        usr_email: text.value,
+        usr_password: password.value,
+      };
+
+      httpPost('/login', payload, {
+        success: (response) => {
+          const token = response.data['token'];
+          localStorage.setItem('access_token', token);
+
+        },
+        catch: (error) => {
+          console.error("Login Error:", error);
+        }
+      });
+    };
+    // currently this function for Register
+    // just so that the login > token thing is working
+    
+    const handleTest = () => {
+
+      httpGet('/allergy/1', {
+        success: (response) => {
+          // Assuming the token is returned in the response
+          console.log(response.data);
+        },
+        catch: (error) => {
+          console.error("Login Error:", error);
+        }
+      });
+    };
+
+
     return {
-      text: ref(""),
+      text,
+      password,
+      dense,
+      isPwd,
+      handleLogin,
+      handleTest,
       ph: ref(""),
-      dense: ref(false),
-      password: ref(""),
-      isPwd: ref(true),
     };
   },
 };
