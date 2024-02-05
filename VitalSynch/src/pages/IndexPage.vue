@@ -58,7 +58,8 @@ export default defineComponent({
   },
   methods: {
     async fetchData() {
-      api.get('user_acc')
+      // the 11 should be the user id returned with the token from login
+      api.get('user_acc/11')
       .then((response) => {
         console.log(response.data);
         this.userData = response.data[0];

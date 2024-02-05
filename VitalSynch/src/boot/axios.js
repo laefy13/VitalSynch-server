@@ -1,14 +1,16 @@
-import { boot } from 'quasar/wrappers'
-import axios from "axios";
+import { boot } from "quasar/wrappers";
+import axios, { AxiosHeaders } from "axios";
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:8000/api/",
+  baseURL: "https://vitalsynch-924e9f1085c2.herokuapp.com/api/",
 });
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("authToken");
-
+    // just uncomment this if the login page is done
+    // const token = localStorage.getItem("authToken");
+    // and comment this if the above is uncommented
+    const token = "3|jCFIg16imaqlc43gbQ2fbqGubddb4rfWLVADSTOR2625550c";
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -21,15 +23,9 @@ api.interceptors.request.use(
 );
 
 export default boot(({ app }) => {
-  // for use inside Vue files (Options API) through this.$axios and this.$api
+  app.config.globalProperties.$axios = AxiosHeaders;
 
-  app.config.globalProperties.$axios = axios
-  // ^ ^ ^ this will allow you to use this.$axios (for Vue Options API form)
-  //       so you won't necessarily have to import axios in each vue file
+  app.config.globalProperties.$api = api;
+});
 
-  app.config.globalProperties.$api = api
-  // ^ ^ ^ this will allow you to use this.$api (for Vue Options API form)
-  //       so you can easily perform requests against your app's API
-})
-
-export { axios, api }
+export { axios, api };
