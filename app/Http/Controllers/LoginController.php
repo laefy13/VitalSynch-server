@@ -33,9 +33,10 @@ class LoginController extends Controller
             return response()->json([
                 'token' => $token,
                 'id' => $user->id
-        ], 200);
+        ])->cookie('authToken', $token, 60 * 24 * 30, null, null, false, true);
         }
 
         return response()->json(['error' => 'Unauthorized'], 401);
+        
     }
 }
