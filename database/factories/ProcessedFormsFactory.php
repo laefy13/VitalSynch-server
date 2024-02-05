@@ -19,7 +19,7 @@ class ProcessedFormsFactory extends Factory
     public function definition(): array
     {
         return [
-            'form_app_queue_num' => $this->sequence(1),
+            'form_app_queue_num' => $this->faker->unique()->numberBetween(11, 100),
             'form_appointment_date' => $this->faker->date,
             'form_appointment_time' => $this->faker->time,
             'form_reason' => $this->faker->sentence,

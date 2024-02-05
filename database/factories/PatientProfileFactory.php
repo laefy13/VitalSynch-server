@@ -21,8 +21,9 @@ class PatientProfileFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->unique(true);
         return [
-            'ptnt_grdn_id' => $this->sequence(1),
+            'ptnt_grdn_id' => $this->faker->unique()->numberBetween(1, 10),
             'ptnt_surname' => $this->faker->lastName,
             'ptnt_first_name' => $this->faker->firstName,
             'ptnt_mid_name' => $this->faker->firstName,

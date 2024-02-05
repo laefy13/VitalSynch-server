@@ -21,9 +21,10 @@ class PrescriptionFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->unique(true);
         return [
-            'prescr_ptnt_id' => $this->sequence(1),
-            'prescr_doctor_id' => $this->sequence(1),
+            'prescr_ptnt_id' => $this->faker->unique()->numberBetween(1, 10),
+            'prescr_doctor_id' => $this->faker->unique()->numberBetween(1, 10),
             'prescr_date' => $this->faker->date,
             'prescr_time' => $this->faker->time,
         ];

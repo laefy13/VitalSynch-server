@@ -21,8 +21,9 @@ class LabReportFactory extends Factory
      */
     public function definition()
     {
+        $this->faker->unique(true);
         return [
-            'labrep_ptnt_id' => $this->sequence(1),
+            'labrep_ptnt_id' => $this->faker->unique()->numberBetween(1, 10),
             'labrep_test_date' => $this->faker->date,
             'labrep_test_time' => $this->faker->time,
             'labrep_result' => $this->faker->sentence,

@@ -18,9 +18,10 @@ class PrescriptionDrugsFactory extends Factory
     protected $model = PrescriptionDrugs::class;
     public function definition(): array
     {
+        $this->faker->unique(true);
         return [
-            'pd_prescr_id' => $this->sequence(1),
-            'pd_drug_id' => $this->sequence(1),
+            'pd_prescr_id' => $this->faker->unique()->numberBetween(1, 10),
+            'pd_drug_id' => $this->faker->numberBetween(1, 10),
             'pd_instruction' => $this->faker->sentence,
         ];
     }

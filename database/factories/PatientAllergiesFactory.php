@@ -18,9 +18,10 @@ class PatientAllergiesFactory extends Factory
     protected $model = PatientAllergies::class;
     public function definition(): array
     {
+        $this->faker->unique(true);
         return [
-            'pa_ptnt_id' => $this->sequence(1),
-            'pa_allrgy_id' => $this->sequence(1),
+            'pa_ptnt_id' => $this->faker->unique()->numberBetween(1, 10),
+            'pa_allrgy_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
