@@ -32,7 +32,7 @@ class LoginController extends Controller
 
             return response()->json([
                 'token' => $token,
-                // 'buh' => $user
+                'id' => $user->id
         ], 200);
         }
 
