@@ -40,7 +40,7 @@ Route::post('/user_acc',[UserAccounsController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::middleware(['auth:sanctum'])->group(function () {
         // routes for admins, nurses, doctors
-        Route::middleware(['user-type:0'])->group(function () {
+        Route::middleware(['user-type'])->group(function () {
             // API Routes for application forms
             Route::get('/app_forms',[AppFormController::class, 'index']);
             Route::get('/pkApp_forms',[AppFormController::class, 'pk']);

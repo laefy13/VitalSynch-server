@@ -22,7 +22,6 @@ class UserAccounts extends Authenticatable
     protected $hidden = [
         'usr_password',
     ];
-    protected $primaryKey = 'usr_email';
     public function getAuthPassword()
     {
         return $this->usr_password;

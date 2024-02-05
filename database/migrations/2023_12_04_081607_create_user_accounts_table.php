@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tbl_user_accounts', function (Blueprint $table) {
-            $table->string('usr_email')->primary();
+            $table->id();
+            $table->string('usr_email')->unique();
             $table->string('usr_username');
             $table->string('usr_password');
             $table->integer('usr_acc_type');

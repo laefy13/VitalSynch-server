@@ -13,11 +13,12 @@ class UserTypeMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next,$userType): Response
+    public function handle(Request $request, Closure $next): Response
     {
+        // dd($request->user());
         $user = $request->user();
 
-        if ($request->user() && $request->user()->usr_acc_type == $userType) {
+        if ($request->user() && $request->user()->usr_acc_type == 0) {
             return $next($request);
         }
 
