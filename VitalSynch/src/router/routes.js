@@ -1,11 +1,16 @@
 const routes = [
   {
-    path: "/vitalsynch/login",
+    path: "/login",
     name: "login",
     component: () => import("../pages/Login.vue"),
   },
   {
-    path: "/vitalsynch",
+    path: "/register",
+    name: "register",
+    component: () => import("../pages/Register.vue"),
+  },
+  {
+    path: "/",
     redirect: {
       name: "login",
     },
@@ -13,6 +18,7 @@ const routes = [
     children: [
       {
         path: "admin-dashboard",
+        name: "admin-dashboard",
         component: () => import("pages/Admin/Dashboard.vue"),
       },
       {

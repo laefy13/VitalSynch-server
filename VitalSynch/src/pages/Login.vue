@@ -61,10 +61,15 @@
         </q-input>
       </div>
       <div class="forgot">
-        <q-btn flat unelevated class="forgotbtn" >Forgot Password? "</q-btn>
+        <q-btn flat unelevated class="forgotbtn">Forgot Password? "</q-btn>
       </div>
       <div class="q-mb-lg">
-        <q-btn rounded label="Login" class="loginbtn btn"  @click="handleLogin" />
+        <q-btn
+          rounded
+          label="Login"
+          class="loginbtn btn"
+          @click="handleLogin"
+        />
       </div>
       <div class="q-mb-md flex-center">
         <q-separator color="black" class="line" inset />
@@ -72,7 +77,12 @@
         <q-separator color="black" class="line" inset />
       </div>
       <div class="q-mb-lg">
-        <q-btn rounded label="Register" class="Registerbtn btn" @click="handleTest"/>
+        <q-btn
+          rounded
+          label="Register"
+          class="Registerbtn btn"
+          @click="handleTest"
+        />
       </div>
     </div>
 
@@ -83,13 +93,15 @@
 </template>
 <script>
 import { ref } from "vue";
-import { httpPost, httpGet } from 'boot/axios';
+import { httpPost, httpGet } from "boot/axios";
+import { useRouter } from "vue-router";
 export default {
   setup() {
     const text = ref("");
     const password = ref("");
     const dense = ref(false);
     const isPwd = ref(true);
+    const router = useRouter();
 
     const handleLogin = () => {
       const payload = {
@@ -97,33 +109,46 @@ export default {
         usr_password: password.value,
       };
 
-      httpPost('/login', payload, {
+      httpPost("/login", payload, {
         success: (response) => {
-          const token = response.data['token'];
-          localStorage.setItem('access_token', token);
-
+          const token = response.data["token"];
+          localStorage.setItem("access_token", token);
         },
         catch: (error) => {
           console.error("Login Error:", error);
-        }
+        },
       });
     };
     // currently this function for Register
     // just so that the login > token thing is working
-    
-    const handleTest = () => {
 
-      httpGet('/allergy/1', {
+    const handleTest = () => {
+      httpGet("/allergy/1", {
         success: (response) => {
           // Assuming the token is returned in the response
           console.log(response.data);
         },
         catch: (error) => {
           console.error("Login Error:", error);
-        }
+        },
       });
-    };
+      const payload = {
+        usr_email: "newuser@example.com",
+        usr_username: "newusername",
+        usr_password: "hashedpassword", // Make sure to hash the password using a secure algorithm
+        usr_acc_type: 1, // Assuming 1 represents a regular user account type
+      };
 
+      httpPost("/user_acc", payload, {
+        success: (response) => {
+          console.log(response.data);
+        },
+        catch: (error) => {
+          console.error("Login Error:", error);
+        },
+      });
+      router.push({ name: "register" });
+    };
 
     return {
       text,

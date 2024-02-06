@@ -8,6 +8,7 @@ let axiosConfig = {
   withCredentials: false,
   headers: {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${LocalStorage.getItem("Bearer") || ""}`,
   },
   xsrfCookieName: "access_token",
   data: {},
@@ -51,8 +52,8 @@ export default boot(({ app }) => {
 const httpGet = (resource, callback, payload = {}) => {
   let newConfig = Object.assign({}, axiosConfig);
   newConfig.params = payload;
-  const storedToken = localStorage.getItem('access_token');
-  newConfig.headers.Authorization =`Bearer ${storedToken}`; // Remove Authorization header
+  const storedToken = localStorage.getItem("access_token");
+  newConfig.headers.Authorization = `Bearer ${storedToken}`; // Remove Authorization header
   ChainCallback(axios.get(resource, newConfig), callback);
 };
 

@@ -1,0 +1,29 @@
+.register {
+  .btn {
+    color: black;
+    width: 550px;
+    height: 40px;
+  }
+  .q-stepper__header--alternative-labels .q-stepper__tab {
+    min-height: 104px;
+    padding: 5px 5px; /* Adjust padding values as needed */
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .q-stepper__title {
+    width: 100px;
+  }
+  .font-black {
+    color: black;
+  }
+  .q-input {
+    height: 75px;
+    margin: 0;
+  }
+  .input-title {
+    margin: 0;
+  }
+  .box {
+    margin: 0px 200px 100px;
+  }
+}
