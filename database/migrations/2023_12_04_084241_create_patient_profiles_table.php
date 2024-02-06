@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ptnt_first_name');
             $table->string('ptnt_mid_name');
             $table->string('ptnt_extn_name')->nullable();
-            $table->string('ptnt_allergies')->nullable();
+            $table->json('ptnt_allergies')->nullable();
             $table->string('ptnt_sex');
             $table->date('ptnt_birth_date');
             $table->string('ptnt_blood_group');

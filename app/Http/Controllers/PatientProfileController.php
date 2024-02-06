@@ -12,6 +12,12 @@ class PatientProfileController extends Controller
 
     public function index(){
         $pat_prof = PatientProfile::all();
+        $pat_prof->each(function ($profile) {
+            if ($profile->ptnt_allergies) {
+                $profile->ptnt_allergies = json_decode($profile->ptnt_allergies, true);
+            }
+        });
+        
         return response()->json($pat_prof);
     }
 
@@ -19,7 +25,17 @@ class PatientProfileController extends Controller
         $row = DB::select('SELECT * 
                                 FROM tbl_patient_profile
                                 WHERE ptnt_id = ?',[$id]);
-        return response()->json($row);
+         if (!empty($row)) {
+            // Decode the 'ptnt_allergies' field if it exists
+            if (isset($row[0]->ptnt_allergies)) {
+                $row[0]->ptnt_allergies = json_decode($row[0]->ptnt_allergies, true);
+            }
+    
+            return response()->json($row[0]);
+        } else {
+            // Handle the case where no record is found for the given ID
+            return response()->json(['error' => 'Record not found'], 404);
+        }
     }
 
     public function pk(){
@@ -33,7 +49,7 @@ class PatientProfileController extends Controller
         $pat_prof->ptnt_grdn_id = $request->ptnt_grdn_id;
         $pat_prof->ptnt_doctor_id = $request->ptnt_doctor_id;
         $pat_prof->ptnt_user_id = $request->ptnt_user_id;
-        $pat_prof->ptnt_allergies = $request->ptnt_allergies;
+        $pat_prof->ptnt_allergies = json_encode($request->ptnt_allergies);
         $pat_prof->ptnt_surname = $request->ptnt_surname;
         $pat_prof->ptnt_first_name = $request->ptnt_first_name;
         $pat_prof->ptnt_mid_name = $request->ptnt_mid_name;
@@ -82,10 +98,10 @@ class PatientProfileController extends Controller
             $ptnt_update['ptnt_sex'] = $request->ptnt_sex;
 
         }
-        if ($request->has('ptnt_allergies')){
-            $ptnt_update['ptnt_allergies'] = $request->ptnt_allergies;
-
+        if ($request->has('ptnt_allergies')) {
+            $ptnt_update['ptnt_allergies'] = json_encode($request->ptnt_allergies);
         }
+    
         if ($request->has('ptnt_birth_date')){
             $ptnt_update['ptnt_birth_date'] = $request->ptnt_birth_date;
 
