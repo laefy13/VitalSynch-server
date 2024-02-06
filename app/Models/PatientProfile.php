@@ -17,6 +17,7 @@ class PatientProfile extends Model
         'ptnt_mid_name',
         'ptnt_extn_name',
         'ptnt_sex',
+        'ptnt_allergies',
         'ptnt_birth_date',
         'ptnt_blood_group',
         'ptnt_marital_status',

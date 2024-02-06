@@ -29,6 +29,7 @@ class PatientProfileFactory extends Factory
             'ptnt_surname' => $this->faker->lastName,
             'ptnt_first_name' => $this->faker->firstName,
             'ptnt_mid_name' => $this->faker->firstName,
+            'ptnt_allergies' => $this->faker->randomElement(['Seafood, Pollen', 'Dust, Anitbiotics, Cats', 'Seafood, Dogs, Dust']),
             'ptnt_extn_name' => $this->faker->optional()->lastName,
             'ptnt_sex' => $this->faker->randomElement(['Male', 'Female']),
             'ptnt_birth_date' => $this->faker->date,
