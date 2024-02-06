@@ -24,6 +24,12 @@ class ApplicationFormFactory extends Factory
             'app_department' => $this->faker->word,
             'app_service' => $this->faker->word,
             'app_email' => $this->faker->unique()->safeEmail,
+            'app_date' => $this->faker->date,
+            'app_time' => $this->faker->time,
+            'app_patient_id'=> $this->faker->numberBetween(1, 10),
+            'app_doctor_id'=> $this->faker->numberBetween(1, 10),
+            'app_is_accepted'=> $this->faker->numberBetween(0,2),
+            'app_reason'=> $this->faker->sentence,
         ];
     }
 }

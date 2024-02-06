@@ -25,8 +25,8 @@ class ProcessedFormsController extends Controller
 
         try {
             // dd($request->form_app_queue_num);
-            $proc_form = ApplicationForm::where('app_queue_num',$request->form_app_queue_num)->firstOrFail();
-            $proc_form->delete();
+            $app_form = ApplicationForm::where('app_queue_num',$request->form_app_queue_num)->firstOrFail();
+            
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'Application Form not found.'], 404);
         } 
@@ -37,9 +37,9 @@ class ProcessedFormsController extends Controller
         // }
 
         $proc_form = new ProcessedForms ; 
-        $proc_form->form_app_queue_num = $request->form_app_queue_num;
-        $proc_form->form_appointment_date = $request->form_appointment_date;
-        $proc_form->form_appointment_time = $request->form_appointment_time;
+        $proc_form->form_app_queue_num = $app_form>form_app_queue_num;
+        $proc_form->form_appointment_date = $app_form>form_appointment_date;
+        $proc_form->form_appointment_time = $app_form>form_appointment_time;
         $proc_form->form_reason = $request->form_reason;
         $proc_form->form_isaccepted = $request->form_isaccepted;
 

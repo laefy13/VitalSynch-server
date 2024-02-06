@@ -31,6 +31,8 @@ class PatientProfileController extends Controller
     public function store(Request $request){
         $pat_prof = new PatientProfile ; 
         $pat_prof->ptnt_grdn_id = $request->ptnt_grdn_id;
+        $pat_prof->ptnt_doctor_id = $request->ptnt_doctor_id;
+        $pat_prof->ptnt_user_id = $request->ptnt_user_id;
         $pat_prof->ptnt_surname = $request->ptnt_surname;
         $pat_prof->ptnt_first_name = $request->ptnt_first_name;
         $pat_prof->ptnt_mid_name = $request->ptnt_mid_name;
@@ -101,6 +103,14 @@ class PatientProfileController extends Controller
         }
         if ($request->has('ptnt_grdn_id')){
             $ptnt_update['ptnt_grdn_id'] = $request->ptnt_grdn_id;
+
+        }
+        if ($request->has('ptnt_doctor_id')){
+            $ptnt_update['ptnt_doctor_id'] = $request->ptnt_doctor_id;
+
+        }
+        if ($request->has('ptnt_user_id')){
+            $ptnt_update['ptnt_user_id'] = $request->ptnt_user_id;
 
         }
 

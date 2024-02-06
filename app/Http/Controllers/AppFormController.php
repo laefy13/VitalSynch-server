@@ -14,10 +14,16 @@ class AppFormController extends Controller
         return response()->json($app_form);
     }
 
-    public function single($id){
+    public function single_patient($id){
         $row = DB::select('SELECT * 
                                 FROM tbl_app_form
-                                WHERE app_queue_num = ?',[$id]);
+                                WHERE app_patient_id = ?',[$id]);
+        return response()->json($row);
+    }
+    public function single_doctor($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_app_form
+                                WHERE app_doctor_id = ?',[$id]);
         return response()->json($row);
     }
 
@@ -33,6 +39,12 @@ class AppFormController extends Controller
         $app_form->app_department = $request->app_department;
         $app_form->app_service = $request->app_service;
         $app_form->app_email = $request->app_email;
+        $app_form->app_patient_id = $request->app_patient_id;
+        $app_form->app_doctor_id = $request->app_doctor_id;
+        $app_form->app_date = $request->app_date;
+        $app_form->app_time = $request->app_time;
+        $app_form->app_is_accepted = $request->app_is_accepted;
+        $app_form->app_reason = $request->app_reason;
 
         $app_form->save();
         return response()->json([
@@ -41,7 +53,7 @@ class AppFormController extends Controller
 
     }
 
-    // I dont think this should not be updated but well
+    // I dont think this should be updatable but well
     public function update(Request $request){
         if (!$request->has('app_queue_num') ){
             return response()->json([
@@ -64,6 +76,24 @@ class AppFormController extends Controller
 
         if ($request->has('app_email')){
             $app_update['app_email'] = $request->app_email;
+        }
+        if ($request->has('app_patient_id')){
+            $app_update['app_patient_id'] = $request->app_patient_id;
+        }
+        if ($request->has('app_doctor_id')){
+            $app_update['app_doctor_id'] = $request->app_doctor_id;
+        }
+        if ($request->has('app_date')){
+            $app_update['app_date'] = $request->app_date;
+        }
+        if ($request->has('app_time')){
+            $app_update['app_time'] = $request->app_time;
+        }
+        if ($request->has('app_is_accepted')){
+            $app_update['app_is_accepted'] = $request->app_is_accepted;
+        }
+        if ($request->has('app_reason')){
+            $app_update['app_reason'] = $request->app_reason;
         }
 
 

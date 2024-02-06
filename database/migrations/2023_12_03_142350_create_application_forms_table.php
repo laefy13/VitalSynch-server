@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('app_department');
             $table->string('app_service');
             $table->string('app_email');
+            $table->integer('app_patient_id');
+            $table->integer('app_doctor_id');
+            $table->date('app_date');
+            $table->time('app_time');
+            $table->integer('app_is_accepted')->default(0);
+            $table->string('app_reason')->nullable();
         });
     }
 
