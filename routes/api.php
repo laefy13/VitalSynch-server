@@ -51,7 +51,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/updateUser_acc',[UserAccounsController::class, 'update']);
         // API RouteS for patient profile
         Route::get('/ptnt_profs',[PatientProfileController::class, 'index']);
-        Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
         Route::get('/pkPtnt_prof',[PatientProfileController::class, 'pk']);
         // API RouteS for processed forms profile
         Route::get('/procd_forms',[ProcessedFormsController::class, 'index']);
@@ -136,6 +135,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::post('/lab_rep/prescrViewPDF', [LabReportController::class, 'viewPDF']);
 
+        Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
         Route::put('/updatePtnt_prof',[PatientProfileController::class, 'update']);
 
     });
