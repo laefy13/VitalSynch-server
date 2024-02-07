@@ -4,14 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
 
-class PatientProfile extends Model
+class PatientProfile extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+
     public $timestamps = false;
     protected $table = 'tbl_patient_profile';
     protected $fillable = [
-        'ptnt_grdn_id',
+        'ptnt_email',
+        'ptnt_password',
+        'ptnt_doctor_id',
         'ptnt_surname',
         'ptnt_first_name',
         'ptnt_mid_name',
@@ -24,4 +30,16 @@ class PatientProfile extends Model
         'ptnt_contact_number',
         'ptnt_address'
     ];
+    protected $primaryKey = 'ptnt_id';
+    protected $hidden = [
+        'ptnt_password',
+    ];
+
+    public function getAuthPassword()
+    {
+        return $this->ptnt_password;
+    }
+
+    
+    // protected $guard = 'ptnt';
 }

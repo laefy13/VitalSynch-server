@@ -38,9 +38,10 @@ use App\Http\Controllers\Controller;
 
 Route::post('/user_acc',[UserAccounsController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
 Route::middleware(['auth:sanctum'])->group(function () {
         // routes for admins, nurses, doctors
-    Route::middleware(['user-type'])->group(function () {
+    Route::middleware(['auth:doctor'])->group(function () {
         // API Routes for application forms
         Route::get('/app_forms',[AppFormController::class, 'index']);
         Route::get('/pkApp_forms',[AppFormController::class, 'pk']);
@@ -135,7 +136,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::post('/lab_rep/prescrViewPDF', [LabReportController::class, 'viewPDF']);
 
-        Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
         Route::put('/updatePtnt_prof',[PatientProfileController::class, 'update']);
 
     });

@@ -7,6 +7,7 @@ use App\Models\DoctorProfile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorProfileController extends Controller
 {
@@ -44,6 +45,8 @@ class DoctorProfileController extends Controller
         $doc_prof->doctor_mid_name = $request->doctor_mid_name;
         $doc_prof->doctor_extn_name = $request->doctor_extn_name ?? null;
         $doc_prof->doctor_sex = $request->doctor_sex;
+        $doc_prof->doctor_email = $request->doctor_email;
+        $doc_prof->doctor_password = Hash::make($request->doctor_password);
         $doc_prof->doctor_contact_number = $request->doctor_contact_number;
         $doc_prof->doctor_address = $request->doctor_address;
         
@@ -58,54 +61,36 @@ class DoctorProfileController extends Controller
     }
 
     public function update(Request $request){
-        if (!$request->has('doctor_id') ){
+        if (!$request->has('doctor_id')) {
             return response()->json([
                 'error' => 'Doctor ID not provided'
             ], 400);
         }
-
+    
         $doctor_update = [];
-
-        if ($request->has('doctor_surname')){
-            $doctor_update['doctor_surname'] = $request->doctor_surname;
-
+    
+        $nullableFields = ['doctor_extn_name', 'doctor_signature'];
+    
+        foreach ($nullableFields as $field) {
+            if ($request->has($field)) {
+                $doctor_update[$field] = $field == 'doctor_signature' ? $this->cloudinaryURLGenerate($request) : $request->$field;
+            }
         }
-        if ($request->has('doctor_first_name')){
-            $doctor_update['doctor_first_name'] = $request->doctor_first_name;
-
+    
+        $requiredFields = ['doctor_surname', 'doctor_first_name', 'doctor_mid_name', 'doctor_sex', 'doctor_contact_number', 'doctor_address'];
+    
+        foreach ($requiredFields as $field) {
+            if ($request->has($field)) {
+                $doctor_update[$field] = $request->$field;
+            }
         }
-        if ($request->has('doctor_mid_name')){
-            $doctor_update['doctor_mid_name'] = $request->doctor_mid_name;
-
-        }
-        if ($request->has('doctor_extn_name')){
-            $doctor_update['doctor_extn_name'] = $request->doctor_extn_name;
-
-        }
-        if ($request->has('doctor_sex')){
-            $doctor_update['doctor_sex'] = $request->doctor_sex;
-
-        }
-        if ($request->has('doctor_contact_number')){
-            $doctor_update['doctor_contact_number'] = $request->doctor_contact_number;
-
-        }
-        if ($request->has('doctor_address')){
-            $doctor_update['doctor_address'] = $request->doctor_address;
-
-        }
-        if ($request->has('doctor_signature')){
-            $doctor_update['doctor_signature'] = $this->cloudinaryURLGenerate($request);
-
-        }
-
-        DoctorProfile::where('doctor_id',$request->doctor_id)
-        ->update($doctor_update);
-
+    
+        DoctorProfile::where('doctor_id', $request->doctor_id)
+            ->update($doctor_update);
+    
         return response()->json([
             "message" => "Doctor Profile updated"
-        ],201);
-
+        ], 201);
     }
 
     private function urlGenerate($filee){

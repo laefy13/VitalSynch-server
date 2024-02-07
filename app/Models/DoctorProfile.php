@@ -15,6 +15,8 @@ class DoctorProfile extends Model
         'doctor_first_name',
         'doctor_mid_name',
         'doctor_extn_name',
+        'doctor_email_name',
+        'doctor_password_name',
         'doctor_sex',
         'doctor_contact_number',
         'doctor_address',

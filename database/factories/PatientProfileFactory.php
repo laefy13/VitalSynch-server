@@ -30,8 +30,9 @@ class PatientProfileFactory extends Factory
 
         return [
             'ptnt_grdn_id' => null,
-            'ptnt_doctor_id' => $this->faker->numberBetween(1, 10),
-            'ptnt_user_id' => $this->faker->unique()->numberBetween(1, 10),
+            'ptnt_doctor_id' => $this->faker->unique()->numberBetween(1, 10),
+            'ptnt_email' => $this->faker->unique()->safeEmail,
+            'ptnt_password' => bcrypt('password'), 
             'ptnt_surname' => $this->faker->lastName,
             'ptnt_first_name' => $this->faker->firstName,
             'ptnt_mid_name' => $this->faker->firstName,

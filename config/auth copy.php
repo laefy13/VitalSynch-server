@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'ptnt' => [
+            'driver' => 'session',
+            'provider' => 'patients',
+        ],
+        'doctor' => [
+            'driver' => 'session',
+            'provider' => 'doctors',
+        ],
     ],
 
     /*
@@ -62,16 +70,18 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\PatientProfile::class,
-            // 'table'=>'tbl_user_accounts',
-            // 'identifier' => 'usr_email',
-            // 'field' => 'usr_password',
+            'model' => App\Models\UserAccounts::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\DoctorProfile::class,
+        ],
+
+        'patients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PatientProfile::class,
+        ],
     ],
 
     /*
@@ -96,6 +106,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'doctors' => [
+            'provider' => 'doctors',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'patients' => [
+            'provider' => 'patients',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
