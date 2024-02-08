@@ -121,6 +121,7 @@ class LoginController extends Controller
             return response()->json([
                 'token' => $token,
                 'id' => $user["{$account}_id"],
+                'role' => ($account === 'doctor') ? 'doctor' : 'patient',
             ])->cookie('authToken', $token, 60 * 24 * 30, null, null, false, true);
         }
 
