@@ -138,42 +138,48 @@ export default {
       account_type.value = type;
       console.log(account_type.value);
     };
-    const payload = ref("");
+    //const payload = ref("");
 
     const handleLogin = () => {
       if (account_type.value == "ptnt") {
-        payload.value = {
+        const payload = {
           ptnt_email: text.value,
           ptnt_password: password.value,
-          user: account_type,
+          user: account_type.value,
         };
+        console.log(payload);
+        PostRequest(account_type.value, payload);
       }
       if (account_type.value == "doctor") {
-        payload.value = {
+        const payload = {
           doctor_email: text.value,
           doctor_password: password.value,
-          user: account_type,
+          user: account_type.value,
         };
-        router.push({ name: "admin-dashboard" });
+        PostRequest(account_type.value, payload);
       }
+    };
+
+    function PostRequest(accountType, payload) {
       httpPost("/login", payload, {
         success: (response) => {
+          console.log("here");
           const token = response.data["token"];
           const role = response.data["role"];
           localStorage.setItem("access_token", token);
           localStorage.setItem("user_role", role);
-          if (account_type.value == "ptnt") {
-            router.push({ name: "admin-dashboard" }); //change the route after magka patient dashboard
-          }
-          if (account_type.value == "doctor") {
+
+          if (accountType == "doctor") {
+            console.log(accountType);
             router.push({ name: "admin-dashboard" });
           }
+          // add for pnt
         },
         catch: (error) => {
           console.error("Login Error:", error);
         },
       });
-    };
+    }
     // currently this function for Register
     // just so that the login > token thing is working
 
