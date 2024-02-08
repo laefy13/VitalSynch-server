@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\DoctorProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use Illuminate\Support\Facades\Hash;
 class DoctorProfileFactory extends Factory
 {
     /**
@@ -28,7 +29,7 @@ class DoctorProfileFactory extends Factory
             'doctor_extn_name' => $this->faker->optional()->lastName,
             'doctor_surname' => $this->faker->lastName,
             'doctor_email' => $this->faker->unique()->safeEmail,
-            'doctor_password' => bcrypt('password'), 
+            'doctor_password' => Hash::make('password'), 
             'doctor_sex' => $this->faker->randomElement(['Male', 'Female']),
             'doctor_contact_number' => $this->faker->phoneNumber,
             'doctor_address' => $this->faker->address,

@@ -21,7 +21,7 @@ class UserAccountsFactory extends Factory
         return [
             'usr_email' => $this->faker->unique()->safeEmail,
             'usr_username' => $this->faker->userName,
-            'usr_password' => bcrypt('password'), 
+            'usr_password' => Hash::make('password'),
             'usr_acc_type' => $this->faker->numberBetween(1, 3), 
         ];
     }

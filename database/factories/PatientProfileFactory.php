@@ -32,7 +32,7 @@ class PatientProfileFactory extends Factory
             'ptnt_grdn_id' => null,
             'ptnt_doctor_id' => $this->faker->unique()->numberBetween(1, 10),
             'ptnt_email' => $this->faker->unique()->safeEmail,
-            'ptnt_password' => bcrypt('password'), 
+            'ptnt_password' => Hash::make('password'),
             'ptnt_surname' => $this->faker->lastName,
             'ptnt_first_name' => $this->faker->firstName,
             'ptnt_mid_name' => $this->faker->firstName,
