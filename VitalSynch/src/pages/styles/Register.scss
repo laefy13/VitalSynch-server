@@ -1,7 +1,15 @@
 .register {
-  .btn {
+  .long-btn {
+    width: 250px;
+    height: 40px;
+  }
+  .short-btn {
+    width: 200px;
+    height: 40px;
+  }
+  .account-btn {
     color: black;
-    width: 550px;
+    width: 500px;
     height: 40px;
   }
   .q-stepper__header--alternative-labels .q-stepper__tab {
@@ -19,6 +27,13 @@
   .q-input {
     height: 75px;
     margin: 0;
+  }
+  .input-field-half {
+    width: 250px;
+  }
+
+  .input-field {
+    width: 500px;
   }
   .input-title {
     margin: 0;

@@ -25,6 +25,16 @@ const routes = [
         path: "patient-management",
         component: () => import("pages/Admin/PatientManagement.vue"),
       },
+      {
+        path: "appointment-center",
+        name: "appointment-center",
+        component: () => import("pages/User/AppointmentCenter.vue"),
+      },
+      {
+        path: "add-appointment",
+        name: "add-appointment",
+        component: () => import("pages/User/AddAppointment.vue"),
+      },
     ],
   },
 

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-xl">
+  <q-page class="q-pa-xl dashboard">
     <!--<img
       alt="Quasar logo"
       src="~assets/quasar-logo-vertical.svg"
@@ -14,15 +14,18 @@
         <div class="row q-mt-lg">
           <q-card class="col q-mr-sm vs-card">
             <q-card-section class="row">
-              <div class="col-3">
-                <q-icon name="event"> </q-icon>
-              </div>
+              <q-avatar
+                color="blue-2"
+                text-color="blue"
+                icon="event"
+                class="q-mr-sm"
+              />
               <div class="col">
                 Appointments todays
                 <q-linear-progress
                   :value="0.8"
                   rounded
-                  color="accent"
+                  color="blue"
                   class="q-mt-sm vs-line-progress"
                 />
               </div>
@@ -30,13 +33,18 @@
           </q-card>
           <q-card class="col vs-card">
             <q-card-section class="row">
-              <q-icon name="local_hospital" class="col-3" />
+              <q-avatar
+                color="orange-2"
+                text-color="orange"
+                icon="sym_o_local_hospital"
+                class="q-mr-sm"
+              />
               <div class="col">
                 OPD today
                 <q-linear-progress
                   :value="0.8"
                   rounded
-                  color="accent"
+                  color="orange"
                   class="q-mt-sm vs-line-progress"
                 />
               </div>
@@ -46,13 +54,18 @@
         <div class="row q-mt-sm">
           <q-card class="col q-mr-sm vs-card">
             <q-card-section class="row">
-              <q-icon name="emergency" class="col-3" />
+              <q-avatar
+                color="red-2"
+                text-color="red"
+                icon="sym_o_emergency"
+                class="q-mr-sm"
+              />
               <div class="col">
                 In patients
                 <q-linear-progress
                   :value="0.8"
                   rounded
-                  color="accent"
+                  color="red"
                   class="q-mt-sm vs-line-progress"
                 />
               </div>
@@ -60,13 +73,18 @@
           </q-card>
           <q-card class="col vs-card">
             <q-card-section class="row">
-              <q-icon name="heart_plus" class="col-3" />
+              <q-avatar
+                color="light-green-2"
+                text-color="green"
+                icon="sym_o_demography"
+                class="q-mr-sm"
+              />
               <div class="col">
                 Discharged patients
                 <q-linear-progress
                   :value="0.8"
                   rounded
-                  color="accent"
+                  color="green"
                   class="q-mt-sm vs-line-progress"
                 />
               </div>
@@ -86,9 +104,9 @@
     </div>
     <div class="row">
       <div class="col-7 q-mr-lg">
-        <q-card class="q-pa-lg row">
-          <div class="col">
-            <q-icon name="edit" size="30px"></q-icon>
+        <q-card class="q-pa-lg row tutorial bg-cyan text-white">
+          <div class="col text-center">
+            <img src="src\assets\tutorial-logo.png" />
           </div>
           <div class="col-7">
             <h6 class="q-my-none">Want to explore our features?</h6>
@@ -101,7 +119,7 @@
           <div class="col-3 self-end">
             <q-card class="q-mt-lg q-ml-lg">
               <q-card-section class="justify-center">
-                <h6 class="q-ma-none text-center">Start tutorial</h6>
+                <h6 class="q-ma-none text-center text-black">Start tutorial</h6>
               </q-card-section>
             </q-card>
           </div>
@@ -140,3 +158,4 @@
   </q-page>
 </template>
 <script src="./scripts/Dashboard.js"></script>
+<style src="./styles/Dashboard.scss"></style>
