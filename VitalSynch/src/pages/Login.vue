@@ -147,7 +147,6 @@ export default {
           ptnt_password: password.value,
           user: account_type,
         };
-        router.push({ name: "patient-dashboard" });
       }
       if (account_type.value == "doctor") {
         payload.value = {
@@ -163,6 +162,12 @@ export default {
           const role = response.data["role"];
           localStorage.setItem("access_token", token);
           localStorage.setItem("user_role", role);
+          if (account_type.value == "ptnt") {
+            router.push({ name: "admin-dashboard" }); //change the route after magka patient dashboard
+          }
+          if (account_type.value == "doctor") {
+            router.push({ name: "admin-dashboard" });
+          }
         },
         catch: (error) => {
           console.error("Login Error:", error);
