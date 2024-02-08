@@ -47,6 +47,7 @@ class PatientProfileController extends Controller
 
     public function store(Request $request){
         $pat_prof = new PatientProfile ; 
+        $pat_prof->ptnt_id = $request->ptnt_id;
         $pat_prof->ptnt_grdn_id = $request->ptnt_grdn_id;
         $pat_prof->ptnt_email = $request->ptnt_email;
         $pat_prof->ptnt_password = Hash::make($request->ptnt_password);

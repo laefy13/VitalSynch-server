@@ -6,6 +6,7 @@ use App\Models\PatientProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Str;
 class PatientProfileFactory extends Factory
 {
     /**
@@ -30,6 +31,7 @@ class PatientProfileFactory extends Factory
         ];
 
         return [
+            'ptnt_id' => 'PTNT-'.Str::random(10),
             'ptnt_grdn_id' => null,
             'ptnt_email' => $this->faker->unique()->safeEmail,
             'ptnt_password' => Hash::make('password'),

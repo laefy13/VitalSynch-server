@@ -35,11 +35,8 @@ class DoctorProfileController extends Controller
     public function store(Request $request){
         // check if request has image if not error
         // or nullable?
-        if (!$request->file('doctor_signature')){
-
-            return response()->json(['error' => 'Signature file not provided.'], 400);
-        }
         $doc_prof = new DoctorProfile ; 
+        $doc_prof->doctor_id = $request->doctor_id;
         $doc_prof->doctor_surname = $request->doctor_surname;
         $doc_prof->doctor_first_name = $request->doctor_first_name;
         $doc_prof->doctor_mid_name = $request->doctor_mid_name;
@@ -52,7 +49,10 @@ class DoctorProfileController extends Controller
         $doc_prof->doctor_position = $request->doctor_position;
         $doc_prof->doctor_department = $request->doctor_department;
         
-        $doc_prof->doctor_signature = $this->cloudinaryURLGenerate($request);
+        if ($request->file('doctor_signature')){
+
+            $doc_prof->doctor_signature = $this->cloudinaryURLGenerate($request);
+        }
 
         // dd($doc_prof->doctor_signature);
         $doc_prof->save();

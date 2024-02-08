@@ -41,13 +41,13 @@ class DatabaseSeeder extends Seeder
         ProcessedForms::factory(10)->create();
         Logs::factory(10)->create();
         Allergies::factory(10)->create();
-        PatientAllergies::factory(10)->create();
-        MedicalHistory::factory(10)->create();
         GuardianProfile::factory(10)->create();
         DoctorProfile::factory(10)->create();
-        Prescription::factory(10)->create();
         Drugs::factory(10)->create();
-        PrescriptionDrugs::factory(10)->create();
         LabReport::factory(10)->create();
+        Prescription::factory(10)->create();
+        PrescriptionDrugs::factory(10)->create();
+        MedicalHistory::factory(10)->create();
+        PatientAllergies::factory(10)->create();
     }
 }

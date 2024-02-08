@@ -14,6 +14,7 @@ class DoctorProfile extends Authenticatable
     public $timestamps = false;
     protected $table = 'tbl_doctor_profile';
     protected $fillable = [
+        'doctor_id',
         'doctor_surname',
         'doctor_first_name',
         'doctor_mid_name',
@@ -27,7 +28,7 @@ class DoctorProfile extends Authenticatable
         'doctor_department',
         'doctor_position'
     ];
-    protected $primaryKey = 'doctor_id';
+    protected $primaryKey = 'doctor_key';
     protected $hidden = [
         'doctor_password',
     ];

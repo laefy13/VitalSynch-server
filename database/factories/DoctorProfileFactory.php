@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\DoctorProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 class DoctorProfileFactory extends Factory
 {
@@ -23,6 +24,7 @@ class DoctorProfileFactory extends Factory
     public function definition()
     {
         return [
+            'doctor_id' =>'DR-'.Str::random(10),
             'doctor_surname' => $this->faker->lastName,
             'doctor_first_name' => $this->faker->firstName,
             'doctor_mid_name' => $this->faker->firstName,

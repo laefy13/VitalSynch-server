@@ -15,6 +15,7 @@ class PatientProfile extends Authenticatable
     public $timestamps = false;
     protected $table = 'tbl_patient_profile';
     protected $fillable = [
+        'ptnt_id',
         'ptnt_email',
         'ptnt_password',
         'ptnt_surname',
@@ -29,7 +30,7 @@ class PatientProfile extends Authenticatable
         'ptnt_contact_number',
         'ptnt_address'
     ];
-    protected $primaryKey = 'ptnt_id';
+    protected $primaryKey = 'ptnt_key';
     protected $hidden = [
         'ptnt_password',
     ];
