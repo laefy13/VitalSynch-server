@@ -41,5 +41,5 @@ class PatientProfile extends Authenticatable
     }
 
     
-    // protected $guard = 'ptnt';
+    protected $guard = 'ptnt';
 }

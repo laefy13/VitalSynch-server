@@ -32,6 +32,8 @@ class DoctorProfileFactory extends Factory
             'doctor_sex' => $this->faker->randomElement(['Male', 'Female']),
             'doctor_contact_number' => $this->faker->phoneNumber,
             'doctor_address' => $this->faker->address,
+            'doctor_department' => $this->faker->word,
+            'doctor_position' => $this->faker->word,
             'doctor_signature' => $this->faker->imageUrl(100, 50), // Example signature image URL
         ];
     }

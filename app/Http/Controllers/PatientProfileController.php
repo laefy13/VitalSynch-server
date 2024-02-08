@@ -63,7 +63,7 @@ class PatientProfileController extends Controller
         $pat_prof->ptnt_contact_number = $request->ptnt_contact_number;
         $pat_prof->ptnt_address = $request->ptnt_address;
 
-
+        // dd($request->ptnt_password, $pat_prof->ptnt_password);
         $pat_prof->save();
         return response()->json([
             "message" => "Patient Profile added"

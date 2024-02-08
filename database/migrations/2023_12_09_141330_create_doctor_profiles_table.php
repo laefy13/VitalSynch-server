@@ -18,11 +18,13 @@ return new class extends Migration
             $table->string('doctor_first_name');
             $table->string('doctor_mid_name');
             $table->string('doctor_extn_name')->nullable();
-            $table->string('doctor_email');
+            $table->string('doctor_email')->unique();
             $table->string('doctor_password');
             $table->string('doctor_sex');
             $table->string('doctor_contact_number');
             $table->string('doctor_address');
+            $table->string('doctor_position');
+            $table->string('doctor_department');
             $table->string('doctor_signature');
         });
     }

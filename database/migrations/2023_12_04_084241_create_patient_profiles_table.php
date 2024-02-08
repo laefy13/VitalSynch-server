@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('ptnt_id');
             $table->integer('ptnt_grdn_id')->nullable();
             $table->integer('ptnt_doctor_id');
-            $table->string('ptnt_email');
+            $table->string('ptnt_email')->unique();
             $table->string('ptnt_password');
             $table->string('ptnt_surname');
             $table->string('ptnt_first_name');

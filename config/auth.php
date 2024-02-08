@@ -38,7 +38,15 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'ptnts',
+        ],
+        'ptnt' => [
+            'driver' => 'sanctum',
+            'provider' => 'ptnts',
+        ],
+        'doctor' => [
+            'driver' => 'sanctum',
+            'provider' => 'doctors',
         ],
     ],
 
@@ -60,13 +68,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'ptnts' => [
             'driver' => 'eloquent',
             'model' => App\Models\PatientProfile::class,
-            // 'table'=>'tbl_user_accounts',
-            // 'identifier' => 'usr_email',
-            // 'field' => 'usr_password',
         ],
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\DoctorProfile::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -96,6 +106,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'ptnts' => [
+            'provider' => 'ptnts',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'doctors' => [
+            'provider' => 'doctors',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

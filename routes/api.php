@@ -39,6 +39,7 @@ use App\Http\Controllers\Controller;
 Route::post('/user_acc',[UserAccounsController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
+Route::post('/doctor_prof',[DoctorProfileController::class, 'store']);
 Route::middleware(['auth:sanctum'])->group(function () {
         // routes for admins, nurses, doctors
     Route::middleware(['auth:doctor'])->group(function () {
@@ -54,6 +55,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/ptnt_profs',[PatientProfileController::class, 'index']);
         Route::get('/pkPtnt_prof',[PatientProfileController::class, 'pk']);
         // API RouteS for processed forms profile
+        // Route::get('/procd_forms',[ProcessedFormsController::class, 'index']);
         Route::get('/procd_forms',[ProcessedFormsController::class, 'index']);
         Route::post('/procd_form',[ProcessedFormsController::class, 'store']);
         Route::get('/pkProcd_form',[ProcessedFormsController::class, 'pk']);
@@ -104,7 +106,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/updateDrugs',[DrugsController::class, 'update']);
         // API RouteS for doctor profile
         Route::get('/doctor_profs',[DoctorProfileController::class, 'index']);
-        Route::post('/doctor_prof',[DoctorProfileController::class, 'store']);
         Route::get('/pkDoctor_prof',[DoctorProfileController::class, 'pk']);
         Route::put('/updateDoctor_prof',[DoctorProfileController::class, 'update']);
 
@@ -127,7 +128,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/ptnt_prof/{id}',[PatientProfileController::class, 'single']);
         Route::get('/prescr/{id}',[PrescriptionController::class, 'single']);
         
-        Route::post('/app_forms',[AppFormController::class, 'store']);
+        Route::post('/app_form',[AppFormController::class, 'store']);
         Route::put('/updateApp_forms',[AppFormController::class, 'update']);
 
         Route::post('/prescr/prescrViewPDF', [PrescriptionController::class, 'viewPDF']);

@@ -49,6 +49,8 @@ class DoctorProfileController extends Controller
         $doc_prof->doctor_password = Hash::make($request->doctor_password);
         $doc_prof->doctor_contact_number = $request->doctor_contact_number;
         $doc_prof->doctor_address = $request->doctor_address;
+        $doc_prof->doctor_position = $request->doctor_position;
+        $doc_prof->doctor_department = $request->doctor_department;
         
         $doc_prof->doctor_signature = $this->cloudinaryURLGenerate($request);
 

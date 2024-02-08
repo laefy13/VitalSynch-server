@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Models\ProcessedForms;
 use App\Models\ApplicationForm;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProcessedFormsController extends Controller
 {
     
     public function index(){
+        // dd(Auth::guard('doctor')->check());
         $proc_form = ProcessedForms::all();
         return response()->json($proc_form);
     }
@@ -37,14 +39,14 @@ class ProcessedFormsController extends Controller
         // }
 
         $proc_form = new ProcessedForms ; 
-        $proc_form->form_app_queue_num = $app_form>form_app_queue_num;
-        $proc_form->form_appointment_date = $app_form>form_appointment_date;
-        $proc_form->form_appointment_time = $app_form>form_appointment_time;
+        $proc_form->form_app_queue_num = $app_form->app_queue_num;
+        $proc_form->form_appointment_date = $app_form->app_date;
+        $proc_form->form_appointment_time = $app_form->app_time;
         $proc_form->form_reason = $request->form_reason;
         $proc_form->form_isaccepted = $request->form_isaccepted;
 
         $proc_form->save();
-        
+        $app_form->delete();
         return response()->json([
             "message" => "Application Form remove and added to Processed Forms"
         ],201);
