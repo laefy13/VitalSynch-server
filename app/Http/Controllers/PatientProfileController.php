@@ -48,7 +48,6 @@ class PatientProfileController extends Controller
     public function store(Request $request){
         $pat_prof = new PatientProfile ; 
         $pat_prof->ptnt_grdn_id = $request->ptnt_grdn_id;
-        $pat_prof->ptnt_doctor_id = $request->ptnt_doctor_id;
         $pat_prof->ptnt_email = $request->ptnt_email;
         $pat_prof->ptnt_password = Hash::make($request->ptnt_password);
         $pat_prof->ptnt_allergies = json_encode($request->ptnt_allergies);
@@ -64,10 +63,15 @@ class PatientProfileController extends Controller
         $pat_prof->ptnt_address = $request->ptnt_address;
 
         // dd($request->ptnt_password, $pat_prof->ptnt_password);
-        $pat_prof->save();
-        return response()->json([
-            "message" => "Patient Profile added"
-        ],201);
+        try{ $pat_prof->save();
+            return response()->json([
+                "message" => "Patient Profile added"
+            ],201);}
+
+        catch (\Exception $e) {
+            return response()->json(['error' => "An error occurred while trying to add Patient.{$e}"], 500);
+        }
+       
 
     }
 
@@ -80,7 +84,7 @@ class PatientProfileController extends Controller
     
         $pat_prof = new PatientProfile;
         $allowedAttributes = [
-            'ptnt_grdn_id', 'ptnt_doctor_id', 'ptnt_email', 'ptnt_password',
+            'ptnt_grdn_id', 'ptnt_email', 'ptnt_password',
             'ptnt_allergies', 'ptnt_surname', 'ptnt_first_name', 'ptnt_mid_name',
             'ptnt_extn_name', 'ptnt_sex', 'ptnt_birth_date', 'ptnt_blood_group',
             'ptnt_marital_status', 'ptnt_contact_number', 'ptnt_address'

@@ -17,7 +17,6 @@ class PatientProfile extends Authenticatable
     protected $fillable = [
         'ptnt_email',
         'ptnt_password',
-        'ptnt_doctor_id',
         'ptnt_surname',
         'ptnt_first_name',
         'ptnt_mid_name',
