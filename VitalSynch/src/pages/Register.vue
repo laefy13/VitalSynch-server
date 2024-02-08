@@ -395,15 +395,15 @@ export default {
       const doctorid = generateDoctorId();
       const payload = {
         doctor_id: doctorid,
-        doctor_surname: surname,
-        doctor_first_name: firstName,
+        doctor_surname: surname.value,
+        doctor_first_name: firstName.value,
         doctor_mid_name: "",
         doctor_extn_name: "",
-        doctor_email: email,
-        doctor_password: password,
-        doctor_sex: sex,
-        doctor_contact_number: contactNumber,
-        doctor_address: address,
+        doctor_email: email.value,
+        doctor_password: password.value,
+        doctor_sex: sex.value,
+        doctor_contact_number: contactNumber.value,
+        doctor_address: address.value,
         doctor_position: "",
         doctor_department: "",
         doctor_signature: "",
@@ -421,24 +421,23 @@ export default {
     const handleRegisterPatient = async () => {
       const patientId = generatePatientId();
       const payload = {
-        ptnt_id: patientId,
-        ptnt_grdn_id: null,
-        ptnt_doctor_id: null,
-        ptnt_email: email,
-        ptnt_password: password,
-        ptnt_surname: surname,
-        ptnt_first_name: firstName,
+        ptnt_id:patientId,
+        ptnt_grdn_id:"",
+        ptnt_email: email.value,
+        ptnt_password: password.value,
+        ptnt_surname: surname.value,
+        ptnt_first_name: firstName.value,
         ptnt_mid_name: "",
         ptnt_extn_name: "",
-        ptnt_allergies: "",
-        ptnt_sex: sex,
-        ptnt_birth_date: date,
+        ptnt_sex: sex.value,
+        ptnt_birth_date: date.value,
         ptnt_blood_group: "",
         ptnt_marital_status: "",
-        ptnt_contact_number: contactNumber,
-        ptnt_address: address,
+        ptnt_contact_number: contactNumber.value,
+        ptnt_address: address.value,
       };
 
+      console.log(payload,email.value);
       httpPost("/ptnt_prof", payload, {
         success: (response) => {
           console.log(response.data);
