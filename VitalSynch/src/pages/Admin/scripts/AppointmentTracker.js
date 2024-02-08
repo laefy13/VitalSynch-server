@@ -5,47 +5,56 @@ export default {
   setup() {
     const columns = [
       {
-        name: "patientID",
-        label: "Patient Name",
+        name: "patientId",
+        label: "Patient ID",
         align: "left",
-        field: "ptnt_id",
+        field: "app_patient_id",
       },
       {
         name: "patientName",
         label: "Patient Name",
         align: "left",
-        field: "ptnt_first_name",
+        field: "app_full_name",
       },
       {
-        name: "sex",
-        label: "Sex",
+        name: "department",
+        label: "Department",
         align: "left",
-        field: "ptnt_sex",
+        field: "app_department",
       },
       {
-        name: "birthdate",
-        label: "Birth Date",
+        name: "status",
+        label: "Status",
         align: "left",
-        field: "ptnt_birth_date",
+        field: "app_is_accepted",
       },
       {
-        name: "contactNumber",
-        label: "Contact Number",
+        name: "appointment",
+        label: "Appointment",
         align: "left",
-        field: "ptnt_contact_number",
+        field: (row) => `${row.app_time}, ${row.app_date}`,
+      },
+      {
+        name: "doctorAssigned",
+        label: "Doctor Assigned",
+        align: "left",
+        field: "app_doctor_id",
       },
       {
         name: "action",
-        label: "Action",
+        label: "Actions",
         align: "left",
         field: "action",
       },
     ];
 
+    // Example usage:
+    console.log(columns);
+
     const rows = ref([]);
 
-    const getPatients = async () => {
-      let response = await FetchItems("ptnt_profs");
+    const getAppointment = async () => {
+      const response = await FetchItems("app_forms");
       rows.value = response.data;
 
       console.log("rows", rows);
@@ -54,7 +63,7 @@ export default {
     // Use dummy data for testing
     // Comment out this block when you have the actual API to fetch data from
     onMounted(async () => {
-      getPatients();
+      getAppointment();
     });
 
     return {

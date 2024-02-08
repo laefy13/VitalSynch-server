@@ -27,7 +27,17 @@ const routes = [
       },
       {
         path: "patient-management",
+        name: "patient-management",
         component: () => import("pages/Admin/PatientManagement.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "doctor",
+        },
+      },
+      {
+        path: "appointment-tracker",
+        name: "appointment-tracker",
+        component: () => import("pages/Admin/AppointmentTracker.vue"),
         meta: {
           requiresAuth: true,
           role: "doctor",

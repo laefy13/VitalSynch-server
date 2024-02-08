@@ -4,27 +4,49 @@
     <q-table
       :rows="rows"
       :columns="columns"
-      v-model:pagination="pagination"
       row-key="id"
+      :filter="filter"
       class="gt-xs"
       flat
     >
+      <template v-slot:top>
+        <q-toolbar class="bg-primary">
+          <h7 class="text-bold">Patients Total ({{ rows.length }})</h7>
+
+          <q-space />
+
+          <q-input
+            borderless
+            dense
+            debounce="300"
+            v-model="filter"
+            placeholder="Search"
+          >
+            <template v-slot:append>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </q-toolbar>
+      </template>
       <template v-slot:body-cell-action="props">
         <q-td :props="props">
           <div class="table-menu">
-            <q-btn icon="more_vert" class="" flat round dense />
+            <q-btn icon="more_vert" class="" flat round />
             <q-menu class="menu-container">
               <q-list>
                 <q-item
                   clickable
-                  :to="{ name: 'add-new-range', params: { id: props.row.id } }"
+                  :to="{
+                    name: 'patient-profile',
+                    params: { id: props.row.id },
+                  }"
                   v-close-popup
                   class="menu-list"
                 >
-                  <q-item-section>Edit</q-item-section>
+                  <q-item-section>View Profile</q-item-section>
                 </q-item>
                 <q-item clickable v-close-popup class="menu-list">
-                  <q-item-section>Delete</q-item-section>
+                  <q-item-section>View Appointments</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
