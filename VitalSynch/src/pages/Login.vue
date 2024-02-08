@@ -107,7 +107,11 @@ export default {
       const payload = {
         ptnt_email: text.value,
         ptnt_password: password.value,
+<<<<<<< HEAD
         user: 'ptnt',
+=======
+        user: "ptnt",
+>>>>>>> 2e1cce4412fab2bd8039fef82e618aac61230da1
       };
 
       httpPost("/login", payload, {
@@ -115,7 +119,11 @@ export default {
           const token = response.data["token"];
           const role = response.data["role"];
           localStorage.setItem("access_token", token);
+<<<<<<< HEAD
           localStorage.setItem("user_role",role );
+=======
+          localStorage.setItem("user_role", role);
+>>>>>>> 2e1cce4412fab2bd8039fef82e618aac61230da1
           router.push({ name: "appointment-center" });
         },
         catch: (error) => {

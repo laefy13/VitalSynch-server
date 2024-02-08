@@ -81,5 +81,5 @@
     </div>
   </div>
 </template>
-<style src=".././styles/Appointment.scss"></style>
+<style src="./styles/AddAppointment.scss"></style>
 <script src="./scripts/AppointmentCenter.js"></script>

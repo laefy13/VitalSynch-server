@@ -1,6 +1,11 @@
-import { route } from 'quasar/wrappers'
-import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
-import routes from './routes'
+import { route } from "quasar/wrappers";
+import {
+  createRouter,
+  createMemoryHistory,
+  createWebHistory,
+  createWebHashHistory,
+} from "vue-router";
+import routes from "./routes";
 
 /*
  * If not building with SSR mode, you can
@@ -14,7 +19,9 @@ import routes from './routes'
 export default route(function (/* { store, ssrContext } */) {
   const createHistory = process.env.SERVER
     ? createMemoryHistory
-    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
+    : process.env.VUE_ROUTER_MODE === "history"
+    ? createWebHistory
+    : createWebHashHistory;
 
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
@@ -23,6 +30,7 @@ export default route(function (/* { store, ssrContext } */) {
     // Leave this as is and make changes in quasar.conf.js instead!
     // quasar.conf.js -> build -> vueRouterMode
     // quasar.conf.js -> build -> publicPath
+<<<<<<< HEAD
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
   Router.beforeEach((to, from, next) => {
@@ -30,6 +38,15 @@ export default route(function (/* { store, ssrContext } */) {
       const userRole = localStorage.getItem("user_role");
       
       if (to.matched.some(record => record.meta.role === userRole)) {
+=======
+    history: createHistory(process.env.VUE_ROUTER_BASE),
+  });
+  Router.beforeEach((to, from, next) => {
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+      const userRole = localStorage.getItem("user_role");
+
+      if (to.matched.some((record) => record.meta.role === userRole)) {
+>>>>>>> 2e1cce4412fab2bd8039fef82e618aac61230da1
         next();
       } else {
         next(false);
@@ -38,5 +55,10 @@ export default route(function (/* { store, ssrContext } */) {
       next();
     }
   });
+<<<<<<< HEAD
   return Router
 })
+=======
+  return Router;
+});
+>>>>>>> 2e1cce4412fab2bd8039fef82e618aac61230da1

@@ -1,0 +1,56 @@
+.appointment {
+  .appointment-container {
+    width: 800px;
+  }
+  .bg {
+    background-image: url("src/assets/appointment-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
+  }
+  .long-btn {
+    width: 250px;
+    height: 40px;
+  }
+  .short-btn {
+    width: 200px;
+    height: 40px;
+  }
+  .account-btn {
+    color: black;
+    width: 500px;
+    height: 40px;
+  }
+  .font-black {
+    color: black;
+  }
+  .q-input {
+    height: 35px;
+    margin: 0;
+  }
+  .input-field-half {
+    width: 250px;
+  }
+  .q-field__control.relative-position.row.no-wrap {
+    height: 30px;
+    border: 2px solid black;
+  }
+  .input-field {
+    width: 300px;
+    min-height: 30px;
+  }
+  .paragraph {
+    width: 500px;
+  }
+  .input-title {
+    margin: 0;
+  }
+  .q-select-outlined .q-field__native {
+    height: 550px; /* Adjust the height as needed */
+    line-height: 40px; /* Set the same value as height for vertical alignment */
+  }
+  .box {
+    margin: 0px 200px 100px;
+  }
+}
