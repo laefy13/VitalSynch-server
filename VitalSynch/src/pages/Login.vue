@@ -81,7 +81,7 @@
           rounded
           label="Register"
           class="Registerbtn btn"
-          @click="handleTest"
+          @click="handleRegister"
         />
       </div>
     </div>
@@ -105,14 +105,18 @@ export default {
 
     const handleLogin = () => {
       const payload = {
-        usr_email: text.value,
-        usr_password: password.value,
+        ptnt_email: text.value,
+        ptnt_password: password.value,
+        user: "ptnt",
       };
 
       httpPost("/login", payload, {
         success: (response) => {
           const token = response.data["token"];
+          const role = response.data["role"];
           localStorage.setItem("access_token", token);
+          localStorage.setItem("user_role", role);
+          router.push({ name: "appointment-center" });
         },
         catch: (error) => {
           console.error("Login Error:", error);
@@ -122,31 +126,7 @@ export default {
     // currently this function for Register
     // just so that the login > token thing is working
 
-    const handleTest = () => {
-      httpGet("/allergy/1", {
-        success: (response) => {
-          // Assuming the token is returned in the response
-          console.log(response.data);
-        },
-        catch: (error) => {
-          console.error("Login Error:", error);
-        },
-      });
-      const payload = {
-        usr_email: "newuser@example.com",
-        usr_username: "newusername",
-        usr_password: "hashedpassword", // Make sure to hash the password using a secure algorithm
-        usr_acc_type: 1, // Assuming 1 represents a regular user account type
-      };
-
-      httpPost("/user_acc", payload, {
-        success: (response) => {
-          console.log(response.data);
-        },
-        catch: (error) => {
-          console.error("Login Error:", error);
-        },
-      });
+    const handleRegister = () => {
       router.push({ name: "register" });
     };
 
@@ -156,7 +136,7 @@ export default {
       dense,
       isPwd,
       handleLogin,
-      handleTest,
+      handleRegister,
       ph: ref(""),
     };
   },

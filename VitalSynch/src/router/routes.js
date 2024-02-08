@@ -20,20 +20,36 @@ const routes = [
         path: "admin-dashboard",
         name: "admin-dashboard",
         component: () => import("pages/Admin/Dashboard.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "doctor",
+        },
       },
       {
         path: "patient-management",
         component: () => import("pages/Admin/PatientManagement.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "doctor",
+        },
       },
       {
         path: "appointment-center",
         name: "appointment-center",
         component: () => import("pages/User/AppointmentCenter.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "patient",
+        },
       },
       {
         path: "add-appointment",
         name: "add-appointment",
         component: () => import("pages/User/AddAppointment.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "patient",
+        },
       },
     ],
   },
