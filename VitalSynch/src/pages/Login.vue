@@ -6,6 +6,9 @@
       </div>
       <h2 class="text-bold q-my-md">VITAL SYNC</h2>
       <h5 class="text-weight-bolder q-mt-xl">Choose Account Type</h5>
+      <p class="text-red error" v-if="accounterror == true">
+        You must choose an account to login.
+      </p>
       <div class="q-gutter-md row">
         <q-card
           v-ripple
@@ -123,7 +126,7 @@
   </div>
 </template>
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { httpPost, httpGet } from "boot/axios";
 import { useRouter } from "vue-router";
 export default {
@@ -138,9 +141,17 @@ export default {
       account_type.value = type;
       console.log(account_type.value);
     };
-    //const payload = ref("");
-
+    const accounterror = ref(false);
+    watch(account_type, (newValue, oldValue) => {
+      console.log("accounterror changed:", newValue);
+      if (account_type.value !== "") {
+        accounterror.value = false;
+      }
+    });
     const handleLogin = () => {
+      if (account_type.value == "") {
+        accounterror.value = true;
+      }
       if (account_type.value == "ptnt") {
         const payload = {
           ptnt_email: text.value,
@@ -193,6 +204,7 @@ export default {
       dense,
       isPwd,
       account_type,
+      accounterror,
       handleLogin,
       handleRegister,
       handleAccount,
