@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('app_symptoms')->nullable();
             $table->integer('app_is_accepted')->nullable()->default(0);
             $table->string('app_reason')->nullable();
+            $table->string('app_patient_id')->nullable();
         });
     }
 

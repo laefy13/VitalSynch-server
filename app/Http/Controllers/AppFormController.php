@@ -44,7 +44,7 @@ class AppFormController extends Controller
         $app_form->app_department = $request->app_department;
         $app_form->app_service = $request->app_service;
         // $app_form->app_email = $request->app_email;
-        // $app_form->app_patient_id = $request->app_patient_id;
+        $app_form->app_patient_id = $request->app_patient_id;
         $app_form->app_doctor_name = $request->app_doctor_name;
         $app_form->app_date = $request->app_date;
         $app_form->app_time = $request->app_time;
@@ -71,7 +71,7 @@ class AppFormController extends Controller
         $fillableFields = [
             'app_full_name', 'app_department', 'app_service', 'app_email',
             'app_patient_id', 'app_doctor_id', 'app_date', 'app_time',
-            'app_is_accepted', 'app_reason'
+            'app_is_accepted', 'app_reason','app_patient_id'
         ];
 
         foreach ($fillableFields as $field) {

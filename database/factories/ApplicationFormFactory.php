@@ -18,6 +18,7 @@ class ApplicationFormFactory extends Factory
     protected $model = ApplicationForm::class;
     public function definition()
     {
+        $this->faker->unique(true);
         return [
             'app_full_name' => $this->faker->name,
             'app_birth_date' => $this->faker->date,
@@ -33,6 +34,7 @@ class ApplicationFormFactory extends Factory
             'app_service' => $this->faker->word,
             'app_is_accepted'=> $this->faker->numberBetween(0,2),
             'app_reason'=> $this->faker->sentence,
+            'app_patient_id' => $this->faker->unique()->numberBetween(1, 10),
         ];
     }
 }

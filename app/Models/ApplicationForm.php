@@ -24,6 +24,7 @@ class ApplicationForm extends Model
         'app_reason',
         'app_department',
         'app_service',
+        'app_patient_id'
     ];
     protected $primaryKey = 'app_queue_num';
 }
