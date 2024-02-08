@@ -13,7 +13,7 @@
           class="q-ma-md text-black text-bold shadow-1"
           color="primary"
           @click="$router.push({ name: 'add-appointment' })"
-          >Book Consultation</q-btn
+          >Book an Appointment</q-btn
         >
       </div>
     </div>

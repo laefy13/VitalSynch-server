@@ -1,41 +1,9 @@
-import VueApexCharts from "vue3-apexcharts";
 import { ref, onMounted } from "vue";
-import { FetchItems } from "src/pages/composables";
+import { FetchItems, FetchItem } from "src/pages/composables";
+import { useRoute } from "vue-router";
 
 export default {
-  components: {
-    apexchart: VueApexCharts,
-  },
   setup() {
-    const series = ref([
-      {
-        data: [400, 430, 448, 470, 540],
-      },
-    ]);
-    const chartOptions = ref({
-      chart: {
-        type: "bar",
-        height: 350,
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 5,
-          horizontal: true,
-        },
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      xaxis: {
-        categories: [
-          "South Korea",
-          "Canada",
-          "United Kingdom",
-          "Netherlands",
-          "Italy",
-        ],
-      },
-    });
     const columns = [
       {
         name: "patientId",
@@ -121,6 +89,8 @@ export default {
     ];
     const rows2 = ref([]);
     const appointments_today = ref([]);
+    const router = useRoute();
+    const id = router.params.id;
 
     const filter_appointments = () => {
       const today = new Date().toISOString().split("T")[0]; // Get today's date in 'YYYY-MM-DD' format
@@ -143,21 +113,30 @@ export default {
       let response = await FetchItems("doctor_profs");
       rows2.value = response.data;
     };
+    let patient = ref([]);
+    const getPatientProfile = async () => {
+      const response = await FetchItem(
+        "ptnt_prof",
+        localStorage.getItem("user_id")
+      );
+      patient.value = response.data;
+
+      console.log("patient", patient);
+    };
+    onMounted(async () => {
+      //getAppointment();
+      getPatientProfile();
+    });
     // Use dummy data for testing
     // Comment out this block when you have the actual API to fetch data from
-    onMounted(async () => {
-      getAppointment();
-      getDoctors();
-    });
 
     return {
-      series,
-      chartOptions,
       columns,
       rows,
       columns2,
       rows2,
       appointments_today,
+      patient,
     };
   },
 };

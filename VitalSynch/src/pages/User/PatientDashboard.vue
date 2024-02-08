@@ -93,13 +93,27 @@
         </div>
       </div>
       <div class="col">
-        <h6 class="q-ma-none">Covid Monthly Report</h6>
-        <apexchart
-          type="bar"
-          height="250"
-          :options="chartOptions"
-          :series="series"
-        ></apexchart>
+        <q-card class="q-my-md q-pa-lg">
+          <h6 class="text-bolder q-ma-none">Overview</h6>
+          <div class="row">
+            <div class="col">
+              <p class="text-grey">Sex:</p>
+              <p class="text-bold">{{ patient.ptnt_sex }}</p>
+            </div>
+            <div class="col">
+              <p class="text-grey">Age:</p>
+              <p class="text-bold">{{ patient.ptnt_age }}</p>
+            </div>
+            <div class="col">
+              <p class="text-grey">Date of Birth:</p>
+              <p class="text-bold">{{ patient.ptnt_birth_date }}</p>
+            </div>
+            <div class="col">
+              <p class="text-grey">Name of Guardian:</p>
+              <p class="text-bold"></p>
+            </div>
+          </div>
+        </q-card>
       </div>
     </div>
     <div class="row">

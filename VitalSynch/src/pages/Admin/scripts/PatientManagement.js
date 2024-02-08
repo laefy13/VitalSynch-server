@@ -6,7 +6,7 @@ export default {
     const columns = [
       {
         name: "patientID",
-        label: "Patient Name",
+        label: "Patient ID",
         align: "left",
         field: "ptnt_id",
       },
