@@ -19,15 +19,18 @@ class ApplicationFormFactory extends Factory
     public function definition()
     {
         return [
-            'app_queue_num' => $this->faker->unique()->randomNumber(),
             'app_full_name' => $this->faker->name,
-            'app_department' => $this->faker->word,
-            'app_service' => $this->faker->word,
-            'app_email' => $this->faker->unique()->safeEmail,
+            'app_birth_date' => $this->faker->date,
+            'app_address' => $this->faker->address,
+            'app_contact_num' => $this->faker->phoneNumber,
+            'app_sex' => $this->faker->randomElement(['Male', 'Female']),
+            'app_symptoms' => $this->faker->text,
+            'app_doctor_name' => $this->faker->name,
             'app_date' => $this->faker->date,
             'app_time' => $this->faker->time,
-            'app_patient_id'=> $this->faker->numberBetween(1, 10),
-            'app_doctor_id'=> $this->faker->numberBetween(1, 10),
+            'app_reason' => $this->faker->text,
+            'app_department' => $this->faker->word,
+            'app_service' => $this->faker->word,
             'app_is_accepted'=> $this->faker->numberBetween(0,2),
             'app_reason'=> $this->faker->sentence,
         ];

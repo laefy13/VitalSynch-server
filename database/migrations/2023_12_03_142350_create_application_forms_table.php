@@ -16,12 +16,15 @@ return new class extends Migration
             $table->string('app_full_name');
             $table->string('app_department');
             $table->string('app_service');
-            $table->string('app_email');
-            $table->integer('app_patient_id');
-            $table->integer('app_doctor_id');
+            $table->string('app_doctor_name');
             $table->date('app_date');
             $table->time('app_time');
-            $table->integer('app_is_accepted')->default(0);
+            $table->date('app_birth_date');
+            $table->text('app_address');
+            $table->string('app_contact_num');
+            $table->string('app_sex');
+            $table->text('app_symptoms')->nullable();
+            $table->integer('app_is_accepted')->nullable()->default(0);
             $table->string('app_reason')->nullable();
         });
     }
