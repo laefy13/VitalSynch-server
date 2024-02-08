@@ -1,0 +1,129 @@
+{
+  "patients": [
+    {
+      "id": 1,
+      "patientName": "John Doe",
+      "department": "Cardiology",
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "patientName": "Jane Doe",
+      "department": "Orthopedics",
+      "status": "Inactive"
+    },
+    {
+      "id": 3,
+      "patientName": "Alice Johnson",
+      "department": "Dermatology",
+      "status": "Active"
+    }
+  ],
+  "appointments": [
+    {
+      "id": 1,
+      "patientId": 1,
+      "assignedDoctor": "Dr. Smith",
+      "time": "10:00 AM",
+      "date": "2023-03-01",
+      "department": "Cardiology"
+    },
+    {
+      "id": 2,
+      "patientId": 1,
+      "assignedDoctor": "Dr. Johnson",
+      "time": "11:30 AM",
+      "date": "2023-03-15",
+      "department": "Cardiology"
+    },
+    {
+      "id": 3,
+      "patientId": 2,
+      "assignedDoctor": "Dr. Davis",
+      "time": "2:00 PM",
+      "date": "2023-04-02",
+      "department": "Orthopedics"
+    },
+    {
+      "id": 4,
+      "patientId": 3,
+      "assignedDoctor": "Dr. White",
+      "time": "3:30 PM",
+      "date": "2023-04-10",
+      "department": "Dermatology"
+    }
+  ],
+
+  "doctors": [
+    {
+      "id": 1,
+      "doctorPicture": "path/to/doctor1.jpg",
+      "doctorName": "Dr. John Doe",
+      "status": "Active",
+      "department": "Cardiology"
+    },
+    {
+      "id": 2,
+      "doctorPicture": "path/to/doctor2.jpg",
+      "doctorName": "Dr. Jane Smith",
+      "status": "Inactive",
+      "department": "Neurology"
+    },
+    {
+      "id": 3,
+      "doctorPicture": "path/to/doctor3.jpg",
+      "doctorName": "Dr. Michael Johnson",
+      "status": "Active",
+      "department": "Pediatrics"
+    },
+    {
+      "id": 4,
+      "doctorPicture": "path/to/doctor4.jpg",
+      "doctorName": "Dr. Emily Davis",
+      "status": "Active",
+      "department": "Orthopedics"
+    },
+    {
+      "id": 5,
+      "doctorPicture": "path/to/doctor5.jpg",
+      "doctorName": "Dr. Robert White",
+      "status": "Inactive",
+      "department": "Dermatology"
+    },
+    {
+      "id": 6,
+      "doctorPicture": "path/to/doctor6.jpg",
+      "doctorName": "Dr. Sarah Johnson",
+      "status": "Active",
+      "department": "Gastroenterology"
+    },
+    {
+      "id": 7,
+      "doctorPicture": "path/to/doctor7.jpg",
+      "doctorName": "Dr. Daniel Brown",
+      "status": "Inactive",
+      "department": "Ophthalmology"
+    },
+    {
+      "id": 8,
+      "doctorPicture": "path/to/doctor8.jpg",
+      "doctorName": "Dr. Olivia Wilson",
+      "status": "Active",
+      "department": "Urology"
+    },
+    {
+      "id": 9,
+      "doctorPicture": "path/to/doctor9.jpg",
+      "doctorName": "Dr. Ethan Miller",
+      "status": "Inactive",
+      "department": "Rheumatology"
+    },
+    {
+      "id": 10,
+      "doctorPicture": "path/to/doctor10.jpg",
+      "doctorName": "Dr. Ava Smith",
+      "status": "Active",
+      "department": "Endocrinology"
+    }
+  ]
+}
