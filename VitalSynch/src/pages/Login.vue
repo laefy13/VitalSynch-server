@@ -177,8 +177,10 @@ export default {
           console.log("here");
           const token = response.data["token"];
           const role = response.data["role"];
+          const id = response.data["id"];
           localStorage.setItem("access_token", token);
           localStorage.setItem("user_role", role);
+          localStorage.setItem("user_id", id);
 
           if (accountType == "doctor") {
             console.log(accountType);

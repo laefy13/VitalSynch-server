@@ -39,8 +39,8 @@
                     :rules="[
                       (val) => !!val || 'Name of Patient is required',
                       (val) =>
-                        /^[a-zA-Z]+$/.test(val) ||
-                        'Invalid characters in Name of Patient',
+                        /^[a-zA-Z\s]+$/.test(val) ||
+                            'Invalid characters in Name of Patient',
                     ]"
                   ></q-input>
                 </div>
@@ -83,7 +83,7 @@
 
                 <div class="column q-ma-none">
                   <p class="input-title">Sex</p>
-                  <q-input
+                  <q-select
                     outlined
                     class="q-ma-none"
                     ref="step1ref2"
@@ -92,7 +92,7 @@
                     label="Select Sex"
                     :rules="[(val) => !!val || 'Sex is required']"
                   >
-                  </q-input>
+                  </q-select>
                 </div>
               </div>
               <div class="row">
@@ -393,6 +393,7 @@ export default {
         app_date: appDate.value,
         app_time: appTime.value,
         app_doctor_name: doctor.value,
+        app_patient_id:localStorage.getItem("user_id") || null,
       };
       httpPost("/app_form", payload, {
         success: (response) => {
