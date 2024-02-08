@@ -58,10 +58,15 @@ const httpGet = (resource, callback, payload = {}) => {
 };
 
 const httpPost = (resource, payload, callback) => {
-  axiosConfig.headers.Authorization = ""; // Remove Authorization header
+  axiosConfig.headers.Authorization = `Bearer ${LocalStorage.getItem("access_token") || ""}`, // Remove Authorization header
   ChainCallback(axios.post(resource, payload, axiosConfig), callback);
 };
 
+  
+const httpAuthPost = (resource, payload, callback) => {
+  axiosConfig.headers.Authorization = ""; // Remove Authorization header
+  ChainCallback(axios.post(resource, payload, axiosConfig), callback);
+};
 const httpPut = (resource, payload, callback) => {
   axiosConfig.headers.Authorization = ""; // Remove Authorization header
   ChainCallback(axios.put(resource, payload, axiosConfig), callback);
@@ -108,6 +113,7 @@ const httpFileDownload = (resource, payload, callback) => {
 export {
   api,
   httpGet,
+  httpAuthPost,
   httpPost,
   httpPut,
   httpDel,

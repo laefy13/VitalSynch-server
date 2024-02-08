@@ -127,7 +127,7 @@
 </template>
 <script>
 import { ref, watch } from "vue";
-import { httpPost, httpGet } from "boot/axios";
+import { httpAuthPost, httpGet } from "boot/axios";
 import { useRouter } from "vue-router";
 export default {
   setup() {
@@ -172,7 +172,7 @@ export default {
     };
 
     function PostRequest(accountType, payload) {
-      httpPost("/login", payload, {
+      httpAuthPost("/login", payload, {
         success: (response) => {
           console.log("here");
           const token = response.data["token"];
@@ -183,8 +183,10 @@ export default {
           if (accountType == "doctor") {
             console.log(accountType);
             router.push({ name: "admin-dashboard" });
+          } else if (accountType == "ptnt") {
+            console.log(accountType);
+            router.push({ name: "add-appointment" });
           }
-          // add for pnt
         },
         catch: (error) => {
           console.error("Login Error:", error);
