@@ -25,6 +25,18 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
-
+  Router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      const userRole = localStorage.getItem("user_role");
+      
+      if (to.matched.some(record => record.meta.role === userRole)) {
+        next();
+      } else {
+        next(false);
+      }
+    } else {
+      next();
+    }
+  });
   return Router
 })

@@ -105,14 +105,18 @@ export default {
 
     const handleLogin = () => {
       const payload = {
-        usr_email: text.value,
-        usr_password: password.value,
+        ptnt_email: text.value,
+        ptnt_password: password.value,
+        user: 'ptnt',
       };
 
       httpPost("/login", payload, {
         success: (response) => {
           const token = response.data["token"];
+          const role = response.data["role"];
           localStorage.setItem("access_token", token);
+          localStorage.setItem("user_role",role );
+          router.push({ name: "appointment-center" });
         },
         catch: (error) => {
           console.error("Login Error:", error);
