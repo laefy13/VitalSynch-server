@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\PatientProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 class PatientProfileFactory extends Factory
 {
