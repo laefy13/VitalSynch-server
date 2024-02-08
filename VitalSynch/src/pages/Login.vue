@@ -138,7 +138,7 @@ export default {
       account_type.value = type;
       console.log(account_type.value);
     };
-    const payload = ref({});
+    const payload = ref("");
 
     const handleLogin = () => {
       if (account_type.value == "ptnt") {
@@ -156,7 +156,7 @@ export default {
         };
         router.push({ name: "admin-dashboard" });
       }
-      httpPost("/login", payload.value, {
+      httpPost("/login", payload, {
         success: (response) => {
           const token = response.data["token"];
           const role = response.data["role"];
