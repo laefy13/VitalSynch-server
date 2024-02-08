@@ -7,7 +7,22 @@
       <h2 class="text-bold q-my-md">VITAL SYNC</h2>
       <h5 class="text-weight-bolder q-mt-xl">Choose Account Type</h5>
       <div class="q-gutter-md row">
-        <q-card class="rounded-square-outline col">
+        <q-card
+          v-ripple
+          outline
+          @click="handleAccount('doctor')"
+          :class="[
+            'account-btn',
+            'q-mb-md',
+            'long-btn',
+            'cursor-pointer',
+            'rounded-square-outline col',
+            {
+              'shadow-5 bg-primary text-white': account_type === 'doctor',
+              '': account_type === 'ptnt',
+            },
+          ]"
+        >
           <div class="q-card-section q-pa-lg">
             <span class="material-symbols-outlined q-ma-md text-bold account">
               stethoscope
@@ -17,7 +32,21 @@
             </div>
           </div>
         </q-card>
-        <q-card class="rounded-square-outline col">
+        <q-card
+          class="rounded-square-outline col"
+          @click="handleAccount('ptnt')"
+          :class="[
+            'account-btn',
+            'q-mb-md',
+            'long-btn',
+            'cursor-pointer',
+            'rounded-square-outline col',
+            {
+              'shadow-5 bg-primary text-white': account_type === 'ptnt',
+              '': account_type === 'doctor',
+            },
+          ]"
+        >
           <div class="q-card-section q-pa-lg">
             <span class="material-symbols-outlined q-ma-md text-bold account">
               account_circle
@@ -61,7 +90,9 @@
         </q-input>
       </div>
       <div class="forgot">
-        <q-btn flat unelevated class="forgotbtn">Forgot Password? "</q-btn>
+        <q-btn flat unelevated class="forgotbtn" no-caps
+          >Forgot Password?</q-btn
+        >
       </div>
       <div class="q-mb-lg">
         <q-btn
@@ -102,22 +133,36 @@ export default {
     const dense = ref(false);
     const isPwd = ref(true);
     const router = useRouter();
+    const account_type = ref("");
+    const handleAccount = (type) => {
+      account_type.value = type;
+      console.log(account_type.value);
+    };
+    const payload = ref({});
 
     const handleLogin = () => {
-      const payload = {
-        ptnt_email: text.value,
-        ptnt_password: password.value,
-        user: "ptnt",
-      };
-
-      httpPost("/login", payload, {
+      if (account_type.value == "ptnt") {
+        payload.value = {
+          ptnt_email: text.value,
+          ptnt_password: password.value,
+          user: account_type,
+        };
+        router.push({ name: "patient-dashboard" });
+      }
+      if (account_type.value == "doctor") {
+        payload.value = {
+          doctor_email: text.value,
+          doctor_password: password.value,
+          user: account_type,
+        };
+        router.push({ name: "admin-dashboard" });
+      }
+      httpPost("/login", payload.value, {
         success: (response) => {
           const token = response.data["token"];
           const role = response.data["role"];
           localStorage.setItem("access_token", token);
           localStorage.setItem("user_role", role);
-
-          router.push({ name: "appointment-center" });
         },
         catch: (error) => {
           console.error("Login Error:", error);
@@ -136,8 +181,10 @@ export default {
       password,
       dense,
       isPwd,
+      account_type,
       handleLogin,
       handleRegister,
+      handleAccount,
       ph: ref(""),
     };
   },
