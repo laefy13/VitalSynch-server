@@ -137,9 +137,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="app-wrapper q-pl-lg bg-white rounded-borders border-radius-3"
-        >
+        <div class="app-wrapper bg-white rounded-borders border-radius-3">
           <router-view />
         </div>
       </q-page>

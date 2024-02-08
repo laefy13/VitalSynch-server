@@ -1,4 +1,12 @@
 .appointment {
-  .book-btn {
+  .appointment-container {
+    width: 800px;
+  }
+  .bg {
+    background-image: url("src/assets/appointment-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.7;
   }
 }
