@@ -6,7 +6,7 @@ export default {
     const columns = [
       {
         name: "patientID",
-        label: "Patient Name",
+        label: "Patient ID",
         align: "left",
         field: "ptnt_id",
       },
@@ -27,6 +27,12 @@ export default {
         label: "Birth Date",
         align: "left",
         field: "ptnt_birth_date",
+      },
+      {
+        name: "contactNumber",
+        label: "Contact Number",
+        align: "left",
+        field: "ptnt_contact_number",
       },
       {
         name: "contactNumber",

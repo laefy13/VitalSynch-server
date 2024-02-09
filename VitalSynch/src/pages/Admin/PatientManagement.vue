@@ -4,7 +4,7 @@
     <q-table
       :rows="rows"
       :columns="columns"
-      row-key="id"
+      row-key="ptnt_id"
       :filter="filter"
       class="gt-xs"
       flat
@@ -38,7 +38,7 @@
                   clickable
                   :to="{
                     name: 'patient-profile',
-                    params: { id: props.row.id },
+                    params: { id: props.row.ptnt_id },
                   }"
                   v-close-popup
                   class="menu-list"

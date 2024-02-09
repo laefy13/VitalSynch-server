@@ -189,6 +189,11 @@ export default {
             console.log(accountType);
             router.push({ name: "add-appointment" });
           }
+
+          if (accountType == "ptnt") {
+            console.log(accountType);
+            router.push({ name: "patient-dashboard" });
+          }
         },
         catch: (error) => {
           console.error("Login Error:", error);

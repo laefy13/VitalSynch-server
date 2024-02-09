@@ -1,78 +1,65 @@
-import { FetchItems } from "src/pages/composables";
+import { FetchItem } from "src/pages/composables";
 import { ref, onMounted } from "vue";
 
 export default {
   setup() {
     const columns = [
       {
-        name: "patientName",
-        label: "Patient Name",
+        name: "app_date",
+        label: "Date",
         align: "left",
-        field: "patientName",
+        field: "app_date",
       },
       {
-        name: "department",
+        name: "app_time",
+        label: "Time",
+        align: "left",
+        field: "app_time",
+      },
+      {
+        name: "app_department",
         label: "Department",
         align: "left",
-        field: "department",
-      },
-      { name: "status", label: "Status", align: "left", field: "status" },
-      {
-        name: "doctor",
-        label: "Doctor",
-        align: "left",
-        field: "assignedDoctor",
+        field: "app_department",
       },
       {
-        name: "appointment",
-        label: "Appointment",
+        name: "app_doctor",
+        label: "Doctor Assigned",
         align: "left",
-        field: (row) => `${row.time}, ${row.date}`,
+        field: "app_doctor_name",
       },
-      { name: "action", label: "Actions", align: "left", field: "action" },
+      {
+        name: "status",
+        label: "Status",
+        align: "left",
+        field: "app_is_accepted",
+      },
+      {
+        name: "action",
+        label: "Action",
+        align: "left",
+        field: "action",
+      },
     ];
-
     const rows = ref([]);
-
-    const patients = ref([]);
-    const doctors = ref([]);
-
-    const getPatients = async () => {
-      let response = await FetchItems("patients");
-      patients.value = response.data;
-    };
-
-    const getDoctors = async () => {
-      let response = await FetchItems("doctors");
-      doctors.value = response.data;
+    let bar = ref(false);
+    const selectedAppointment = ref([]);
+    const handleViewAppointment = (row) => {
+      bar.value = true;
+      console.log(bar);
+      selectedAppointment.value = row;
+      console.log("Appointment", row);
     };
 
     const getAppointment = async () => {
-      await Promise.all([getPatients(), getDoctors()]); // Fetch patients and doctors concurrently
-      let response = await FetchItems("appointments");
+      let response = await FetchItem(
+        "app_form",
+        localStorage.getItem("user_id")
+      );
 
-      rows.value = response.data.map((appointment) => {
-        const patient = patients.value.find(
-          (p) => p.id === appointment.patientId
-        );
-        const doctor = doctors.value.find(
-          (d) => d.doctorName === appointment.assignedDoctor
-        );
-
-        return {
-          ...appointment,
-          patientName: patient ? patient.patientName : "Unknown",
-          department: patient ? patient.department : "Unknown",
-          status: patient ? patient.status : "Unknown",
-          doctor: doctor ? doctor.doctorName : "Unknown",
-        };
-      });
-
-      console.log("rows", rows);
+      rows.value = response.data;
     };
 
-    // Use dummy data for testing
-    // Comment out this block when you have the actual API to fetch data from
     onMounted(async () => {
       getAppointment();
     });
@@ -81,6 +68,10 @@ export default {
       columns,
       rows,
       filter: ref(""),
+      bar,
+      selectedAppointment,
+
+      handleViewAppointment,
     };
   },
 };

@@ -52,7 +52,11 @@
             <q-item-section> Activity </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item
+            clickable
+            v-ripple
+            @click="$router.push({ name: 'admin-dashboard' })"
+          >
             <q-item-section avatar>
               <q-icon name="dashboard" />
             </q-item-section>

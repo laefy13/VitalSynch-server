@@ -14,7 +14,11 @@ const routes = [
     redirect: {
       name: "login",
     },
-    component: () => import("layouts/MainLayout.vue"),
+  },
+  // Doctor Routes
+  {
+    path: "/admin",
+    component: () => import("layouts/AdminLayout.vue"),
     children: [
       {
         path: "admin-dashboard",
@@ -44,6 +48,31 @@ const routes = [
         },
       },
       {
+        path: "patient-profile/:id?",
+        name: "patient-profile",
+        component: () => import("pages/Admin/PatientProfile.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "doctor",
+        },
+      },
+    ],
+  },
+  // Patient Routes
+  {
+    path: "/patient",
+    component: () => import("layouts/UserLayout.vue"),
+    children: [
+      {
+        path: "patient-dashboard",
+        name: "patient-dashboard",
+        component: () => import("pages/User/PatientDashboard.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "patient",
+        },
+      },
+      {
         path: "appointment-center",
         name: "appointment-center",
         component: () => import("pages/User/AppointmentCenter.vue"),
@@ -63,9 +92,7 @@ const routes = [
       },
     ],
   },
-
-  // Always leave this as last one,
-  // but you can also remove it
+  // 404 Not Found
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),

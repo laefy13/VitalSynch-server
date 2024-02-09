@@ -93,13 +93,43 @@
         </div>
       </div>
       <div class="col">
-        <h6 class="q-ma-none">Covid Monthly Report</h6>
-        <apexchart
-          type="bar"
-          height="250"
-          :options="chartOptions"
-          :series="series"
-        ></apexchart>
+        <q-card class="q-mt-lg q-pa-lg full-width">
+          <div class="row q-px-lg q-pb-xs">
+            <div class="col-2">
+              <q-avatar size="60px" class="shadow-10">
+                <img
+                  src="https://avatars3.githubusercontent.com/u/34883558?s=400&u=09455019882ac53dc69b23df570629fd84d37dd1&v=4"
+                />
+              </q-avatar>
+            </div>
+            <div class="col q-ml-md">
+              <h6 class="text-bolder q-ma-none">
+                {{ patient.ptnt_first_name }}
+                {{ patient.ptnt_surname }}
+              </h6>
+              <p class="text-grey">{{ patient.ptnt_id }}</p>
+            </div>
+          </div>
+          <q-separator></q-separator>
+          <div class="row q-mt-xs">
+            <div class="col">
+              <p class="text-grey">Sex:</p>
+              <p class="text-bold">{{ patient.ptnt_sex }}</p>
+            </div>
+            <div class="col">
+              <p class="text-grey">Age:</p>
+              <p class="text-bold">{{ patient.ptnt_age }}</p>
+            </div>
+            <div class="col">
+              <p class="text-grey">Date of Birth:</p>
+              <p class="text-bold">{{ patient.ptnt_birth_date }}</p>
+            </div>
+            <div class="col">
+              <p class="text-grey">Name of Guardian:</p>
+              <p class="text-bold"></p>
+            </div>
+          </div>
+        </q-card>
       </div>
     </div>
     <div class="row">
@@ -125,13 +155,13 @@
           </div>
         </q-card>
         <q-card class="q-pa-md q-mt-md">
-          <h6 class="q-ma-lg text-weight-bolder">Booked Appointments Today</h6>
+          <h6 class="q-ma-lg text-weight-bolder">Booked Appointments</h6>
           <q-table
             style="height: 325px"
             flat
             dense
             bordered
-            :rows="appointments_today"
+            :rows="rows"
             :columns="columns"
             row-key="app_queue_num"
             virtual-scroll
@@ -140,36 +170,7 @@
           </q-table>
         </q-card>
       </div>
-      <div class="col">
-        <q-card class="q-pa-md">
-          <q-table
-            flat
-            bordered
-            dense
-            style="height: 600px"
-            :rows="rows2"
-            :columns="columns2"
-            row-key="doctor_id"
-            virtual-scroll
-            :rows-per-page-options="[0]"
-          >
-            <template v-slot:body-cell-status="props">
-              <q-td :props="props">
-                <q-badge color="red-2"> {{ props.status }} </q-badge>
-              </q-td>
-            </template>
-            <template v-slot:body-cell-doctorPicture="props">
-              <q-td :props="props">
-                <q-avatar color="red-2">
-                  <img
-                    src="https://avatars3.githubusercontent.com/u/34883558?s=400&u=09455019882ac53dc69b23df570629fd84d37dd1&v=4"
-                  />
-                </q-avatar>
-              </q-td>
-            </template>
-          </q-table>
-        </q-card>
-      </div>
+      <div class="col"></div>
     </div>
   </q-page>
 </template>
