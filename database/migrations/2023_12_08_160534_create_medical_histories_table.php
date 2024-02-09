@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tbl_med_history', function (Blueprint $table) {
             $table->increments('medhis_id');
-            $table->integer('medhis_ptnt_id');
+            $table->string('medhis_ptnt_id');
             $table->date('medhis_record_date');
             $table->time('medhis_record_time');
             $table->float('medhis_height');

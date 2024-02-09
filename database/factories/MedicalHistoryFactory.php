@@ -23,7 +23,7 @@ class MedicalHistoryFactory extends Factory
     {
         $this->faker->unique(true);
         return [
-            'medhis_ptnt_id' => $this->faker->unique()->numberBetween(1, 10),
+            'medhis_ptnt_id' => 'PTNT-askdbak1213',
             'medhis_record_date' => $this->faker->date,
             'medhis_record_time' => $this->faker->time,
             'medhis_height' => $this->faker->randomFloat(2, 150, 200), // Adjust the range as needed

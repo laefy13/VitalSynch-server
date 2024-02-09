@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tbl_prescription', function (Blueprint $table) {
             $table->increments('prescr_id');
-            $table->integer('prescr_ptnt_id');
-            $table->integer('prescr_doctor_id');
+            $table->string('prescr_ptnt_id');
+            $table->string('prescr_doctor_id');
             $table->date('prescr_date');
             $table->time('prescr_time');
         });

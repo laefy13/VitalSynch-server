@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // User::factory(10)->create();
-        // ApplicationForm::factory(10)->create();
+        ApplicationForm::factory(5)->create();
         UserAccounts::factory(10)->create();
         // PatientProfile::factory(10)->create();
         ProcessedForms::factory(10)->create();
@@ -44,10 +44,10 @@ class DatabaseSeeder extends Seeder
         GuardianProfile::factory(10)->create();
         DoctorProfile::factory(10)->create();
         Drugs::factory(10)->create();
-        LabReport::factory(10)->create();
-        Prescription::factory(10)->create();
+        LabReport::factory(10)->create();//
+        Prescription::factory(10)->create();//
         PrescriptionDrugs::factory(10)->create();
-        MedicalHistory::factory(10)->create();
+        MedicalHistory::factory(10)->create();//
         PatientAllergies::factory(10)->create();
     }
 }

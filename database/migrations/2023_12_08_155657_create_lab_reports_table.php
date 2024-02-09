@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tbl_lab_report', function (Blueprint $table) {
             $table->increments('labrep_id');
-            $table->integer('labrep_ptnt_id');
+            $table->string('labrep_ptnt_id');
             $table->date('labrep_test_date');
             $table->time('labrep_test_time');
             $table->string('labrep_result');
