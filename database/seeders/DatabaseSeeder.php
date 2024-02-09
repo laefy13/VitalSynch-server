@@ -35,9 +35,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         // User::factory(10)->create();
-        ApplicationForm::factory(10)->create();
+        // ApplicationForm::factory(10)->create();
         UserAccounts::factory(10)->create();
-        PatientProfile::factory(10)->create();
+        // PatientProfile::factory(10)->create();
         ProcessedForms::factory(10)->create();
         Logs::factory(10)->create();
         Allergies::factory(10)->create();
