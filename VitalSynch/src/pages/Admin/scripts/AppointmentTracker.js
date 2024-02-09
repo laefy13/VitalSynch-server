@@ -92,15 +92,17 @@ export default {
     //view appointment details if row clicked
     let bar = ref(false);
     const selectedAppointment = ref([]);
-    const onRowClick = (evt, row, col) => {
-      if (col.name === "action") {
-        return;
-      } else {
-        bar.value = true;
-        console.log(bar);
-        selectedAppointment.value = row;
-        console.log("Appointment", row);
-      }
+    const onRowClick = (evt, row) => {
+      bar.value = true;
+      console.log(bar);
+      selectedAppointment.value = row;
+      console.log("Appointment", row);
+    };
+    const handleViewAppointment = (row) => {
+      bar.value = true;
+      console.log(bar);
+      selectedAppointment.value = row;
+      console.log("Appointment", row);
     };
 
     const handleAppointment = async (row, flag) => {
@@ -167,6 +169,7 @@ export default {
       handleAppointment,
       onRowClick,
       getServiceBadgeColor,
+      handleViewAppointment,
     };
   },
 };

@@ -83,7 +83,7 @@
         <q-dialog v-model="bar" v-if="bar == true">
           <q-card style="min-width: 300px">
             <q-bar class="q-pa-lg bg-white">
-              <div>Patient-type</div>
+              <div>Appointment Details</div>
 
               <q-space />
               <q-btn dense flat icon="edit" v-close-popup> </q-btn>
@@ -142,11 +142,9 @@
           virtual-scroll
           :filter="filterAccepted"
           title="Appointments"
-          row-key="id"
+          row-key="app_queue_num"
           class=""
           dense
-          clickable
-          @row-click="onRowClick"
         >
           <template v-slot:top>
             <q-toolbar class="bg-primary">
@@ -188,14 +186,19 @@
                   <q-list>
                     <q-item
                       clickable
-                      @click.stop="handleAppointment(props.row, 0)"
+                      @click="handleAppointment(props.row, 0)"
                       v-close-popup
                       class="menu-list"
                     >
                       <q-item-section>Mark as pending</q-item-section>
                     </q-item>
-                    <q-item clickable v-close-popup class="menu-list">
-                      <q-item-section>Cancel</q-item-section>
+                    <q-item
+                      clickable
+                      v-close-popup
+                      class="menu-list"
+                      @click="handleViewAppointment(props.row)"
+                    >
+                      <q-item-section>View Appointment</q-item-section>
                     </q-item>
                   </q-list>
                 </q-menu>
@@ -220,7 +223,6 @@
           class="q-my-md"
           dense
           clickable
-          @row-click="onRowClick"
         >
           <template v-slot:top>
             <q-toolbar class="bg-primary">
@@ -264,8 +266,13 @@
                         >Mark as Pending</q-item-section
                       >
                     </q-item>
-                    <q-item clickable v-close-popup class="menu-list">
-                      <q-item-section>Cancel</q-item-section>
+                    <q-item
+                      clickable
+                      v-close-popup
+                      class="menu-list"
+                      @click="handleViewAppointment(props.row)"
+                    >
+                      <q-item-section>View Appointment</q-item-section>
                     </q-item>
                   </q-list>
                 </q-menu>
