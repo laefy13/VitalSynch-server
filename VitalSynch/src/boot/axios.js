@@ -58,11 +58,12 @@ const httpGet = (resource, callback, payload = {}) => {
 };
 
 const httpPost = (resource, payload, callback) => {
-  axiosConfig.headers.Authorization = `Bearer ${LocalStorage.getItem("access_token") || ""}`, // Remove Authorization header
-  ChainCallback(axios.post(resource, payload, axiosConfig), callback);
+  (axiosConfig.headers.Authorization = `Bearer ${
+    LocalStorage.getItem("access_token") || ""
+  }`), // Remove Authorization header
+    ChainCallback(axios.post(resource, payload, axiosConfig), callback);
 };
 
-  
 const httpAuthPost = (resource, payload, callback) => {
   axiosConfig.headers.Authorization = ""; // Remove Authorization header
   ChainCallback(axios.post(resource, payload, axiosConfig), callback);

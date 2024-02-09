@@ -40,7 +40,7 @@
                       (val) => !!val || 'Name of Patient is required',
                       (val) =>
                         /^[a-zA-Z\s]+$/.test(val) ||
-                            'Invalid characters in Name of Patient',
+                        'Invalid characters in Name of Patient',
                     ]"
                   ></q-input>
                 </div>
@@ -85,7 +85,7 @@
                   <p class="input-title">Sex</p>
                   <q-select
                     outlined
-                    class="q-ma-none"
+                    class="q-ma-none input-field-half"
                     ref="step1ref2"
                     v-model="sex"
                     :options="['Female', 'Male']"
@@ -314,10 +314,10 @@ import { useRouter } from "vue-router";
 
 export default {
   setup() {
-    const nameOfPatient = ref("");//
-    const address = ref("");//
-    const contactNumber = ref("");//
-    const sex = ref("");//
+    const nameOfPatient = ref(""); //
+    const address = ref(""); //
+    const contactNumber = ref(""); //
+    const sex = ref(""); //
     const date = ref("");
     const service = ref("");
     const department = ref("");
@@ -336,7 +336,7 @@ export default {
     const step3ref0 = ref(null);
     const step3ref2 = ref(null);
     const step3ref1 = ref(null);
-    const step= ref(1);
+    const step = ref(1);
     const stepper = ref(null);
     const onContinueStep = async () => {
       switch (step.value) {
@@ -351,7 +351,7 @@ export default {
             !step1ref1.value.hasError &&
             !step1ref2.value.hasError &&
             !step1ref3.value.hasError &&
-            !step1ref4.value.hasError 
+            !step1ref4.value.hasError
           ) {
             step.value = 2;
           }
@@ -359,13 +359,10 @@ export default {
         case 2:
           step2ref0.value.validate();
           step2ref1.value.validate();
-          if (
-            !step2ref0.value.hasError &&
-            !step2ref1.value.hasError 
-          ) {
+          if (!step2ref0.value.hasError && !step2ref1.value.hasError) {
             step.value = 3;
           }
-          
+
         case 3:
           step3ref0.value.validate();
           step3ref1.value.validate();
@@ -373,7 +370,7 @@ export default {
           if (
             !step3ref0.value.hasError &&
             !step3ref1.value.hasError &&
-            !step3ref2.value.hasError 
+            !step3ref2.value.hasError
           ) {
             step.value = 4;
             handleAddAppoitnment();
@@ -393,7 +390,8 @@ export default {
         app_date: appDate.value,
         app_time: appTime.value,
         app_doctor_name: doctor.value,
-        app_patient_id:localStorage.getItem("user_id") || null,
+        app_patient_id: localStorage.getItem("user_id") || null,
+        app_is_accepted: 0,
       };
       httpPost("/app_form", payload, {
         success: (response) => {

@@ -151,5 +151,5 @@
     </div>
   </div>
 </template>
-<style src="./styles/AddAppointment.scss"></style>
+<style src="./styles/AppointmentCenter.scss"></style>
 <script src="./scripts/AppointmentCenter.js"></script>
