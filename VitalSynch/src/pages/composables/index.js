@@ -27,4 +27,16 @@ const FetchItems = (path) => {
   });
 };
 
-export { FetchItem, FetchItems };
+const UpdateItem = (path, data) => {
+  return new Promise((resolve, reject) => {
+    httpPut(`${API_URL}/${path}`, data, {
+      success(response) {
+        resolve(response);
+      },
+      catch(error) {
+        reject(error);
+      },
+    });
+  });
+};
+export { FetchItem, FetchItems, UpdateItem };
