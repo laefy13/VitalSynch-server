@@ -41,12 +41,6 @@ export default {
         align: "left",
         field: "app_doctor_name",
       },
-      {
-        name: "action",
-        label: "Actions",
-        align: "left",
-        field: "action",
-      },
     ];
     const rows = ref([]);
     const columns2 = [

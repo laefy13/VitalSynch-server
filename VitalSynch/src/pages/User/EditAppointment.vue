@@ -15,7 +15,7 @@
       <div class="column items-center">
         <q-card class="q-pa-md appointment-container justify-center" rounded>
           <h4 class="main-header text-center q-my-md">
-            Medical Appointment Form
+            <q-icon name="edit" />Edit Appointment Details
           </h4>
           <q-stepper
             v-model="step"

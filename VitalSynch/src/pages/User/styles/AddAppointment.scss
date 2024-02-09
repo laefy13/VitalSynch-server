@@ -1,6 +1,7 @@
 .appointment {
   .appointment-container {
     width: 800px;
+    min-height: fit-content;
   }
   .bg {
     background-image: url("src/assets/appointment-bg.png");
@@ -58,7 +59,7 @@
   .box {
     margin: 0px 200px 100px;
   }
-  q-dialog{
+  q-dialog {
     background-color: white !important; /* Adjust the rgba values as needed */
     color: white;
   }

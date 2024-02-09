@@ -1,5 +1,11 @@
-.dasboard {
+.dashboard {
   .tutorial {
     background-color: #29b7c7;
+  }
+  .vs-card {
+    overflow: hidden;
+    min-width: max-content;
+    margin-left: 2px;
+    margin-right: 2px;
   }
 }

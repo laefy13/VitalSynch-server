@@ -1,29 +1,40 @@
 <template>
-  <q-page class="q-pa-xl dashboard">
+  <q-page animated class="q-pa-xl dashboard">
     <!--<img
       alt="Quasar logo"
       src="~assets/quasar-logo-vertical.svg"
       style="width: 200px; height: 200px"
     >-->
     <div class="q-my-md">
-      <h4 class="text-bold q-my-none">Welcome back, Karlos!</h4>
+      <h4 class="text-bold q-my-none">
+        Welcome back,{{ patient.ptnt_first_name }}!
+      </h4>
       <h5 class="q-ma-none">Here are the latest updates this week</h5>
     </div>
     <div class="q-my-md row">
       <div class="col q-mr-md">
         <div class="row q-mt-lg">
-          <q-card class="col q-mr-sm vs-card">
+          <q-card
+            class="col vs-card cursor-pointer q-hoverable"
+            v-ripple
+            @click="$router.push({ name: 'add-appointment' })"
+          >
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="blue-2"
                 text-color="blue"
                 icon="event"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                Appointments todays
+                <p class="text-h6 q-ma-none">Make an appointment</p>
+                <p class="text-grey q-ma-none q-ellipsis">
+                  Click to schedule an appointment
+                </p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="1"
                   rounded
                   color="blue"
                   class="q-mt-sm vs-line-progress"
@@ -31,18 +42,21 @@
               </div>
             </q-card-section>
           </q-card>
-          <q-card class="col vs-card">
+          <q-card class="col vs-card cursor-pointer q-hoverable" v-ripple>
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="orange-2"
                 text-color="orange"
                 icon="sym_o_local_hospital"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                OPD today
+                <p class="text-h6 q-ma-none">Check medications</p>
+                <p class="text-grey q-ma-none">Click to see prescriptions</p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="1"
                   rounded
                   color="orange"
                   class="q-mt-sm vs-line-progress"
@@ -52,18 +66,24 @@
           </q-card>
         </div>
         <div class="row q-mt-sm">
-          <q-card class="col q-mr-sm vs-card">
+          <q-card
+            class="col q-mr-sm vs-card cursor-pointer q-hoverable"
+            v-ripple
+          >
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="red-2"
                 text-color="red"
                 icon="sym_o_emergency"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                In patients
+                <p class="text-h6 q-ma-none">View Lab Results</p>
+                <p class="text-grey q-ma-none">Click to see lab results</p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="1"
                   rounded
                   color="red"
                   class="q-mt-sm vs-line-progress"
@@ -71,18 +91,27 @@
               </div>
             </q-card-section>
           </q-card>
-          <q-card class="col vs-card">
+          <q-card
+            class="col vs-card cursor-pointer q-hoverable"
+            v-ripple
+            @click="$router.push({ name: 'update-user-info' })"
+          >
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="light-green-2"
                 text-color="green"
                 icon="sym_o_demography"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                Discharged patients
+                <p class="text-h6 q-ma-none">Update User Profile</p>
+                <p class="text-grey q-ma-none">
+                  Click to edit user information
+                </p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="1"
                   rounded
                   color="green"
                   class="q-mt-sm vs-line-progress"

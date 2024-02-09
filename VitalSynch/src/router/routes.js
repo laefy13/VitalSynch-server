@@ -90,6 +90,24 @@ const routes = [
           role: "patient",
         },
       },
+      {
+        path: "update-user-info",
+        name: "update-user-info",
+        component: () => import("pages/User/UpdateUserInformation.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "patient",
+        },
+      },
+      {
+        path: "edit-appointment/:id",
+        name: "edit-appointment",
+        component: () => import("pages/User/EditAppointment.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "patient",
+        },
+      },
     ],
   },
   // 404 Not Found
