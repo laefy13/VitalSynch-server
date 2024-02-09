@@ -69,8 +69,8 @@
                   </q-item>
                 </q-list>
               </q-menu>
-              <q-dialog v-model="bar">
-                <q-card style="min-width: 300px">
+              <q-dialog v-model="bar" >
+                <q-card style="min-width: 300px; ">
                   <q-bar class="q-pa-lg bg-white">
                     <div>Patient-type</div>
 
