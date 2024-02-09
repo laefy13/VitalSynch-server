@@ -48,14 +48,14 @@
                 <q-btn
                   dense
                   class="q-ma-xs full-width bg-green-2"
-                  @click="handleAppointment(props.row, 1)"
+                  @click.stop="handleAppointment(props.row, 1)"
                 >
                   Accept
                 </q-btn>
                 <q-btn
                   dense
                   class="q-ma-xs full-width bg-red-2"
-                  @click="handleAppointment(props.row, 2)"
+                  @click.stop="handleAppointment(props.row, 2)"
                 >
                   Reject</q-btn
                 >
