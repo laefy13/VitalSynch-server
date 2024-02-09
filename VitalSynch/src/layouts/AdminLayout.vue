@@ -55,7 +55,9 @@
           <q-item
             clickable
             v-ripple
-            @click="$router.push({ name: 'admin-dashboard' })"
+
+            @click="selectItem(0, 'admin-dashboard')"
+            :class="{ 'selected-item': selectedItem === 0 }"
           >
             <q-item-section avatar>
               <q-icon name="dashboard" />
@@ -65,10 +67,10 @@
           </q-item>
 
           <q-item
-            active
             clickable
             v-ripple
-            @click="$router.push({ name: 'patient-management' })"
+            @click="selectItem(1, 'patient-management')"
+            :class="{ 'selected-item': selectedItem === 1 }"
           >
             <q-item-section avatar>
               <q-icon name="groups" />
@@ -80,7 +82,8 @@
           <q-item
             clickable
             v-ripple
-            @click="$router.push({ name: 'appointment-tracker' })"
+            @click="selectItem(2, 'appointment-tracker')"
+            :class="{ 'selected-item': selectedItem === 2 }"
           >
             <q-item-section avatar>
               <q-icon name="pending_actions" />
@@ -89,7 +92,9 @@
             <q-item-section> Appointment Tracker </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple
+            @click="selectItem(3, 'appointment-tracker')"
+            :class="{ 'selected-item': selectedItem === 3 }">
             <q-item-section avatar>
               <q-icon name="notes" />
             </q-item-section>
@@ -97,7 +102,9 @@
             <q-item-section> Clinical Documentation </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple
+            @click="selectItem(5, 'appointment-tracker')"
+            :class="{ 'selected-item': selectedItem === 5 }">
             <q-item-section avatar>
               <q-icon name="medication" />
             </q-item-section>
@@ -111,14 +118,18 @@
             <q-item-section> Information </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple 
+            @click="selectItem(6, 'appointment-tracker')"
+            :class="{ 'selected-item': selectedItem === 6 }">
             <q-item-section avatar>
               <q-icon name="help" />
             </q-item-section>
 
             <q-item-section> Support </q-item-section>
           </q-item>
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple 
+            @click="selectItem(7, 'appointment-tracker')"
+            :class="{ 'selected-item': selectedItem === 7 }">
             <q-item-section avatar>
               <q-icon name="settings" />
             </q-item-section>
@@ -164,7 +175,14 @@ export default {
     return {
       drawer: false,
       miniState: true,
+      selectedItem: 0,
     };
+  },
+  methods: {
+    selectItem(index, routeName) {
+      this.selectedItem = index;
+      this.$router.push({ name: routeName });
+    },
   },
 };
 </script>
@@ -175,5 +193,10 @@ export default {
   @media only screen and (max-width: 767px) {
     padding: 0px !important;
   }
+
+}
+.selected-item {
+  background-color: #7cdae4;
+  color: #000000; 
 }
 </style>
