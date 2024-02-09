@@ -118,7 +118,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         // singles
         Route::get('/allergy/{id}',[AllergiesController::class, 'single']);
         Route::get('/user_acc/{id}',[UserAccounsController::class, 'single']);
-        Route::get('/app_form/{id}',[AppFormController::class, 'single']);
+        Route::get('/app_form/{id}',[AppFormController::class, 'single_patient']);
         Route::get('/doctor_prof/{id}',[DoctorProfileController::class, 'single']);
         Route::get('/drug/{id}',[DrugsController::class, 'single']);
         Route::get('/grdn_prof/{id}',[GuardianProfileController::class, 'single']);
