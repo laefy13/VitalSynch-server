@@ -137,22 +137,46 @@
             virtual-scroll
             :rows-per-page-options="[0]"
           >
+            <template v-if="!appointments_today.length" v-slot:bottom-row>
+              <q-tr>
+                <q-td colspan="100%" class="text-center">
+                  <p class="text-bold q-ma-lg">No appointments for today :'></p>
+                </q-td>
+              </q-tr>
+            </template>
           </q-table>
         </q-card>
       </div>
       <div class="col">
-        <q-card class="q-pa-md">
+        <q-card class="q-pa-none">
           <q-table
             flat
             bordered
             dense
-            style="height: 600px"
+            style="min-height: 600px"
             :rows="rows2"
             :columns="columns2"
             row-key="doctor_id"
+            class="q-pa-lg bg-cyan-1"
             virtual-scroll
             :rows-per-page-options="[0]"
           >
+            <template v-slot:top>
+              <h6 class="q-ma-none">Doctors</h6>
+            </template>
+
+            <template v-slot:header="props">
+              <q-tr :props="props" style="height: 50px">
+                <q-th
+                  v-for="col in props.cols"
+                  :key="col.name"
+                  :props="props"
+                  class="bg-primary text-bold"
+                >
+                  {{ col.label }}
+                </q-th>
+              </q-tr>
+            </template>
             <template v-slot:body-cell-status="props">
               <q-td :props="props">
                 <q-badge color="red-2"> {{ props.status }} </q-badge>
