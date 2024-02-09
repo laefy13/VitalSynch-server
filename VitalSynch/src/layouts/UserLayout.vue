@@ -55,7 +55,8 @@
           <q-item
             clickable
             v-ripple
-            @click="$router.push({ name: 'patient-dashboard' })"
+            @click="selectItem(0, 'patient-dashboard')"
+            :class="{ 'selected-item': selectedItem === 0 }"
           >
             <q-item-section avatar>
               <q-icon name="dashboard" />
@@ -67,7 +68,8 @@
           <q-item
             clickable
             v-ripple
-            @click="$router.push({ name: 'appointment-center' })"
+            @click="selectItem(1, 'appointment-center')"
+            :class="{ 'selected-item': selectedItem === 1 }"
           >
             <q-item-section avatar>
               <q-icon name="pending_actions" />
@@ -76,7 +78,9 @@
             <q-item-section> Appointment Center</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple 
+            @click="selectItem(2, '')"
+            :class="{ 'selected-item': selectedItem === 2 }">
             <q-item-section avatar>
               <q-icon name="notes" />
             </q-item-section>
@@ -84,7 +88,9 @@
             <q-item-section> Medical Records</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple 
+            @click="selectItem(3, '')"
+            :class="{ 'selected-item': selectedItem === 3 }">
             <q-item-section avatar>
               <q-icon name="medication" />
             </q-item-section>
@@ -98,14 +104,18 @@
             <q-item-section> Information </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple
+            @click="selectItem(4, '')"
+            :class="{ 'selected-item': selectedItem === 4 }">
             <q-item-section avatar>
               <q-icon name="help" />
             </q-item-section>
 
             <q-item-section> Support </q-item-section>
           </q-item>
-          <q-item clickable v-ripple>
+          <q-item clickable v-ripple
+            @click="selectItem(5, '')"
+            :class="{ 'selected-item': selectedItem === 5 }">
             <q-item-section avatar>
               <q-icon name="settings" />
             </q-item-section>
@@ -151,7 +161,14 @@ export default {
     return {
       drawer: false,
       miniState: true,
+      selectedItem: 0,
     };
+  },
+  methods: {
+    selectItem(index, routeName) {
+      this.selectedItem = index;
+      this.$router.push({ name: routeName });
+    },
   },
 };
 </script>
@@ -162,5 +179,9 @@ export default {
   @media only screen and (max-width: 767px) {
     padding: 0px !important;
   }
+}
+.selected-item {
+  background-color: #7cdae4;
+  color: #000000; 
 }
 </style>
