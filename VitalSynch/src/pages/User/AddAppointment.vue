@@ -85,7 +85,7 @@
                   <p class="input-title">Sex</p>
                   <q-select
                     outlined
-                    class="q-ma-none"
+                    class="q-ma-none input-field-half"
                     ref="step1ref2"
                     v-model="sex"
                     :options="['Female', 'Male']"

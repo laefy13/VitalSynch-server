@@ -22,23 +22,28 @@
     width: 500px;
     height: 40px;
   }
+  .q-stepper__header--alternative-labels .q-stepper__tab {
+    min-height: 104px;
+    padding: 5px 5px; /* Adjust padding values as needed */
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .q-stepper__title {
+    width: 100px;
+  }
   .font-black {
     color: black;
   }
   .q-input {
-    height: 35px;
+    height: 75px;
     margin: 0;
   }
   .input-field-half {
     width: 250px;
   }
-  .q-field__control.relative-position.row.no-wrap {
-    height: 30px;
-    border: 2px solid black;
-  }
+
   .input-field {
-    width: 300px;
-    min-height: 30px;
+    width: 500px;
   }
   .paragraph {
     width: 500px;
