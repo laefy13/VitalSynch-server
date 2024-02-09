@@ -145,6 +145,8 @@
           row-key="id"
           class=""
           dense
+          clickable
+          @row-click="onRowClick"
         >
           <template v-slot:top>
             <q-toolbar class="bg-primary">
@@ -186,7 +188,7 @@
                   <q-list>
                     <q-item
                       clickable
-                      @click="handleAppointment(props.row, 0)"
+                      @click.stop="handleAppointment(props.row, 0)"
                       v-close-popup
                       class="menu-list"
                     >
@@ -217,6 +219,8 @@
           row-key="app_queue_num"
           class="q-my-md"
           dense
+          clickable
+          @row-click="onRowClick"
         >
           <template v-slot:top>
             <q-toolbar class="bg-primary">
