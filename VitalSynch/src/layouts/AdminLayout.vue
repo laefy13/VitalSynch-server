@@ -21,7 +21,9 @@
         <q-list padding>
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="dashboard" class="q-my-md" />
+              <q-avatar class="q-my-md"
+                ><img src="src\assets\VitalSynch_logo_v1 2.png"
+              /></q-avatar>
             </q-item-section>
 
             <q-item-section>
@@ -55,7 +57,6 @@
           <q-item
             clickable
             v-ripple
-
             @click="selectItem(0, 'admin-dashboard')"
             :class="{ 'selected-item': selectedItem === 0 }"
           >
@@ -92,9 +93,12 @@
             <q-item-section> Appointment Tracker </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(3, 'appointment-tracker')"
-            :class="{ 'selected-item': selectedItem === 3 }">
+            :class="{ 'selected-item': selectedItem === 3 }"
+          >
             <q-item-section avatar>
               <q-icon name="notes" />
             </q-item-section>
@@ -102,9 +106,12 @@
             <q-item-section> Clinical Documentation </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(5, 'appointment-tracker')"
-            :class="{ 'selected-item': selectedItem === 5 }">
+            :class="{ 'selected-item': selectedItem === 5 }"
+          >
             <q-item-section avatar>
               <q-icon name="medication" />
             </q-item-section>
@@ -118,18 +125,24 @@
             <q-item-section> Information </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple 
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(6, 'appointment-tracker')"
-            :class="{ 'selected-item': selectedItem === 6 }">
+            :class="{ 'selected-item': selectedItem === 6 }"
+          >
             <q-item-section avatar>
               <q-icon name="help" />
             </q-item-section>
 
             <q-item-section> Support </q-item-section>
           </q-item>
-          <q-item clickable v-ripple 
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(7, 'appointment-tracker')"
-            :class="{ 'selected-item': selectedItem === 7 }">
+            :class="{ 'selected-item': selectedItem === 7 }"
+          >
             <q-item-section avatar>
               <q-icon name="settings" />
             </q-item-section>
@@ -193,10 +206,9 @@ export default {
   @media only screen and (max-width: 767px) {
     padding: 0px !important;
   }
-
 }
 .selected-item {
   background-color: #7cdae4;
-  color: #000000; 
+  color: #000000;
 }
 </style>

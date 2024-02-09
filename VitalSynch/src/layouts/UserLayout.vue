@@ -21,7 +21,9 @@
         <q-list padding>
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="dashboard" class="q-my-md" />
+              <q-avatar class="q-my-md"
+                ><img src="src\assets\VitalSynch_logo_v1 2.png"
+              /></q-avatar>
             </q-item-section>
 
             <q-item-section>
@@ -78,9 +80,12 @@
             <q-item-section> Appointment Center</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple 
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(2, '')"
-            :class="{ 'selected-item': selectedItem === 2 }">
+            :class="{ 'selected-item': selectedItem === 2 }"
+          >
             <q-item-section avatar>
               <q-icon name="notes" />
             </q-item-section>
@@ -88,9 +93,12 @@
             <q-item-section> Medical Records</q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple 
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(3, '')"
-            :class="{ 'selected-item': selectedItem === 3 }">
+            :class="{ 'selected-item': selectedItem === 3 }"
+          >
             <q-item-section avatar>
               <q-icon name="medication" />
             </q-item-section>
@@ -104,18 +112,24 @@
             <q-item-section> Information </q-item-section>
           </q-item>
 
-          <q-item clickable v-ripple
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(4, '')"
-            :class="{ 'selected-item': selectedItem === 4 }">
+            :class="{ 'selected-item': selectedItem === 4 }"
+          >
             <q-item-section avatar>
               <q-icon name="help" />
             </q-item-section>
 
             <q-item-section> Support </q-item-section>
           </q-item>
-          <q-item clickable v-ripple
+          <q-item
+            clickable
+            v-ripple
             @click="selectItem(5, '')"
-            :class="{ 'selected-item': selectedItem === 5 }">
+            :class="{ 'selected-item': selectedItem === 5 }"
+          >
             <q-item-section avatar>
               <q-icon name="settings" />
             </q-item-section>
@@ -182,6 +196,6 @@ export default {
 }
 .selected-item {
   background-color: #7cdae4;
-  color: #000000; 
+  color: #000000;
 }
 </style>
