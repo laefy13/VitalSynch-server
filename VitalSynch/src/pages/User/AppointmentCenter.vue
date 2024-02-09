@@ -69,8 +69,8 @@
                   </q-item>
                 </q-list>
               </q-menu>
-              <q-dialog v-model="bar" >
-                <q-card style="min-width: 300px; ">
+              <q-dialog v-model="bar">
+                <q-card style="min-width: 300px">
                   <q-bar class="q-pa-lg bg-white">
                     <div>Patient-type</div>
 
@@ -144,7 +144,9 @@
         </template>
         <template v-if="!rows.length" v-slot:bottom-row>
           <q-tr>
-            <q-td colspan="100%" class="text-center"> No Data Available </q-td>
+            <q-td colspan="100%" class="text-center">
+              No Appointment Request :>
+            </q-td>
           </q-tr>
         </template>
       </q-table>

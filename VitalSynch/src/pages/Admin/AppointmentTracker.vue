@@ -7,15 +7,6 @@
           Appointment Tracker
         </h5>
       </div>
-      <div class="flex justify-end col">
-        <q-btn
-          no-caps
-          class="q-ma-md text-black text-bold shadow-1"
-          color="primary"
-          @click="$router.push({ name: 'add-appointment' })"
-          >Book Consultation</q-btn
-        >
-      </div>
     </div>
     <div class="row">
       <div class="col-7 q-mr-xs">
@@ -23,10 +14,12 @@
           :rows="pendingAppointments"
           :columns="pending_columns"
           virtual-scroll
-          :filter="filter"
+          :filter="filterPending"
           title="Appointments"
           row-key="app_queue_num"
           class="q-mx-md"
+          clickable
+          @row-click="onRowClick"
         >
           <template v-slot:top>
             <q-toolbar class="bg-primary">
@@ -40,7 +33,7 @@
                 borderless
                 dense
                 debounce="300"
-                v-model="filter"
+                v-model="filterPending"
                 placeholder="Search"
               >
                 <template v-slot:append>
@@ -77,13 +70,67 @@
             </q-tr>
           </template>
         </q-table>
+        <q-dialog v-model="bar" v-if="bar == true">
+          <q-card style="min-width: 300px">
+            <q-bar class="q-pa-lg bg-white">
+              <div>Patient-type</div>
+
+              <q-space />
+              <q-btn dense flat icon="edit" v-close-popup> </q-btn>
+
+              <q-btn dense flat icon="close" v-close-popup>
+                <q-tooltip>Close</q-tooltip>
+              </q-btn>
+            </q-bar>
+            <q-separator></q-separator>
+            <q-card-section>
+              <div class="row">
+                <div class="col-2 text-primary">
+                  <q-icon name="sym_o_assignment_ind" size="2.4em" />
+                </div>
+                <div class="col block">
+                  <p class="q-mb-none text-bold">
+                    {{ selectedAppointment.app_full_name }}
+                  </p>
+                  <p>{{ selectedAppointment.app_patient_id }}</p>
+                </div>
+              </div>
+              <q-separator class="q-mb-md"></q-separator>
+              <div class="row">
+                <div class="col-2 block text-primary">
+                  <q-icon name="calendar_month" size="2.4em" />
+                  <br />
+                  <br />
+                  <q-icon name="sym_o_stethoscope" size="2.4em"></q-icon>
+                  <br />
+                  <br />
+                  <q-icon name="medical_services" size="2.4em"></q-icon>
+                </div>
+                <div class="col block">
+                  <p class="q-mb-none text-bold">
+                    {{ selectedAppointment.app_time }}
+                  </p>
+                  <p>{{ selectedAppointment.app_date }}</p>
+                  <p class="q-mb-none text-bold">
+                    {{ selectedAppointment.app_doctor_name }}
+                  </p>
+                  <p>{{ selectedAppointment.app_department }}</p>
+                  <p class="q-mb-none text-bold">
+                    {{ selectedAppointment.app_service }}
+                  </p>
+                  <p>{{ selectedAppointment.app_symptoms }}</p>
+                </div>
+              </div>
+            </q-card-section>
+          </q-card>
+        </q-dialog>
       </div>
       <div class="col">
         <q-table
           :rows="acceptedAppointments"
           :columns="accepted_columns"
           virtual-scroll
-          :filter="filter"
+          :filter="filterAccepted"
           title="Appointments"
           row-key="id"
           class="q-mx-md"
@@ -101,7 +148,7 @@
                 borderless
                 dense
                 debounce="300"
-                v-model="filter"
+                v-model="filterAccepted"
                 placeholder="Search"
               >
                 <template v-slot:append>
@@ -110,6 +157,7 @@
               </q-input>
             </q-toolbar>
           </template>
+
           <template v-slot:body-cell-action="props">
             <q-td :props="props">
               <div class="table-menu">
@@ -118,14 +166,11 @@
                   <q-list>
                     <q-item
                       clickable
-                      :to="{
-                        name: 'add-new-range',
-                        params: { id: props.row.id },
-                      }"
+                      @click="handleAppointment(props.row, 0)"
                       v-close-popup
                       class="menu-list"
                     >
-                      <q-item-section>Re-schedule</q-item-section>
+                      <q-item-section>Mark as pending</q-item-section>
                     </q-item>
                     <q-item clickable v-close-popup class="menu-list">
                       <q-item-section>Cancel</q-item-section>
@@ -147,9 +192,9 @@
           :rows="rejectedAppointments"
           :columns="accepted_columns"
           virtual-scroll
-          :filter="filter"
+          :filter="filterRejected"
           title="Appointments"
-          row-key="id"
+          row-key="app_queue_num"
           class="q-mx-md q-my-md"
           dense
         >
@@ -165,7 +210,7 @@
                 borderless
                 dense
                 debounce="300"
-                v-model="filter"
+                v-model="filterRejected"
                 placeholder="Search"
               >
                 <template v-slot:append>
@@ -180,16 +225,10 @@
                 <q-btn icon="more_vert" class="" flat round />
                 <q-menu class="menu-container">
                   <q-list>
-                    <q-item
-                      clickable
-                      :to="{
-                        name: 'add-new-range',
-                        params: { id: props.row.id },
-                      }"
-                      v-close-popup
-                      class="menu-list"
-                    >
-                      <q-item-section>Re-schedule</q-item-section>
+                    <q-item clickable v-close-popup class="menu-list">
+                      <q-item-section @click="handleAppointment(props.row, 0)"
+                        >Mark as Pending</q-item-section
+                      >
                     </q-item>
                     <q-item clickable v-close-popup class="menu-list">
                       <q-item-section>Cancel</q-item-section>

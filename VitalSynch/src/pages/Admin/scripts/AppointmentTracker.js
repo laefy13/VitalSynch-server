@@ -76,9 +76,22 @@ export default {
 
     const rows = ref([]);
 
-    //FOR ADMIN ACTION ACCPET OR REJECT
+    //view appointment details if row clicked
+    let bar = ref(false);
+    const selectedAppointment = ref([]);
+    const onRowClick = (evt, row, col) => {
+      if (col.name === "action") {
+        return;
+      } else {
+        bar.value = true;
+        console.log(bar);
+        selectedAppointment.value = row;
+        console.log("Appointment", row);
+      }
+    };
+
     const handleAppointment = async (row, flag) => {
-      //flag 1 accept, 2 reject
+      //flag 0 pending, 1 accept, 2 reject
       const payload = {
         app_queue_num: row.app_queue_num,
         app_full_name: row.app_full_name,
@@ -98,6 +111,7 @@ export default {
       };
       const response = await UpdateItem("updateApp_forms", payload);
       console.log(response);
+      getAppointment();
     };
 
     const getAppointment = async () => {
@@ -127,14 +141,18 @@ export default {
     return {
       pending_columns,
       rows,
-      filter: ref(""),
+      filterPending: ref(""),
+      filterAccepted: ref(""),
+      filterRejected: ref(""),
       acceptedAppointments,
       pendingAppointments,
       rejectedAppointments,
-
+      bar,
+      selectedAppointment,
       accepted_columns,
 
       handleAppointment,
+      onRowClick,
     };
   },
 };
