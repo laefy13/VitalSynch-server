@@ -1,5 +1,5 @@
 <template>
-  <div class="appointment q-py-xl">
+  <div class="appointment-tracker q-py-xl">
     <div class="row">
       <div class="flex justifty-start items-center q-mt- q-mb-lg gt-xs col">
         <q-btn @click="$router.go(-1)" round dense flat icon="arrow_back" />
@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-7 q-mr-xs">
+      <div class="col-7">
         <q-table
           :rows="pendingAppointments"
           :columns="pending_columns"
@@ -68,6 +68,16 @@
                 No Data Available
               </q-td>
             </q-tr>
+          </template>
+          <template v-slot:body-cell-service="props">
+            <q-td :props="props">
+              <q-badge
+                class="full-width"
+                :color="getServiceBadgeColor(props.row.app_service)"
+              >
+                {{ props.row.app_service }}
+              </q-badge>
+            </q-td>
           </template>
         </q-table>
         <q-dialog v-model="bar" v-if="bar == true">
@@ -133,7 +143,7 @@
           :filter="filterAccepted"
           title="Appointments"
           row-key="id"
-          class="q-mx-md"
+          class=""
           dense
         >
           <template v-slot:top>
@@ -156,6 +166,16 @@
                 </template>
               </q-input>
             </q-toolbar>
+          </template>
+          <template v-slot:body-cell-service="props">
+            <q-td :props="props">
+              <q-badge
+                class="full-width"
+                :color="getServiceBadgeColor(props.row.app_service)"
+              >
+                {{ props.row.app_service }}
+              </q-badge>
+            </q-td>
           </template>
 
           <template v-slot:body-cell-action="props">
@@ -195,7 +215,7 @@
           :filter="filterRejected"
           title="Appointments"
           row-key="app_queue_num"
-          class="q-mx-md q-my-md"
+          class="q-my-md"
           dense
         >
           <template v-slot:top>
@@ -218,6 +238,16 @@
                 </template>
               </q-input>
             </q-toolbar>
+          </template>
+          <template v-slot:body-cell-service="props">
+            <q-td :props="props">
+              <q-badge
+                class="full-width"
+                :color="getServiceBadgeColor(props.row.app_service)"
+              >
+                {{ props.row.app_service }}
+              </q-badge>
+            </q-td>
           </template>
           <template v-slot:body-cell-action="props">
             <q-td :props="props">
@@ -250,5 +280,5 @@
     </div>
   </div>
 </template>
-<style></style>
+<style src="./styles/AppointmentTracker.scss"></style>
 <script src="./scripts/AppointmentTracker.js"></script>

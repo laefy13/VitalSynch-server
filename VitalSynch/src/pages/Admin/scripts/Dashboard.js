@@ -80,7 +80,7 @@ export default {
         field: "action",
       },
     ];
-    const rows = ref([]);
+    const appointment = ref([]);
     const columns2 = [
       {
         name: "doctorPicture",
@@ -116,7 +116,7 @@ export default {
       const today = new Date().toISOString().split("T")[0]; // Get today's date in 'YYYY-MM-DD' format
 
       // Filter appointments that match today's date
-      appointments_today.value = rows.value.filter(
+      appointments_today.value = appointment.value.filter(
         (appointment) => appointment.app_date === today
       );
 
@@ -125,9 +125,9 @@ export default {
 
     const getAppointment = async () => {
       const response = await FetchItems("app_forms");
-      rows.value = response.data;
+      appointment.value = response.data;
       filter_appointments();
-      console.log("rows", rows);
+      console.log("appointment", appointment);
     };
     const getDoctors = async () => {
       let response = await FetchItems("doctor_profs");
@@ -144,7 +144,7 @@ export default {
       series,
       chartOptions,
       columns,
-      rows,
+      appointment,
       columns2,
       rows2,
       appointments_today,

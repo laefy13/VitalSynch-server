@@ -92,8 +92,8 @@
           </q-card>
         </div>
       </div>
-      <div class="col">
-        <h6 class="q-ma-none">Patient Load Per Department</h6>
+      <div class="col text-center">
+        <h6 class="q-ma-none">Appointment Load Per Department</h6>
         <apexchart
           type="bar"
           height="250"

@@ -76,6 +76,19 @@ export default {
 
     const rows = ref([]);
 
+    //COLOR PER SERVICE
+    const getServiceBadgeColor = (service) => {
+      const colorMap = {
+        Consultation: "teal-5",
+        "Follow-up": "blue-5",
+        "Check-up": "orange-5",
+        Treatment: "pink-5",
+        "Lab Test": "purple-5",
+      };
+
+      return colorMap[service] || "primary";
+    };
+
     //view appointment details if row clicked
     let bar = ref(false);
     const selectedAppointment = ref([]);
@@ -153,6 +166,7 @@ export default {
 
       handleAppointment,
       onRowClick,
+      getServiceBadgeColor,
     };
   },
 };
