@@ -1,15 +1,9 @@
-import { FetchItems } from "src/pages/composables";
-import { ref, onMounted } from "vue";
+import { FetchItems, UpdateItem } from "src/pages/composables";
+import { ref, onMounted, computed } from "vue";
 
 export default {
   setup() {
-    const columns = [
-      {
-        name: "patientId",
-        label: "Patient ID",
-        align: "left",
-        field: "app_patient_id",
-      },
+    const pending_columns = [
       {
         name: "patientName",
         label: "Patient Name",
@@ -23,10 +17,10 @@ export default {
         field: "app_department",
       },
       {
-        name: "status",
-        label: "Status",
+        name: "service",
+        label: "Service",
         align: "left",
-        field: "app_is_accepted",
+        field: "app_service",
       },
       {
         name: "appointment",
@@ -38,7 +32,39 @@ export default {
         name: "doctorAssigned",
         label: "Doctor Assigned",
         align: "left",
-        field: "app_doctor_id",
+        field: "app_doctor_name",
+      },
+      {
+        name: "action",
+        label: "Actions",
+        align: "left",
+        field: "action",
+      },
+    ];
+    const accepted_columns = [
+      {
+        name: "patientName",
+        label: "Patient Name",
+        align: "left",
+        field: "app_full_name",
+      },
+      {
+        name: "service",
+        label: "Service",
+        align: "left",
+        field: "app_service",
+      },
+      {
+        name: "appointment",
+        label: "Appointment",
+        align: "left",
+        field: "app_date",
+      },
+      {
+        name: "doctorAssigned",
+        label: "Doctor Assigned",
+        align: "left",
+        field: "app_doctor_name",
       },
       {
         name: "action",
@@ -48,10 +74,31 @@ export default {
       },
     ];
 
-    // Example usage:
-    console.log(columns);
-
     const rows = ref([]);
+
+    //FOR ADMIN ACTION ACCPET OR REJECT
+    const handleAppointment = async (row, flag) => {
+      //flag 1 accept, 2 reject
+      const payload = {
+        app_queue_num: row.app_queue_num,
+        app_full_name: row.app_full_name,
+        app_department: row.app_department,
+        app_service: row.app_service,
+        app_doctor_name: row.app_doctor_name,
+        app_date: row.app_date,
+        app_time: row.app_time,
+        app_birth_date: row.app_birth_date,
+        app_address: row.app_address,
+        app_contact_num: row.app_contact_num,
+        app_sex: row.app_sex,
+        app_symptoms: row.app_symptoms,
+        app_is_accepted: flag,
+        app_reason: row.app_reason,
+        app_patient: row.app_patient,
+      };
+      const response = await UpdateItem("updateApp_forms", payload);
+      console.log(response);
+    };
 
     const getAppointment = async () => {
       const response = await FetchItems("app_forms");
@@ -60,16 +107,34 @@ export default {
       console.log("rows", rows);
     };
 
-    // Use dummy data for testing
-    // Comment out this block when you have the actual API to fetch data from
+    //categorize
+    const acceptedAppointments = computed(() => {
+      return rows.value.filter((row) => row.app_is_accepted === 1);
+    });
+
+    const pendingAppointments = computed(() => {
+      return rows.value.filter((row) => row.app_is_accepted === 0);
+    });
+
+    const rejectedAppointments = computed(() => {
+      return rows.value.filter((row) => row.app_is_accepted === 2);
+    });
+
     onMounted(async () => {
-      getAppointment();
+      await getAppointment();
     });
 
     return {
-      columns,
+      pending_columns,
       rows,
       filter: ref(""),
+      acceptedAppointments,
+      pendingAppointments,
+      rejectedAppointments,
+
+      accepted_columns,
+
+      handleAppointment,
     };
   },
 };
