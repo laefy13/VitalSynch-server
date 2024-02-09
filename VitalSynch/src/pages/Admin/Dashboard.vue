@@ -93,7 +93,7 @@
         </div>
       </div>
       <div class="col">
-        <h6 class="q-ma-none">Covid Monthly Report</h6>
+        <h6 class="q-ma-none">Patient Load Per Department</h6>
         <apexchart
           type="bar"
           height="250"
@@ -105,10 +105,10 @@
     <div class="row">
       <div class="col-7 q-mr-lg">
         <q-card class="q-pa-lg row tutorial bg-cyan text-white">
-          <div class="col text-center">
+          <div class="text-center">
             <img src="src\assets\tutorial-logo.png" />
           </div>
-          <div class="col-7">
+          <div class="col">
             <h6 class="q-my-none">Want to explore our features?</h6>
             <p>
               Access our tutorial for a seamless experience with VitalSynch.
@@ -184,10 +184,8 @@
             </template>
             <template v-slot:body-cell-doctorPicture="props">
               <q-td :props="props">
-                <q-avatar color="red-2">
-                  <img
-                    src="https://avatars3.githubusercontent.com/u/34883558?s=400&u=09455019882ac53dc69b23df570629fd84d37dd1&v=4"
-                  />
+                <q-avatar color="white">
+                  <img :src="props.row.doctor_signature" />
                 </q-avatar>
               </q-td>
             </template>

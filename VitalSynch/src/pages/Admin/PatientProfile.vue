@@ -13,7 +13,7 @@
             <div class="col-2">
               <q-avatar size="70px" class="shadow-10">
                 <img
-                  src="https://avatars3.githubusercontent.com/u/34883558?s=400&u=09455019882ac53dc69b23df570629fd84d37dd1&v=4"
+                  src="https://img.freepik.com/free-photo/smiling-asian-doctor-female-nurse-holding-clipboard-pen-wearing-uniform-with-gloves-writing-pati_1258-83340.jpg?w=996&t=st=1707486850~exp=1707487450~hmac=424bffe5e947b91c3e0726b2005c65d074fcbbfdc202bf6433c59834ce20d70d"
                 />
               </q-avatar>
             </div>

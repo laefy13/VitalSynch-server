@@ -28,11 +28,11 @@ export default {
       },
       xaxis: {
         categories: [
-          "South Korea",
-          "Canada",
-          "United Kingdom",
-          "Netherlands",
-          "Italy",
+          "Cardiology",
+          "Orthopedics",
+          "Radiology",
+          "Emergency Medicine",
+          "Neurology",
         ],
       },
     });
@@ -96,17 +96,7 @@ export default {
         required: true,
         label: "Doctor Name",
         align: "left",
-        field: "doctor_first_name",
-        format: (val) => `${val}`,
-        sortable: true,
-      },
-      {
-        name: "status",
-        required: true,
-        label: "Status",
-        align: "left",
-        field: "status",
-        format: (val) => `${val}`,
+        field: (row) => `${row.doctor_first_name} ${row.doctor_surname}`,
         sortable: true,
       },
       {

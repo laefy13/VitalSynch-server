@@ -138,7 +138,13 @@
                     outlined
                     class="q-ma-none input-field"
                     v-model="service"
-                    :options="['Consultation', 'Folow-up Check-up', 'Lab Test']"
+                    :options="[
+                      'Consultation',
+                      'Folow-up',
+                      'Check-up',
+                      'Treatment',
+                      'Lab Test',
+                    ]"
                     label="Select Service"
                     :rules="[(val) => !!val || 'Service is required']"
                   ></q-select>
@@ -159,7 +165,7 @@
                       'Cardiology',
                       'Orthopedics',
                       'Radiology',
-                      'Emergency Medicine',
+                      'General Medicine',
                       'Neurology',
                       // Add more departments as needed
                     ]"
