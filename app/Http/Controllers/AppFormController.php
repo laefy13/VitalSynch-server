@@ -14,12 +14,12 @@ class AppFormController extends Controller
         return response()->json($app_form);
     }
 
-    // public function single_patient($id){
-    //     $row = DB::select('SELECT * 
-    //                             FROM tbl_app_form
-    //                             WHERE app_patient_id = ?',[$id]);
-    //     return response()->json($row);
-    // }
+    public function single_patient($id){
+        $row = DB::select('SELECT * 
+                                FROM tbl_app_form
+                                WHERE app_patient_id = ?',[$id]);
+        return response()->json($row);
+    }
     // public function single_doctor($id){
     //     $row = DB::select('SELECT * 
     //                             FROM tbl_app_form
