@@ -69,14 +69,18 @@ const httpAuthPost = (resource, payload, callback) => {
   ChainCallback(axios.post(resource, payload, axiosConfig), callback);
 };
 const httpPut = (resource, payload, callback) => {
-  axiosConfig.headers.Authorization = ""; // Remove Authorization header
+  (axiosConfig.headers.Authorization = `Bearer ${
+    LocalStorage.getItem("access_token") || ""
+  }`), // Remove Authorization header
   ChainCallback(axios.put(resource, payload, axiosConfig), callback);
 };
 
 const httpDel = (resource, payload, callback) => {
   let newConfig = Object.assign({}, axiosConfig);
   newConfig.data = payload;
-  newConfig.headers.Authorization = ""; // Remove Authorization header
+  (axiosConfig.headers.Authorization = `Bearer ${
+    LocalStorage.getItem("access_token") || ""
+  }`), // Remove Authorization header
   ChainCallback(axios.delete(resource, newConfig), callback);
 };
 
