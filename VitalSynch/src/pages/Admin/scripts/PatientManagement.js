@@ -35,6 +35,12 @@ export default {
         field: "ptnt_contact_number",
       },
       {
+        name: "contactNumber",
+        label: "Contact Number",
+        align: "left",
+        field: "ptnt_contact_number",
+      },
+      {
         name: "action",
         label: "Action",
         align: "left",

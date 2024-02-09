@@ -19,7 +19,7 @@
             </div>
             <div class="col q-ml-md">
               <h6 class="text-bolder q-ma-none">
-                {{ patient.ptnt_extn_name }}
+                {{ patient.ptnt_first_name }}
                 {{ patient.ptnt_surname }}
               </h6>
               <p class="text-grey">{{ patient.ptnt_id }}</p>

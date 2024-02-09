@@ -39,7 +39,7 @@ export default {
         name: "doctorAssigned",
         label: "Doctor Assigned",
         align: "left",
-        field: "app_doctor_id",
+        field: "app_doctor_name",
       },
       {
         name: "action",
@@ -104,10 +104,13 @@ export default {
     };
 
     const getAppointment = async () => {
-      const response = await FetchItems("app_forms");
+      const response = await FetchItem(
+        "app_form",
+        localStorage.getItem("user_id")
+      );
       rows.value = response.data;
       filter_appointments();
-      console.log("rows", rows);
+      console.log("rows", rows.value);
     };
     const getDoctors = async () => {
       let response = await FetchItems("doctor_profs");
@@ -124,7 +127,7 @@ export default {
       console.log("patient", patient);
     };
     onMounted(async () => {
-      //getAppointment();
+      getAppointment();
       getPatientProfile();
     });
     // Use dummy data for testing
