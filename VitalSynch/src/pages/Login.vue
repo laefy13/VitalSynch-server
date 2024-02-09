@@ -187,11 +187,6 @@ export default {
             router.push({ name: "admin-dashboard" });
           } else if (accountType == "ptnt") {
             console.log(accountType);
-            router.push({ name: "add-appointment" });
-          }
-
-          if (accountType == "ptnt") {
-            console.log(accountType);
             router.push({ name: "patient-dashboard" });
           }
         },
