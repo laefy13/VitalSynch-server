@@ -22,6 +22,7 @@ class GuardianProfileFactory extends Factory
     public function definition()
     {
         return [
+            'grdn_id' => 'GRDN'.Str::random(10),
             'grdn_surname' => $this->faker->lastName,
             'grdn_first_name' => $this->faker->firstName,
             'grdn_mid_name' => $this->faker->firstName,
