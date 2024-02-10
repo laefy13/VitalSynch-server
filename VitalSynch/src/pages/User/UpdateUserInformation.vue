@@ -26,7 +26,7 @@
               :rules="[
                 (val) => !!val || 'First Name is required',
                 (val) =>
-                  /^[a-zA-Z]+$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in First Name',
               ]"
             />
@@ -39,7 +39,7 @@
               :rules="[
                 (val) => !!val || 'Surname is required',
                 (val) =>
-                  /^[a-zA-Z]+$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in Surname',
               ]"
             />
@@ -51,7 +51,7 @@
               outlined
               :rules="[
                 (val) =>
-                  /^[a-zA-Z]*$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in Middle Name',
               ]"
             />
@@ -63,7 +63,7 @@
               outlined
               :rules="[
                 (val) =>
-                  /^[a-zA-Z]*$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in Extension Name',
               ]"
             />
@@ -174,7 +174,7 @@
               :rules="[
                 (val) => !!val || 'First Name is required',
                 (val) =>
-                  /^[a-zA-Z]+$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in First Name',
               ]"
             />
@@ -187,7 +187,7 @@
               :rules="[
                 (val) => !!val || 'Surname is required',
                 (val) =>
-                  /^[a-zA-Z]+$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in Surname',
               ]"
             />
@@ -199,7 +199,7 @@
               outlined
               :rules="[
                 (val) =>
-                  /^[a-zA-Z]*$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in Middle Name',
               ]"
             />
@@ -211,7 +211,7 @@
               outlined
               :rules="[
                 (val) =>
-                  /^[a-zA-Z]*$/.test(val) ||
+                  /^[a-zA-Z\s]+$/.test(val) ||
                   'Only letters are allowed in Extension Name',
               ]"
             />
