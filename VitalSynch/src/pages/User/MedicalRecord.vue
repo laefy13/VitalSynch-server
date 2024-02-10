@@ -22,7 +22,7 @@
             borderless
             dense
             debounce="300"
-            v-model="filter1"
+            v-model="filter"
             placeholder="Search"
           >
             <template v-slot:append>
