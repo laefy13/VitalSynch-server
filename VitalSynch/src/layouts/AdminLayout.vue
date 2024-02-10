@@ -19,7 +19,11 @@
     >
       <div class="fit" :horizontal-thumb-style="{ opacity: 0 }">
         <q-list padding>
-          <q-item clickable v-ripple>
+          <q-item
+            clickable
+            v-ripple
+            @click="$router.push({ name: 'admin-dashboard' })"
+          >
             <q-item-section avatar>
               <q-avatar class="q-my-md"
                 ><img src="src\assets\VitalSynch_logo_v1 2.png"
@@ -170,7 +174,21 @@
               </q-input>
             </div>
             <div class="col flex justify-end">
-              <q-icon name="notifications" size="32px"></q-icon>
+              <q-select
+                dense
+                borderless
+                :options="[{ label: 'Log Out', value: 'logout' }]"
+              >
+                <q-avatar
+                  clickable
+                  icon="account_circle"
+                  size="40px"
+                  class="cursor-pointer shadow-4 q-pa-none"
+                  font-size="40px"
+                  round
+                  v-ripple
+                ></q-avatar>
+              </q-select>
             </div>
           </div>
         </div>
