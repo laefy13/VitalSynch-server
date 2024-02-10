@@ -43,8 +43,8 @@ return new class extends Migration
             'ptnt_allergies' => json_encode(['Default_Allergy']),
             'ptnt_sex' => 'Male',
             'ptnt_birth_date' => now(),
-            'ptnt_blood_group' => null,
-            'ptnt_marital_status' => null,
+            'ptnt_blood_group' => 'B',
+            'ptnt_marital_status' => 'Single',
             'ptnt_contact_number' => '1234567890',
             'ptnt_address' => 'Default_Address',
         ]);
