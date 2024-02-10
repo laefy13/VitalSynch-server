@@ -59,7 +59,7 @@ const AddItem = (path, data) => {
         console.log(response.data);
       },
       catch: (error) => {
-        console.error("Login Error:", error);
+        console.error("", error);
       },
     });
   });

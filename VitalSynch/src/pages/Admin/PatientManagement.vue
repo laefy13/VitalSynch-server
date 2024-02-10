@@ -45,7 +45,12 @@
                 >
                   <q-item-section>View Profile</q-item-section>
                 </q-item>
-                <q-item clickable v-close-popup class="menu-list">
+                <q-item
+                  clickable
+                  v-close-popup
+                  class="menu-list"
+                  @click="handleAddMedicalRecord(props.row)"
+                >
                   <q-item-section>Add Medical Record</q-item-section>
                 </q-item>
               </q-list>
@@ -59,6 +64,80 @@
         </q-tr>
       </template>
     </q-table>
+    <q-dialog v-model="bar">
+      <q-card class="fit-content q-pa-lg">
+        <q-bar class="bg-white">
+          <div>Add Medical Record</div>
+          <q-space></q-space>
+
+          <q-btn dense flat icon="close" @click="bar = false">
+            <q-tooltip>Close</q-tooltip>
+          </q-btn>
+        </q-bar>
+        <q-separator></q-separator>
+        <h6 class="q-ma-none q-mt-md">Medical Form</h6>
+        <form @submit.prevent="submitMedicalRecord">
+          <div class="form-group">
+            <label for="height">Height (cm):</label>
+            <input
+              type="number"
+              v-model="medicalRecord.medhis_height"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="weight">Weight (kg):</label>
+            <input
+              type="number"
+              v-model="medicalRecord.medhis_weight"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="bloodPressure">Blood Pressure:</label>
+            <input
+              type="text"
+              v-model="medicalRecord.medhis_blood_pressure"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="glucose">Glucose Level:</label>
+            <input
+              type="number"
+              v-model="medicalRecord.medhis_glucose"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="illness">Illness:</label>
+            <textarea
+              v-model="medicalRecord.medhis_illness"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 <script src="./scripts/PatientManagement.js"></script>
+<style scoped>
+.form-group {
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+</style>

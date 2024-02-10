@@ -5,9 +5,11 @@ import {
   UpdateProf,
 } from "src/pages/composables/index.js";
 import { ref, onMounted } from "vue";
+import { useQuasar } from "quasar";
 
 export default {
   setup() {
+    const $q = useQuasar();
     // User Form
     const userForm = ref({});
 
@@ -27,12 +29,17 @@ export default {
     const submitUserForm = async () => {
       console.log("User Form Data:", userForm);
       try {
-        const response = await UpdateProf(
-          "updatePtnt_prof",
-          userForm.value
-        );
+        const response = await UpdateProf("updatePtnt_prof", userForm.value);
+        $q.notify({
+          type: "positive",
+          message: "Updated User Profile Successfully!",
+        });
       } catch (error) {
         console.error("Error updating patient profile:", error);
+        $q.notify({
+          type: "negative",
+          message: "Updated User Profile unsuccessful.",
+        });
       }
     };
 

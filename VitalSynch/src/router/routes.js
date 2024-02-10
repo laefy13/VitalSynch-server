@@ -56,6 +56,15 @@ const routes = [
           role: "doctor",
         },
       },
+      {
+        path: "medical-record",
+        name: "medical-record",
+        component: () => import("pages/Admin/MedicalRecord.vue"),
+        meta: {
+          requiresAuth: true,
+          role: "doctor",
+        },
+      },
     ],
   },
   // Patient Routes

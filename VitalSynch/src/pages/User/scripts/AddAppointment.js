@@ -2,9 +2,11 @@ import { ref, onMounted } from "vue";
 import { httpPost, httpGet } from "boot/axios";
 import { FetchItem } from "src/pages/composables";
 import { useRouter } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   setup() {
+    const $q = useQuasar();
     const nameOfPatient = ref(""); //
     const address = ref(""); //
     const contactNumber = ref(""); //
@@ -87,9 +89,17 @@ export default {
       httpPost("/app_form", payload, {
         success: (response) => {
           console.log(response.data);
+          $q.notify({
+            type: "positive",
+            message: "Appointment Application Submitted Successfully!",
+          });
         },
         catch: (error) => {
           console.error("Login Error:", error);
+          $q.notify({
+            type: "negative",
+            message: "Appointment Application Unsuccessful.",
+          });
         },
       });
     };

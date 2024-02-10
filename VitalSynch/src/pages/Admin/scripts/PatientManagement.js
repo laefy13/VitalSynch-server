@@ -1,8 +1,10 @@
-import { FetchItems } from "src/pages/composables";
+import { FetchItems, AddItem } from "src/pages/composables";
 import { ref, onMounted } from "vue";
+import { useQuasar } from "quasar";
 
 export default {
   setup() {
+    const $q = useQuasar();
     const columns = [
       {
         name: "patientID",
@@ -47,7 +49,47 @@ export default {
         field: "action",
       },
     ];
-
+    const bar = ref(false);
+    const medicalRecord = ref({
+      medhis_height: null,
+      medhis_weight: null,
+      medhis_blood_pressure: null,
+      medhis_glucose: null,
+      medhis_illness: null,
+    });
+    const submitMedicalRecord = async () => {
+      const payload = {
+        medhis_ptnt_id: selectedPatient.value.ptnt_id,
+        medhis_record_date: new Date().toISOString().split("T")[0], // Today's date
+        medhis_record_time: new Date().toLocaleTimeString(), // Current time
+        medhis_height: medicalRecord.value.medhis_height,
+        medhis_weight: medicalRecord.value.medhis_weight,
+        medhis_blood_pressure: medicalRecord.value.medhis_blood_pressure,
+        medhis_glucose: medicalRecord.value.medhis_glucose,
+        medhis_illness: medicalRecord.value.medhis_illness,
+      };
+      try {
+        const response = await AddItem("med_his", payload);
+        console.log("Added medical record", response.data);
+        $q.notify({
+          type: "positive",
+          message: "Added Medical Record Successfully!",
+        });
+      } catch (error) {
+        console.error("API Error:", error);
+        $q.notify({
+          type: "negative",
+          message: "Adding Medical Record Unsuccesful.",
+        });
+      }
+    };
+    const selectedPatient = ref();
+    const handleAddMedicalRecord = (row) => {
+      bar.value = true;
+      console.log(bar);
+      selectedPatient.value = row;
+      console.log("Appointment", row);
+    };
     const rows = ref([]);
 
     const getPatients = async () => {
@@ -57,8 +99,6 @@ export default {
       console.log("rows", rows);
     };
 
-    // Use dummy data for testing
-    // Comment out this block when you have the actual API to fetch data from
     onMounted(async () => {
       getPatients();
     });
@@ -67,6 +107,10 @@ export default {
       columns,
       rows,
       filter: ref(""),
+      bar,
+      medicalRecord,
+      submitMedicalRecord,
+      handleAddMedicalRecord,
     };
   },
 };

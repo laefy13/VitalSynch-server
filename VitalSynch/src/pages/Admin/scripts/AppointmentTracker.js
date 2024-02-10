@@ -1,8 +1,10 @@
 import { FetchItems, UpdateItem } from "src/pages/composables";
 import { ref, onMounted, computed } from "vue";
+import { useQuasar } from "quasar";
 
 export default {
   setup() {
+    const $q = useQuasar();
     const pending_columns = [
       {
         name: "patientName",
@@ -124,9 +126,35 @@ export default {
         app_reason: row.app_reason,
         app_patient: row.app_patient,
       };
-      const response = await UpdateItem("updateApp_forms", payload);
-      console.log(response);
-      getAppointment();
+      try {
+        const response = await UpdateItem("updateApp_forms", payload);
+        console.log(response);
+        if (flag === 1) {
+          $q.notify({
+            type: "positive",
+            message: "Accepted Appointment Successfully!",
+          });
+        }
+        if (flag === 0) {
+          $q.notify({
+            type: "positive",
+            message: "Marked Appointment As Pending Successfully!",
+          });
+        }
+        if (flag === 2) {
+          $q.notify({
+            type: "positive",
+            message: "Rejected Appointment Successfully!",
+          });
+        }
+        if (flag === 3) {
+          $q.notify({
+            type: "positive",
+            message: "Marked Appointment DoneSuccessfully!",
+          });
+        }
+        getAppointment();
+      } catch {}
     };
 
     const getAppointment = async () => {
