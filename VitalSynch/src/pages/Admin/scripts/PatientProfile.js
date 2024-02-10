@@ -157,8 +157,8 @@ export default {
     function labRepUploadUrl() {
       return `https://vitalsynch-924e9f1085c2.herokuapp.com/api/lab_repUpload/${id}`;
     }
-    function labRepUploadUrl() {
-      return `https://vitalsynch-924e9f1085c2.herokuapp.com/api/lab_repUpload/${id}`;
+    function prescriptionUploadUrl() {
+      return `https://vitalsynch-924e9f1085c2.herokuapp.com/api/prescriptionUpload/${id}`;
     }
     // Use dummy data for testing
     // Comment out this block when you have the actual API to fetch data from
@@ -184,7 +184,9 @@ export default {
       handlePrescriptionUpload,
       uploadFiles,
       id,
-      labRepUploadUrl
+      labRepUploadUrl,
+
+      prescriptionUploadUrl
     };
   },
 };

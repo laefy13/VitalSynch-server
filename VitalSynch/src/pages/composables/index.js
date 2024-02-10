@@ -1,6 +1,6 @@
 import { httpGet, httpPost, httpPut } from "src/boot/axios";
-// const API_URL = "http://127.0.0.1:8000/api";
-const API_URL = "https://vitalsynch-924e9f1085c2.herokuapp.com/api";
+const API_URL = "http://127.0.0.1:8000/api";
+// const API_URL = "https://vitalsynch-924e9f1085c2.herokuapp.com/api";
 
 const FetchItem = (path, id) => {
   return new Promise((resolve, reject) => {
