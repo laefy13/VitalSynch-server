@@ -83,7 +83,7 @@
           <q-item
             clickable
             v-ripple
-            @click="selectItem(2, '')"
+            @click="selectItem(2, 'medical-record')"
             :class="{ 'selected-item': selectedItem === 2 }"
           >
             <q-item-section avatar>
