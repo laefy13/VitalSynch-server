@@ -90,7 +90,7 @@ export default {
     const medicalHistoryRecords = ref([]);
     const fetchMedicalHistoryRecords = async () => {
       try {
-        const response = await FetchItems("med_his");
+        const response = await FetchItem("med_his", route.params.id);
         medicalHistoryRecords.value = response.data;
       } catch (error) {
         console.error("API Error:", error);
