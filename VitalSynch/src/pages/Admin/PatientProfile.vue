@@ -50,7 +50,7 @@
             style="max-width: 300px"
             class="my-card"
             :filter="checkFileSize"
-            :fieldName="(file) =>`image${file.name}`"
+            :fieldName="(file) => `image${file.name}`"
             multiple
             batch
             :url="labRepUploadUrl"
@@ -63,11 +63,11 @@
             style="max-width: 300px"
             class="my-card"
             :filter="checkFileSize"
-            :fieldName="(file) =>`image${file.name}`"
+            :fieldName="(file) => `image${file.name}`"
             multiple
             batch
             :url="prescriptionUploadUrl"
-            label="Select Course Image to Upload"d"
+            label="Select Course Image to Upload"
           />
         </q-card>
       </div>
