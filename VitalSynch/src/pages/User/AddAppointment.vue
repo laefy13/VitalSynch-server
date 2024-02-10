@@ -39,7 +39,7 @@
                     :rules="[
                       (val) => !!val || 'Name of Patient is required',
                       (val) =>
-                        /^[a-zA-Z\s]+$/.test(val) ||
+                       /^[a-zA-Z\s]+$/.test(val) ||
                         'Invalid characters in Name of Patient',
                     ]"
                   ></q-input>
