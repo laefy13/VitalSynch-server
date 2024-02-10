@@ -3,8 +3,8 @@ import { LocalStorage } from "quasar";
 import axios from "axios";
 
 let axiosConfig = {
-  // baseURL: "https://vitalsynch-924e9f1085c2.herokuapp.com/api",
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: "https://vitalsynch-924e9f1085c2.herokuapp.com/api",
+  //baseURL: "http://127.0.0.1:8000/api",
   withCredentials: false,
   headers: {
     "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const httpPut = (resource, payload, callback) => {
   (axiosConfig.headers.Authorization = `Bearer ${
     LocalStorage.getItem("access_token") || ""
   }`), // Remove Authorization header
-  ChainCallback(axios.put(resource, payload, axiosConfig), callback);
+    ChainCallback(axios.put(resource, payload, axiosConfig), callback);
 };
 
 const httpDel = (resource, payload, callback) => {
@@ -81,7 +81,7 @@ const httpDel = (resource, payload, callback) => {
   (axiosConfig.headers.Authorization = `Bearer ${
     LocalStorage.getItem("access_token") || ""
   }`), // Remove Authorization header
-  ChainCallback(axios.delete(resource, newConfig), callback);
+    ChainCallback(axios.delete(resource, newConfig), callback);
 };
 
 const httpFileUpload = (resource, payload, callback) => {

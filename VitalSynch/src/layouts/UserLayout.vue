@@ -159,8 +159,11 @@
             <div class="col flex justify-end">
               <q-select
                 dense
+                hide-selected
                 borderless
                 :options="[{ label: 'Log Out', value: 'logout' }]"
+                v-model="selectedLogout"
+                @update:model-value="handleLogout"
               >
                 <q-avatar
                   clickable
@@ -190,12 +193,21 @@ export default {
       drawer: false,
       miniState: true,
       selectedItem: 0,
+      selectedLogout: null,
     };
   },
   methods: {
     selectItem(index, routeName) {
       this.selectedItem = index;
       this.$router.push({ name: routeName });
+    },
+
+    handleLogout() {
+      // Check if the "Log Out" option is selected
+      if (this.selectedLogout.value === "logout") {
+        this.$router.push("/login");
+        localStorage.clear();
+      }
     },
   },
 };
