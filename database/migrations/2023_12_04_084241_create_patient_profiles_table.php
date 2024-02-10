@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tbl_patient_profile', function (Blueprint $table) {
             $table->increments('ptnt_key');
             $table->string('ptnt_id')->unique();
-            $table->integer('ptnt_grdn_id')->nullable();
+            $table->string('ptnt_grdn_id')->nullable();
             $table->string('ptnt_email')->unique();
             $table->string('ptnt_password');
             $table->string('ptnt_surname');

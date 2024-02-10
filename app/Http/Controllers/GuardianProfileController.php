@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GuardianProfile;
 use Illuminate\Support\Facades\DB;
+use App\Models\PatientProfile;
 
 class GuardianProfileController extends Controller
 {
@@ -41,7 +42,8 @@ class GuardianProfileController extends Controller
         $grdn_prof->grdn_contact_number = $request->grdn_contact_number;
         $grdn_prof->grdn_address = $request->grdn_address;
 
-
+        PatientProfile::where('ptnt_id', $request->ptnt_id)
+        ->update(['ptnt_grdn_id' => $request->grdn_id]);
         $grdn_prof->save();
         return response()->json([
             "message" => "Guardian Profile added"
