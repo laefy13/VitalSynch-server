@@ -102,9 +102,9 @@ class PatientProfileController extends Controller
             $decodedAllergies = json_decode($allergies);
 
             if ($decodedAllergies !== null || json_last_error() === JSON_ERROR_NONE) {
-                $pat_prof->ptnt_allergies = $allergies;
+                $pat_prof['ptnt_allergies'] = $allergies;
             } else {
-                $pat_prof->ptnt_allergies = json_encode($allergies);
+                $pat_prof['ptnt_allergies'] = json_encode($allergies);
             }
         }
 
