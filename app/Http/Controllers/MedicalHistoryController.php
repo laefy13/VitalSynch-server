@@ -19,7 +19,7 @@ class MedicalHistoryController extends Controller
     public function single($id){
         $row = DB::select('SELECT * 
                                 FROM tbl_med_history
-                                WHERE medhis_id = ?',[$id]);
+                                WHERE medhis_ptnt_id = ?',[$id]);
         return response()->json($row);
     }
 
