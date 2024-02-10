@@ -47,25 +47,26 @@
         <q-card class="card-size-s q-my-md q-pa-lg row">
           <h6 class="text-bolder q-ma-none col">Lab Results</h6>
           <q-uploader
-            style="max-width: 300px"
-            url="http://localhost:4444/upload"
-            label="Upload Lab Result"
-            multiple
-            class="col"
-            :filter="checkFileSize"
-            @rejected="onRejected"
+            class="my-card"
+        accept="image/*"
+        :fieldName="(file) =>`image${file.name}`"
+        multiple
+        batch
+        :url="labRepUploadUrl"
+        label="Select Course Image to Upload"
           />
         </q-card>
         <q-card class="card-size-s q-my-md q-pa-lg row">
           <h6 class="text-bolder q-ma-none col">Prescription Documents</h6>
           <q-uploader
             style="max-width: 300px"
-            url="http://localhost:4444/upload"
+            url="http://127.0.0.1:8000/api/lab_repUpload"
             label="Upload Prescription"
             multiple
             class="col"
             :filter="checkFileSize"
             @rejected="onRejected"
+            @before-upload="beforeLabResultUpload"
           />
         </q-card>
       </div>

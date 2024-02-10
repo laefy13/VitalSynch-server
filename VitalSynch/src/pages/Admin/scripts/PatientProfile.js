@@ -2,13 +2,14 @@ import { FetchItems, FetchItem } from "src/pages/composables";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useQuasar } from "quasar";
+import { httpPost,httpPut, httpGet } from "boot/axios";
 
 export default {
   setup() {
     const $q = useQuasar();
 
     function checkFileSize(files) {
-      return files.filter((file) => file.size < 4048);
+      return files.filter((file) => file.size < 400048);
     }
 
     function onRejected(rejectedEntries) {
@@ -16,6 +17,30 @@ export default {
         type: "negative",
         message: `${rejectedEntries.length} file(s) did not pass validation constraints`,
       });
+    }
+    function uploadFiles(file){ 
+      cconsole.log(file);
+      // })
+   }
+    function beforeLabResultUpload(file) {
+      const formData = new FormData();
+
+      // Append the binary file data with a key 'file'
+      formData.append('file', file);
+  
+      // Append additional data as fields in the FormData
+      formData.append('lf_url', 'image');
+      formData.append('lf_ptnt_id', '1');
+  
+      // Set the FormData as the data for the file
+      file.data = formData;
+  
+      return true; // Proceed with the upload
+    }
+    function handlePrescriptionUpload(files) {
+      // Assuming each file object has a `name` property
+      const uploadedPrescriptionDocs = files.map(file => file.name);
+      console.log(uploadedPrescriptionDocs);
     }
     const columns = [
       {
@@ -129,6 +154,12 @@ export default {
       console.log("patient", patient);
     };
 
+    function labRepUploadUrl() {
+      return `https://vitalsynch-924e9f1085c2.herokuapp.com/api/lab_repUpload/${id}`;
+    }
+    function labRepUploadUrl() {
+      return `https://vitalsynch-924e9f1085c2.herokuapp.com/api/lab_repUpload/${id}`;
+    }
     // Use dummy data for testing
     // Comment out this block when you have the actual API to fetch data from
     onMounted(async () => {
@@ -149,6 +180,11 @@ export default {
       fetchMedicalHistoryRecords,
       checkFileSize,
       onRejected,
+      beforeLabResultUpload,
+      handlePrescriptionUpload,
+      uploadFiles,
+      id,
+      labRepUploadUrl
     };
   },
 };

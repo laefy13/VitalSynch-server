@@ -1,5 +1,5 @@
 import { ref, onMounted } from "vue";
-import { httpPost, httpGet } from "boot/axios";
+import { httpPost,httpPut, httpGet } from "boot/axios";
 import { FetchItem } from "src/pages/composables";
 import { useRoute } from "vue-router";
 
@@ -16,6 +16,7 @@ export default {
     const appDate = ref("");
     const appTime = ref("");
     const doctor = ref("");
+    const app_queue_num = ref("");
     const step1ref0 = ref(null);
     const step1ref2 = ref(null);
     const step1ref1 = ref(null);
@@ -82,9 +83,11 @@ export default {
         app_time: appTime.value,
         app_doctor_name: doctor.value,
         app_patient_id: localStorage.getItem("user_id"),
+        app_queue_num:app_queue_num.value,
+
         app_is_accepted: 0,
       };
-      httpPut("/app_form", payload, {
+      httpPut("/updateApp_forms", payload, {
         success: (response) => {
           console.log(response.data);
         },
@@ -105,8 +108,11 @@ export default {
           localStorage.getItem("user_id")
         );
 
-        const appData = response.data;
 
+        // console.log(appData);
+        const filteredArray = response.data.filter(item => item.app_queue_num == route.params.id);
+        const appData = filteredArray[0];
+        console.log("Filtered array:", filteredArray);
         // Autofill the details
         nameOfPatient.value = appData.app_full_name;
         address.value = appData.app_address;
@@ -119,7 +125,7 @@ export default {
         appDate.value = appData.app_date;
         appTime.value = appData.app_time;
         doctor.value = appData.app_doctor_name;
-        app_patient_id.value = appData.app_patient_id;
+        app_queue_num.value = appData.app_queue_num;
         app_is_accepted.value = 0;
       } catch (error) {
         console.error("Error fetching app data:", error);
@@ -142,6 +148,7 @@ export default {
       appDate,
       appTime,
       doctor,
+      app_queue_num,
       step1ref0,
       step1ref1,
       step1ref2,

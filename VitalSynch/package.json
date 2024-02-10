@@ -11,12 +11,13 @@
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
     "build": "quasar build && cp -r src dist/spa",
-"start": "node server.js",
-"heroku-postbuild": "yarn && yarn build && cp -r src dist/spa"
+    "start": "node server.js",
+    "heroku-postbuild": "yarn && yarn build && cp -r src dist/spa"
   },
   "dependencies": {
     "apexcharts": "^3.45.2",
     "axios": "^1.6.7",
+    "cloudinary": "^2.0.1",
     "connect-history-api-fallback": "^2.0.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
