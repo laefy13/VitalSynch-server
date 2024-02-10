@@ -44,11 +44,29 @@
             </div>
           </div>
         </q-card>
-        <q-card class="card-size-s q-my-md q-pa-lg">
-          <h6 class="text-bolder q-ma-none">Lab Results</h6>
+        <q-card class="card-size-s q-my-md q-pa-lg row">
+          <h6 class="text-bolder q-ma-none col">Lab Results</h6>
+          <q-uploader
+            style="max-width: 300px"
+            url="http://localhost:4444/upload"
+            label="Upload Lab Result"
+            multiple
+            class="col"
+            :filter="checkFileSize"
+            @rejected="onRejected"
+          />
         </q-card>
-        <q-card class="card-size-s q-my-md q-pa-lg">
-          <h6 class="text-bolder q-ma-none">Prescription Documents</h6>
+        <q-card class="card-size-s q-my-md q-pa-lg row">
+          <h6 class="text-bolder q-ma-none col">Prescription Documents</h6>
+          <q-uploader
+            style="max-width: 300px"
+            url="http://localhost:4444/upload"
+            label="Upload Prescription"
+            multiple
+            class="col"
+            :filter="checkFileSize"
+            @rejected="onRejected"
+          />
         </q-card>
       </div>
       <div class="col-7 q-my-md">

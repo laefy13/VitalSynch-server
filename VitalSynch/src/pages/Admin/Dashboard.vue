@@ -12,18 +12,27 @@
     <div class="q-my-md row">
       <div class="col q-mr-md">
         <div class="row q-mt-lg">
-          <q-card class="col q-mr-sm vs-card">
+          <q-card
+            class="col vs-card cursor-pointer q-hoverable"
+            v-ripple
+            @click="$router.push({ name: 'add-appointment' })"
+          >
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="blue-2"
                 text-color="blue"
                 icon="event"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                Appointments todays
+                <p class="text-h6 q-ma-none">Appointments Today</p>
+                <p class="text-grey q-ma-none q-ellipsis">
+                  {{ appointments_today.length }} appointments scheduled
+                </p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="appointments_today.length / 100"
                   rounded
                   color="blue"
                   class="q-mt-sm vs-line-progress"
@@ -31,18 +40,23 @@
               </div>
             </q-card-section>
           </q-card>
-          <q-card class="col vs-card">
+          <q-card class="col vs-card cursor-pointer q-hoverable" v-ripple>
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="orange-2"
                 text-color="orange"
                 icon="sym_o_local_hospital"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                OPD today
+                <p class="text-h6 q-ma-none">OPD</p>
+                <p class="text-grey q-ma-none">
+                  {{ appointment.length }} patients anticipated
+                </p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="appointment.length / 100"
                   rounded
                   color="orange"
                   class="q-mt-sm vs-line-progress"
@@ -52,18 +66,24 @@
           </q-card>
         </div>
         <div class="row q-mt-sm">
-          <q-card class="col q-mr-sm vs-card">
+          <q-card
+            class="col q-mr-sm vs-card cursor-pointer q-hoverable"
+            v-ripple
+          >
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="red-2"
                 text-color="red"
                 icon="sym_o_emergency"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                In patients
+                <p class="text-h6 q-ma-none">In patients</p>
+                <p class="text-grey q-ma-none">0 in patients</p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="appointments_today.length"
                   rounded
                   color="red"
                   class="q-mt-sm vs-line-progress"
@@ -71,18 +91,27 @@
               </div>
             </q-card-section>
           </q-card>
-          <q-card class="col vs-card">
+          <q-card
+            class="col vs-card cursor-pointer q-hoverable"
+            v-ripple
+            @click="$router.push({ name: 'update-user-info' })"
+          >
+            <span class="q-focus-helper"></span>
             <q-card-section class="row">
               <q-avatar
                 color="light-green-2"
                 text-color="green"
                 icon="sym_o_demography"
                 class="q-mr-sm"
+                size="70px"
               />
               <div class="col">
-                Discharged patients
+                <p class="text-h6 q-ma-none">Discharged Patients</p>
+                <p class="text-grey q-ma-none">
+                  {{ appointments_done.length }} discharged patients
+                </p>
                 <q-linear-progress
-                  :value="0.8"
+                  :value="appointments_done.length / 100"
                   rounded
                   color="green"
                   class="q-mt-sm vs-line-progress"

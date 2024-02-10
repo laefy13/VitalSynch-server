@@ -17,14 +17,20 @@ export default {
         type: "bar",
         height: 350,
       },
+
       plotOptions: {
         bar: {
           borderRadius: 5,
           horizontal: true,
+          color: "red",
         },
       },
       dataLabels: {
         enabled: false,
+      },
+      colors: ["#F44336", "#E91E63", "#9C27B0"],
+      fill: {
+        colors: ["#F44336", "#E91E63", "#9C27B0"],
       },
       xaxis: {
         categories: [
@@ -111,6 +117,7 @@ export default {
     ];
     const rows2 = ref([]);
     const appointments_today = ref([]);
+    const appointments_done = ref([]);
 
     const filter_appointments = () => {
       const today = new Date().toISOString().split("T")[0]; // Get today's date in 'YYYY-MM-DD' format
@@ -118,6 +125,9 @@ export default {
       // Filter appointments that match today's date
       appointments_today.value = appointment.value.filter(
         (appointment) => appointment.app_date === today
+      );
+      appointments_done.value = appointment.value.filter(
+        (appointment) => appointment.app_is_accepted === 3
       );
 
       console.log("Appointments for today", rows2.value);
@@ -148,6 +158,7 @@ export default {
       columns2,
       rows2,
       appointments_today,
+      appointments_done,
     };
   },
 };

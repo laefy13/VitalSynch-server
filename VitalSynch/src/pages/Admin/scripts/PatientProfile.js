@@ -1,9 +1,22 @@
 import { FetchItems, FetchItem } from "src/pages/composables";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
+import { useQuasar } from "quasar";
 
 export default {
   setup() {
+    const $q = useQuasar();
+
+    function checkFileSize(files) {
+      return files.filter((file) => file.size < 4048);
+    }
+
+    function onRejected(rejectedEntries) {
+      $q.notify({
+        type: "negative",
+        message: `${rejectedEntries.length} file(s) did not pass validation constraints`,
+      });
+    }
     const columns = [
       {
         name: "app_date",
@@ -24,10 +37,10 @@ export default {
         field: "app_department",
       },
       {
-        name: "app_doctor_id",
+        name: "app_doctor_name",
         label: "Doctor Assigned",
         align: "left",
-        field: "app_doctor_id",
+        field: "app_doctor_name",
       },
     ];
 
@@ -36,13 +49,14 @@ export default {
 
     const rows = ref([]);
     const ptnt_appointments = ref([]);
-    const router = useRoute();
-    const id = router.params.id;
+    const route = useRoute();
+    const id = route.params.id;
 
     const filter_appointments = () => {
-      // Filter appointments that match today's date
+      // Filter appointments that patient id
+      console.log("id", route.params.id);
       ptnt_appointments.value = rows.value.filter(
-        (appointment) => appointment.app_patient_id === id
+        (appointment) => appointment.app_patient_id === route.params.id
       );
 
       console.log("Appointments for today", rows.value);
@@ -51,8 +65,7 @@ export default {
     const getAppointment = async () => {
       const response = await FetchItems("app_forms");
       rows.value = response.data;
-
-      console.log("rows", rows);
+      filter_appointments();
     };
     let patient = ref([]);
     const getPatientProfile = async () => {
@@ -65,8 +78,8 @@ export default {
     // Use dummy data for testing
     // Comment out this block when you have the actual API to fetch data from
     onMounted(async () => {
-      getAppointment();
-      getPatientProfile();
+      await getAppointment();
+      await getPatientProfile();
     });
 
     return {
@@ -75,6 +88,8 @@ export default {
       filter: ref(""),
       ptnt_appointments,
       patient,
+      checkFileSize,
+      onRejected,
     };
   },
 };

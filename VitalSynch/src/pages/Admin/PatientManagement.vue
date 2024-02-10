@@ -46,7 +46,7 @@
                   <q-item-section>View Profile</q-item-section>
                 </q-item>
                 <q-item clickable v-close-popup class="menu-list">
-                  <q-item-section>View Appointments</q-item-section>
+                  <q-item-section>Add Medical Record</q-item-section>
                 </q-item>
               </q-list>
             </q-menu>
