@@ -33,7 +33,7 @@ return new class extends Migration
         });
         DB::table('tbl_patient_profile')->insert([
             'ptnt_id' => 'PTNT-askdbak1213',
-            'ptnt_grdn_id' => 'GRDN-n1kj23n',
+            'ptnt_grdn_id' => null,
             'ptnt_email' => 'as@gmail.com',
             'ptnt_password' => Hash::make('Karlos13'),
             'ptnt_surname' => 'Surname',

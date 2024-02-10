@@ -27,18 +27,18 @@ return new class extends Migration
             $table->string('grdn_contact_number');
             $table->string('grdn_address');
         });
-        DB::table('tbl_grdn_profile')->insert([
-            'grdn_id' => 'GRDN-n1kj23n',
-            'grdn_surname' => 'Smith',
-            'grdn_first_name' => 'John',
-            'grdn_mid_name' => 'Doe',
-            'grdn_sex' => 'Male',
-            'grdn_birth_date' => '1990-01-01',
-            'grdn_blood_group' => 'O',
-            'grdn_marital_status' => 'Single',
-            'grdn_contact_number' => '1234567890',
-            'grdn_address' => '123 Main Street, City',
-        ]);
+        // DB::table('tbl_grdn_profile')->insert([
+        //     'grdn_id' => 'GRDN-n1kj23n',
+        //     'grdn_surname' => 'Smith',
+        //     'grdn_first_name' => 'John',
+        //     'grdn_mid_name' => 'Doe',
+        //     'grdn_sex' => 'Male',
+        //     'grdn_birth_date' => '1990-01-01',
+        //     'grdn_blood_group' => 'O',
+        //     'grdn_marital_status' => 'Single',
+        //     'grdn_contact_number' => '1234567890',
+        //     'grdn_address' => '123 Main Street, City',
+        // ]);
     }
 
     /**
