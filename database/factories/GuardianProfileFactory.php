@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\GuardianProfile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use Illuminate\Support\Str;
 class GuardianProfileFactory extends Factory
 {
     /**
