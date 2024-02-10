@@ -68,7 +68,7 @@
                     @click="
                       $router.push({
                         name: 'edit-appointment',
-                        params: { id: selectedAppointment.app_queue_num },
+                        params: { id: props.row.app_queue_num },
                       })
                     "
                   >

@@ -313,4 +313,4 @@
   </div>
 </template>
 <style src="./styles/AddAppointment.scss"></style>
-<script src="./scripts/AddAppointment.js"></script>
+<script src="./scripts/EditAppointment.js"></script>

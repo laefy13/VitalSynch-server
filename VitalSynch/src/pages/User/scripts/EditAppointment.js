@@ -1,7 +1,7 @@
 import { ref, onMounted } from "vue";
 import { httpPost, httpGet } from "boot/axios";
 import { FetchItem } from "src/pages/composables";
-import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
 
 export default {
   setup() {
@@ -81,10 +81,10 @@ export default {
         app_date: appDate.value,
         app_time: appTime.value,
         app_doctor_name: doctor.value,
-        app_patient_id: localStorage.getItem("user_id") || null,
+        app_patient_id: localStorage.getItem("user_id"),
         app_is_accepted: 0,
       };
-      httpPost("/app_form", payload, {
+      httpPut("/app_form", payload, {
         success: (response) => {
           console.log(response.data);
         },
@@ -94,28 +94,40 @@ export default {
       });
     };
     //autofill in profile
-    const getPatientProfile = async () => {
+    const route = useRoute();
+    //Get appointment ID using router
+
+    const getAppointment = async () => {
+      console.log("app id", route.params.id);
       try {
         const response = await FetchItem(
-          "ptnt_prof",
+          "app_form",
           localStorage.getItem("user_id")
         );
-        const patientData = response.data;
 
-        // Autofill the profile details
-        nameOfPatient.value = `${patientData.ptnt_first_name} ${patientData.ptnt_mid_name} ${patientData.ptnt_surname}`;
-        date.value = patientData.ptnt_birth_date;
-        sex.value = patientData.ptnt_sex;
-        contactNumber.value = patientData.ptnt_contact_number;
-        address.value = patientData.ptnt_address;
-        // ... update other properties accordingly ...
+        const appData = response.data;
+
+        // Autofill the details
+        nameOfPatient.value = appData.app_full_name;
+        address.value = appData.app_address;
+        contactNumber.value = appData.app_contact_num;
+        sex.value = appData.app_sex;
+        date.value = appData.app_birth_date;
+        service.value = appData.app_service;
+        department.value = appData.app_department;
+        symptoms.value = appData.app_symptoms;
+        appDate.value = appData.app_date;
+        appTime.value = appData.app_time;
+        doctor.value = appData.app_doctor_name;
+        app_patient_id.value = appData.app_patient_id;
+        app_is_accepted.value = 0;
       } catch (error) {
-        console.error("Error fetching patient profile:", error);
+        console.error("Error fetching app data:", error);
       }
     };
-    onMounted(() => {
+    onMounted(async () => {
       console.log("here");
-      getPatientProfile();
+      await getAppointment();
     });
     return {
       step,
