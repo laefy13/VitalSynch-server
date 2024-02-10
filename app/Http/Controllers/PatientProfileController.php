@@ -77,13 +77,13 @@ class PatientProfileController extends Controller
     }
 
     public function update(Request $request){
+        // dd('$request');
         if (!$request->has('ptnt_id')) {
             return response()->json([
                 'error' => 'Patient ID not provided'
             ], 400);
         }
-    
-        $pat_prof = new PatientProfile;
+        $pat_prof = [];
         $allowedAttributes = [
             'ptnt_email', 'ptnt_password',
             'ptnt_allergies', 'ptnt_surname', 'ptnt_first_name', 'ptnt_mid_name',
@@ -93,7 +93,7 @@ class PatientProfileController extends Controller
     
         foreach ($allowedAttributes as $attribute) {
             if ($request->has($attribute)) {
-                $pat_prof->$attribute = ($attribute == 'ptnt_password') ? (Hash::needsRehash($request->$attribute) ? Hash::make($request->$attribute):$request->$attribute) : $request->$attribute;
+                $pat_prof[$attribute] = ($attribute == 'ptnt_password') ? (Hash::needsRehash($request->$attribute) ? Hash::make($request->$attribute):$request->$attribute) : $request->$attribute;
             }
         }
         
@@ -109,7 +109,8 @@ class PatientProfileController extends Controller
         }
 
     
-        $pat_prof->save();
+        PatientProfile::where('ptnt_id',$request->ptnt_id)
+        ->update($pat_prof);
     
         return response()->json([
             "message" => "Patient Profile updated"

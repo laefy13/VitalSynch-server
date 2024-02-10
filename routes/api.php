@@ -115,6 +115,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         // Routes for all
     Route::group([],function () {
         // singles
+        Route::put('/updatePtnt_prof',[PatientProfileController::class, 'update']);
         Route::get('/allergy/{id}',[AllergiesController::class, 'single']);
         Route::get('/user_acc/{id}',[UserAccounsController::class, 'single']);
         Route::get('/app_form/{id}',[AppFormController::class, 'single_patient']);
@@ -137,7 +138,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::post('/lab_rep/prescrViewPDF', [LabReportController::class, 'viewPDF']);
 
-        Route::put('/updatePtnt_prof',[PatientProfileController::class, 'update']);
         Route::post('/logout', [LoginController::class, 'logout']);
 
     });
