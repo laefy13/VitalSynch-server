@@ -29,8 +29,7 @@ export default {
       try {
         const response = await UpdateProf(
           "updatePtnt_prof",
-          userForm.value.ptnt_id,
-          userForm
+          userForm.value
         );
       } catch (error) {
         console.error("Error updating patient profile:", error);
@@ -39,12 +38,12 @@ export default {
 
     //Update Guardian Info
     const submitGuardianForm = () => {
-      console.log("Guardian Form Data:", guardianForm);
+      console.log("Guardian Form Data:", guardianForm.value);
       if (userForm.value.ptnt_grdn_id == null) {
         AddGuardianProfile();
       } else {
         try {
-          const response = UpdateProf("updateGrdn_prof", guardianForm);
+          const response = UpdateProf("updateGrdn_prof", guardianForm.value);
         } catch (error) {
           console.error("Error updating guardian profile:", error);
         }
@@ -57,7 +56,8 @@ export default {
         guardianForm.value.grdn_id = "GRDN-" + userForm.value.ptnt_id; //assign grdn ID
         //NO EXISTING GUARDIAN PROF SO ADD
         try {
-          const response = await AddItem("grdn_prof", guardianForm);
+          // console.log(guardianForm.value);
+          const response = await AddItem("grdn_prof", guardianForm.value);
           console.log("Successfully added guardian profile", response.data);
 
           //Make sure to update the ptnt_grdn_id if u added grdn prof

@@ -39,9 +39,9 @@ const UpdateItem = (path, data) => {
     });
   });
 };
-const UpdateProf = (path, id, data) => {
+const UpdateProf = (path, data) => {
   return new Promise((resolve, reject) => {
-    httpPut(`${API_URL}/${path}/${id}`, data, {
+    httpPut(`${API_URL}/${path}`, data, {
       success(response) {
         resolve(response);
       },

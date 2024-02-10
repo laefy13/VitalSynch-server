@@ -216,14 +216,6 @@
               ]"
             />
 
-            <q-input
-              v-model="guardianForm.grdn_allergies"
-              label="Allergies"
-              filled
-              outlined
-              class="q-mb-md"
-            />
-
             <q-select
               v-model="guardianForm.grdn_sex"
               label="Sex"
