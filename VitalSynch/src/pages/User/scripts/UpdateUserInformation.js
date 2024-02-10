@@ -30,7 +30,7 @@ export default {
         const response = await UpdateProf(
           "updatePtnt_prof",
           userForm.value.ptnt_id,
-          userForm
+          userForm.value
         );
       } catch (error) {
         console.error("Error updating patient profile:", error);
