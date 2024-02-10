@@ -137,7 +137,7 @@
           <q-table
             :rows="medicalHistoryRecords"
             :columns="columns2"
-            :filter="filter"
+            :filter="filter2"
             row-key="id"
             class="q-pa-none"
             flat
