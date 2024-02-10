@@ -138,6 +138,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/lab_rep/prescrViewPDF', [LabReportController::class, 'viewPDF']);
 
         Route::put('/updatePtnt_prof',[PatientProfileController::class, 'update']);
+        Route::post('/logout', [LoginController::class, 'logout']);
 
     });
 });

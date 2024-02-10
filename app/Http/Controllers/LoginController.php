@@ -54,6 +54,18 @@ class LoginController extends Controller
 
         return response()->json(['error' => 'Invalid user type'], 400);
     }
+    public function logout(Request $request): JsonResponse
+    {
+        $userType = $request->user;
+
+        if ($userType == 'doctor' || $userType == 'ptnt') {
+            Auth::guard($userType)->logout();
+
+            return response()->json(['message' => "{$userType} successfully logged out"]);
+        }
+
+        return response()->json(['error' => 'Invalid user type'], 400);
+    }
     // old with the dds
     // private function validateAccount(Request $request, $account): JsonResponse
     // {
