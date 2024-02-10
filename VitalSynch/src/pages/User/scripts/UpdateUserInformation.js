@@ -55,6 +55,7 @@ export default {
       if (userForm.value.ptnt_grdn_id == null) {
         guardianForm.value.grdn_id = "GRDN-" + userForm.value.ptnt_id; //assign grdn ID
         //NO EXISTING GUARDIAN PROF SO ADD
+        guardianForm.value.ptnt_id = userForm.value.ptnt_id;
         try {
           // console.log(guardianForm.value);
           const response = await AddItem("grdn_prof", guardianForm.value);
@@ -90,10 +91,11 @@ export default {
     const getGuardianProfile = async () => {
       try {
         const response = await FetchItem(
-          "grdn_profile",
+          "grdn_prof",
           userForm.value.ptnt_grdn_id
         );
-        guardianForm.value = response.data;
+        // console.log(response.data[0]);
+        guardianForm.value = response.data[0];
       } catch (error) {
         console.error("Error fetching guardian profile:", error);
       }
