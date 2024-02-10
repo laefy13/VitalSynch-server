@@ -97,31 +97,6 @@
             <q-item-section> Appointment Tracker </q-item-section>
           </q-item>
 
-          <q-item
-            clickable
-            v-ripple
-            @click="selectItem(3, 'appointment-tracker')"
-            :class="{ 'selected-item': selectedItem === 3 }"
-          >
-            <q-item-section avatar>
-              <q-icon name="notes" />
-            </q-item-section>
-
-            <q-item-section> Clinical Documentation </q-item-section>
-          </q-item>
-
-          <q-item
-            clickable
-            v-ripple
-            @click="selectItem(5, 'appointment-tracker')"
-            :class="{ 'selected-item': selectedItem === 5 }"
-          >
-            <q-item-section avatar>
-              <q-icon name="medication" />
-            </q-item-section>
-
-            <q-item-section> Prescription Center </q-item-section>
-          </q-item>
           <br />
 
           <q-separator />
