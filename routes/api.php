@@ -36,6 +36,7 @@ use App\Http\Controllers\Controller;
 |
 */
 
+
 Route::post('/user_acc',[UserAccounsController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/ptnt_prof',[PatientProfileController::class, 'store']);
@@ -131,6 +132,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/app_form',[AppFormController::class, 'store']);
         Route::put('/updateApp_forms',[AppFormController::class, 'update']);
 
+        Route::post('/lab_repUpload/{id}',[LabReportController::class, 'upload']);
+        Route::post('/prescrUpload/{id}',[PrescriptionController::class, 'upload']);
+
         Route::post('/prescr/prescrViewPDF', [PrescriptionController::class, 'viewPDF']);
 
         Route::post('/grdn_prof',[GuardianProfileController::class, 'store']);
@@ -139,6 +143,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/lab_rep/prescrViewPDF', [LabReportController::class, 'viewPDF']);
 
         Route::post('/logout', [LoginController::class, 'logout']);
+
 
     });
 });

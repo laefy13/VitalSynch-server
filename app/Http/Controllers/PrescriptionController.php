@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prescription;
+use App\Models\PrescriptionF;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
@@ -105,5 +106,35 @@ class PrescriptionController extends Controller
     }
 
 
+    public function upload($id,Request $request)
+    {
+        $images = $request->all();
+        $paths = [];
+        foreach ($images as $image) {
+            $extension = $image->getClientOriginalName();
+            
+            $link =   $this->cloudinaryURLGenerateFile($image);
+            $pf = new PrescriptionF;
+            $pf->pf_link = $link;
+            $pf->pf_ptnt_id = $id;
+            $paths[]=$link;
+            $pf->save();
+        }
+        
+        return response()->json([
+            "message" => "Lab Report Images added"
+        ],201);
+    }
+    private function cloudinaryURLGenerateFile($filee) 
+    {
+        Cloudinary::uploadApi();
+        return $filee->storeOnCloudinary()->getSecurePath();
+    }
 
+
+
+    public function files_index(){
+        $prescr = DB::select('SELECT * FROM tbl_prescription_files');
+        return response()->json($prescr);
+    }
 }

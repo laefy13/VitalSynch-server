@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LabReport;
+use App\Models\LabReportF;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
+use Illuminate\Support\Facades\Storage;
 class LabReportController extends Controller
 {
-   
+    
     public function index(){
         $lab_rep = LabReport::all();
         return response()->json($lab_rep);
@@ -88,9 +91,38 @@ class LabReportController extends Controller
         $lab_rep = LabReport::where('labrep_id',$request->labrep_id)->first();
         $patient = DB::select('SELECT ptnt_surname, ptnt_first_name,ptnt_mid_name,ptnt_extn_name, ptnt_sex, ptnt_blood_group
                                 FROM tbl_patient_profile WHERE ptnt_id = ?', [$lab_rep->labrep_ptnt_id]);
-        // dd($drugs);
+        
         $pdf = PDF::loadView('pdf.lab_rep',['patient' => $patient[0], 'lab_rep' => $lab_rep]);
         return $pdf->stream();
+    }
+    public function upload($id,Request $request)
+    {
+        $images = $request->all();
+        $paths = [];
+        foreach ($images as $image) {
+            $extension = $image->getClientOriginalName();
+            
+            $link =   $this->cloudinaryURLGenerateFile($image);
+            $lf = new LabReportF;
+            $lf->lf_link = $link;
+            $lf->lf_ptnt_id = $id;
+            $paths[]=$link;
+            $lf->save();
+        }
+        
+        return response()->json([
+            "message" => "Lab Report Images added"
+        ],201);
+    }
+    private function cloudinaryURLGenerateFile($filee) 
+    {
+        Cloudinary::uploadApi();
+        return $filee->storeOnCloudinary()->getSecurePath();
+    }
+
+    public function files_index(){
+        $lf = DB::select('SELECT * FROM tbl_labrep_files');
+        return response()->json($lf);
     }
 
 }
