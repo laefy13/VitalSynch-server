@@ -85,7 +85,7 @@ class PatientProfileController extends Controller
     
         $pat_prof = new PatientProfile;
         $allowedAttributes = [
-            'ptnt_grdn_id', 'ptnt_email', 'ptnt_password',
+            'ptnt_email', 'ptnt_password',
             'ptnt_allergies', 'ptnt_surname', 'ptnt_first_name', 'ptnt_mid_name',
             'ptnt_extn_name', 'ptnt_sex', 'ptnt_birth_date', 'ptnt_blood_group',
             'ptnt_marital_status', 'ptnt_contact_number', 'ptnt_address'
@@ -93,12 +93,21 @@ class PatientProfileController extends Controller
     
         foreach ($allowedAttributes as $attribute) {
             if ($request->has($attribute)) {
-                $pat_prof->$attribute = ($attribute == 'ptnt_password') ? Hash::make($request->$attribute) : $request->$attribute;
+                $pat_prof->$attribute = ($attribute == 'ptnt_password') ? (Hash::needsRehash($request->$attribute) ? Hash::make($request->$attribute):$request->$attribute) : $request->$attribute;
             }
         }
+        
         if ($request->has('ptnt_allergies')) {
-            $pat_prof->ptnt_allergies = json_encode($request->ptnt_allergies);
+            $allergies = $request->ptnt_allergies;
+            $decodedAllergies = json_decode($allergies);
+
+            if ($decodedAllergies !== null || json_last_error() === JSON_ERROR_NONE) {
+                $pat_prof->ptnt_allergies = $allergies;
+            } else {
+                $pat_prof->ptnt_allergies = json_encode($allergies);
+            }
         }
+
     
         $pat_prof->save();
     
