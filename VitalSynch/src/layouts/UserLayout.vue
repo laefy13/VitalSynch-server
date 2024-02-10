@@ -93,18 +93,6 @@
             <q-item-section> Medical Records</q-item-section>
           </q-item>
 
-          <q-item
-            clickable
-            v-ripple
-            @click="selectItem(3, '')"
-            :class="{ 'selected-item': selectedItem === 3 }"
-          >
-            <q-item-section avatar>
-              <q-icon name="medication" />
-            </q-item-section>
-
-            <q-item-section> Prescription Center </q-item-section>
-          </q-item>
           <br />
 
           <q-separator />
