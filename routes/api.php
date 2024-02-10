@@ -87,7 +87,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::put('/updateMed_his',[MedicalHistoryController::class, 'update']);
         // API Routest for Guardian Profile
         Route::get('/grdn_profs',[GuardianProfileController::class, 'index']);
-        Route::post('/grdn_prof',[GuardianProfileController::class, 'store']);
         Route::get('/pkGrdn_prof',[GuardianProfileController::class, 'pk']);
         // API Routest for Prescription
         Route::get('/prescrs',[PrescriptionController::class, 'index']);
@@ -133,6 +132,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::post('/prescr/prescrViewPDF', [PrescriptionController::class, 'viewPDF']);
 
+        Route::post('/grdn_prof',[GuardianProfileController::class, 'store']);
         Route::put('/updateGrdn_prof',[GuardianProfileController::class, 'update']);
 
         Route::post('/lab_rep/prescrViewPDF', [LabReportController::class, 'viewPDF']);
