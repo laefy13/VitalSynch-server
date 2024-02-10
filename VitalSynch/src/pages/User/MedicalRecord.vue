@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div class="flex justifty-start items-center q-mt-lg q-mb-lg gt-xs col">
+      <q-btn @click="$router.go(-1)" round dense flat icon="arrow_back" />
+      <h5 class="text-26 text-bold q-my-none q-ml-md page-header">
+        Medical Records
+      </h5>
+    </div>
     <q-table
       :rows="medicalHistoryRecords"
       :columns="columns2"
@@ -9,9 +15,7 @@
       flat
     >
       <template v-slot:top>
-        <q-toolbar class="q-pa-none">
-          <h6 class="text-bolder q-ma-none">Medical Records</h6>
-
+        <q-toolbar class="q-pa-none bg-primary">
           <q-space />
 
           <q-input
@@ -29,12 +33,7 @@
       </template>
       <template v-slot:header="props">
         <q-tr :props="props">
-          <q-th
-            v-for="col in props.cols"
-            :key="col.name"
-            :props="props"
-            class="bg-primary"
-          >
+          <q-th v-for="col in props.cols" :key="col.name" :props="props">
             {{ col.label }}
           </q-th>
         </q-tr>
