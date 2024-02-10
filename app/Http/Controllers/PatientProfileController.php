@@ -77,7 +77,7 @@ class PatientProfileController extends Controller
     }
 
     public function update(Request $request){
-        // dd('$request');
+        // dd($request);
         if (!$request->has('ptnt_id')) {
             return response()->json([
                 'error' => 'Patient ID not provided'
