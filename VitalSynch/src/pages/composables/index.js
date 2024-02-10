@@ -39,4 +39,28 @@ const UpdateItem = (path, data) => {
     });
   });
 };
-export { FetchItem, FetchItems, UpdateItem };
+const UpdateProf = (path, id, data) => {
+  return new Promise((resolve, reject) => {
+    httpPut(`${API_URL}/${path}/${id}`, data, {
+      success(response) {
+        resolve(response);
+      },
+      catch(error) {
+        reject(error);
+      },
+    });
+  });
+};
+const AddItem = (path, data) => {
+  return new Promise((resolve, reject) => {
+    httpPost(`${API_URL}/${path}`, data, {
+      success: (response) => {
+        console.log(response.data);
+      },
+      catch: (error) => {
+        console.error("Login Error:", error);
+      },
+    });
+  });
+};
+export { FetchItem, FetchItems, UpdateItem, AddItem, UpdateProf };
