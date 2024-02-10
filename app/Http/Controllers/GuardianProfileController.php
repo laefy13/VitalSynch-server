@@ -29,6 +29,7 @@ class GuardianProfileController extends Controller
 
     public function store(Request $request){
         $grdn_prof = new GuardianProfile ; 
+        $grdn_prof->grdn_id = $request->grdn_id;
         $grdn_prof->grdn_surname = $request->grdn_surname;
         $grdn_prof->grdn_first_name = $request->grdn_first_name;
         $grdn_prof->grdn_mid_name = $request->grdn_mid_name;
