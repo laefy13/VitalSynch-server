@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('grdn_address');
         });
         DB::table('tbl_grdn_profile')->insert([
-
+            'grdn_id' => 'GRDN-n1kj23n',
             'grdn_surname' => 'Smith',
             'grdn_first_name' => 'John',
             'grdn_mid_name' => 'Doe',
