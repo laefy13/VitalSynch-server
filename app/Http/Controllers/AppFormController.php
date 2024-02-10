@@ -70,8 +70,8 @@ class AppFormController extends Controller
 
         $fillableFields = [
             'app_full_name', 'app_department', 'app_service', 'app_email',
-            'app_patient_id', 'app_doctor_id', 'app_date', 'app_time',
-            'app_is_accepted', 'app_reason','app_patient_id'
+            'app_patient_id', 'app_doctor_name', 'app_date', 'app_time',
+            'app_is_accepted', 'app_reason',
         ];
 
         foreach ($fillableFields as $field) {
